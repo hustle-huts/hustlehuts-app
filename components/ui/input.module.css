@@ -1,0 +1,29 @@
+.input {
+    border-radius: 14px;
+    background: #FFFFFF;
+    padding: 20px 16px;
+    height: 6vh;
+    border: 1px solid #CDCCCC;
+}
+
+.error_message {
+    color: red !important;
+    font-size: 10px;
+    text-align: right;
+    padding-top: 4px;
+}
+
+.error_input {
+    border-color: red !important;
+}
+
+.form_label {
+    margin: 10px 0px;
+    color: #6D5747;
+    height: fit-content;
+}
+.form_group {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
