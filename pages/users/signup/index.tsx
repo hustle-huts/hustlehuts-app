@@ -21,7 +21,7 @@ export default function SignUpName() {
                     <Input type="password" label='Enter Your Password'></Input>
                     <Input type="email" disabled label='Email'></Input>
                     <Input label='Enter Phone Number'></Input>
-                        {/* <div className="invalid-feedback">{errors.firstName?.message}</div> */}  
+                        {/* <div className="invalid-feedback">{errors.firstName?.message}</div> */}   
                 </div>
                 <div className={styles.btn_groups}>
                     <Button>Sign Up</Button>

@@ -6,6 +6,11 @@
     border: 1px solid #CDCCCC;
 }
 
+.required {
+    color: red;
+    margin-left: 5px;
+}
+
 .error_message {
     color: red !important;
     font-size: 10px;

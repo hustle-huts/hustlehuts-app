@@ -1,0 +1,128 @@
+.container {
+    height: 60%;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    background-image: url('../../public/images/loginbackground.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Also adjusted for container below from 758-1024px screen width */
+@media screen and (min-width: 510px) {
+    .container {
+        height: 80%;
+    }
+}
+
+
+.line {
+    z-index: 2;
+    position: static;
+    height: 20% !important;
+}
+
+.circleTopLeft {
+    position: absolute;
+    z-index: 2;
+    width: 20%;
+    top: 0%;
+    height: 20%;
+    left: 0%;
+}
+
+.circleCenter {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 5%;
+    left: 45%
+}
+
+.arrow {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    left: 68%;
+    top: 13%
+}
+
+.title {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 45px;
+    z-index: 10;
+    margin-top: 18rem;
+    height: fit-content;
+    position: absolute;
+    text-align: center;
+}
+
+.signup1 {
+    position: absolute;
+    z-index: 4;
+    top: 10px;
+    left: 0
+}
+
+.signup2 {
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    top: 15%;
+    left: 33%
+}
+
+.signup3 {
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    top: 17%;
+    right: -3%;
+}
+
+.login1 {
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    top: -7%;
+    left: 35%;
+}
+
+.login2 {
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    top: -4%;
+    right: -1%;
+}
+
+/* Also adjusted for title "Log In" and form in Login.module.css for these screen widths */
+@media screen and (min-width: 758px) and (max-width: 1024px) {
+    .container {
+        height: 70%;
+    }
+
+    .signup2 {
+        top: 20%;
+        left: 35%
+    }
+
+    .signup3 {
+        top: 17%;
+        right: -4%;
+    }
+
+    .login2 {
+        top: -4%;
+        right: -4%;
+    }
+}
