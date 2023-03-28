@@ -2,7 +2,7 @@ import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import LoginHeader from '@/components/users/login-header';
 import styles from '../../../styles/Login.module.css';
-export default function SignUpName() {
+export default function LogInPage() {
     return (
         <div className={styles.container}>
             <LoginHeader/>
