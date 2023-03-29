@@ -13,6 +13,7 @@ interface Props
   touched?: any;
   value?: string;
   label?: string;
+  isRequired?: boolean;
   prefixicon?: string | ReactElement | ReactNode;
 }
 
@@ -28,12 +29,16 @@ const Input: React.FC<Props> = (Props) => {
     value,
     placeholder,
     label,
+    isRequired,
     prefixicon,
     ...rest
   } = Props;
   return (
     <div className={styles.form_group}>
-      {label && <label className={classnames(styles.form_label)}>{label}</label>}
+      {label && <label className={classnames(styles.form_label)}>
+        {label}
+        {isRequired && <span className={styles.required}>*</span>}
+        </label>}
       {prefixicon && <span className="input-icon">{prefixicon}</span>}
       <input 
         type={type}
