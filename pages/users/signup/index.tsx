@@ -9,17 +9,17 @@ export default function SignUpName() {
             <form className={styles.form}>
                 <div className={styles.form_row} style={{flexDirection:"row", display:'flex', justifyContent:'space-between'}}>
                     <div className={styles.name}>
-                        <Input label='First Name'></Input>
+                        <Input isRequired={true} label='First Name'></Input>
                         
                     </div>
                     <div className={styles.name}>
-                        <Input label='Last Name'></Input>
+                        <Input isRequired={true} label='Last Name'></Input>
                         
                     </div>
                 </div>
                 <div className={styles.form_row}>
-                    <Input type="password" label='Enter Your Password'></Input>
-                    <Input type="email" disabled label='Email'></Input>
+                    <Input type="password" isRequired={true} label='Enter Your Password'></Input>
+                    <Input type="email" isRequired={true} disabled label='Email'></Input>
                     <Input label='Enter Phone Number'></Input>
                         {/* <div className="invalid-feedback">{errors.firstName?.message}</div> */}   
                 </div>

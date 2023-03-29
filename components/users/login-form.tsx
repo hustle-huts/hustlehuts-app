@@ -14,7 +14,7 @@ export default function LoginForm() {
     return (
         <form className={styles.form}>
             <div className={styles.form_row}>
-                <Input error="Only alphabetical characters allowed!" label='Enter Your Email to Begin'></Input>
+                <Input error="Only alphabetical characters allowed!" isRequired={true} label='Enter Your Email to Begin'></Input>
                     {/* <div className="invalid-feedback">{errors.firstName?.message}</div> */}
                 
             </div>
