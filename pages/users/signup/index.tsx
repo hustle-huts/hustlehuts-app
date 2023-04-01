@@ -2,6 +2,7 @@ import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import SignUpHeader from '@/components/users/signup-header';
 import styles from '../../../styles/Signup.module.css';
+
 export default function SignUpName() {
     return (
         <div className={styles.container}>
@@ -20,7 +21,7 @@ export default function SignUpName() {
                 <div className={styles.form_row}>
                     <Input type="password" isRequired={true} label='Enter Your Password'></Input>
                     <Input type="email" isRequired={true} disabled label='Email'></Input>
-                    <Input label='Enter Phone Number'></Input>
+                    <Input phone label='Enter Phone Number'></Input>
                         {/* <div className="invalid-feedback">{errors.firstName?.message}</div> */}   
                 </div>
                 <div className={styles.btn_groups}>
