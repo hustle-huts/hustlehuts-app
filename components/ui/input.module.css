@@ -18,6 +18,18 @@
     padding-top: 4px;
 }
 
+.phone {
+    border-radius: 14px !important;
+    background: #FFFFFF;
+    height: 6vh;
+    font-family: inherit;
+    border: 1px solid #CDCCCC;
+    
+}
+
+.react-tel-input {
+    border-radius: 14px !important;
+ }
 .error_input {
     border-color: red !important;
 }
