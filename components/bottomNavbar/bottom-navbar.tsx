@@ -1,12 +1,12 @@
 import styles from './bottom-navbar.module.css';
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import book from '../../public/images/navbar-book.png'
-import bookSelected from '../../public/images/navbar-book-selected.png'
-import home from '../../public/images/navbar-home.png'
-import homeSelected from '../../public/images/navbar-home-selected.png'
-import profile from '../../public/images/navbar-profile.png'
-import profileSelected from '../../public/images/navbar-profile-selected.png'
+import book from '../../public/images/navbar-book.svg'
+import bookSelected from '../../public/images/navbar-book-selected.svg'
+import home from '../../public/images/navbar-home.svg'
+import homeSelected from '../../public/images/navbar-home-selected.svg'
+import profile from '../../public/images/navbar-profile.svg'
+import profileSelected from '../../public/images/navbar-profile-selected.svg'
 
 interface props {
     currentPage?: string;
