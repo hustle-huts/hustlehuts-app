@@ -1,5 +1,6 @@
+/* Also adjusted for container below from 758-1024px screen width */
 .container {
-    height: 60%;
+    height: 50%;
     overflow: visible;
     display: flex;
     flex-direction: column;
@@ -9,14 +10,6 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-/* Also adjusted for container below from 758-1024px screen width */
-@media screen and (min-width: 510px) {
-    .container {
-        height: 80%;
-    }
-}
-
 
 .line {
     z-index: 2;
