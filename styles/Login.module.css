@@ -76,3 +76,13 @@
     width: 80%;
     height: fit-content;
 }
+
+@media (min-width: 1110px) {
+    .btn_groups {
+        width: 60%;
+    }
+    
+    .form_row {
+        width: 60%;
+    }
+}
