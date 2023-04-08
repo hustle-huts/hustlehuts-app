@@ -1,0 +1,87 @@
+.background {
+    position: absolute;
+    width: 100%;
+    /* the height of the elements below the top banner is set to 90% of \
+    the page, leaving 10% total for the top-banner in the pages' css */
+    height: 160px; 
+    left: 0px;
+    top: 0px;
+
+    background: linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%);
+}
+
+.header {
+    /* font-family: 'Poppins'; */
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 42px;
+    /* identical to box height */
+
+    color: #FFFFFF;
+
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.cart {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    right: -15%;
+    top: -0.15rem;
+    /* So that the cart is above the right eclipse */
+    z-index: 3; 
+}
+
+@media (min-width: 600px) {
+    .cart {
+        right: -5%;
+    }
+}
+
+.leftEclipse {
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    left: -9px;
+    top: 0px;
+}
+
+.middleLeftEclipse {
+    position: absolute;
+    width: 26px;
+    height: 36px;
+    left: 26%;
+    top: 0.8rem;
+}
+
+.middleTopEclipse {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 56%;
+    top: 0.8rem;
+}
+
+.middleBottomEclipse {
+    position: absolute;
+    width: 26px;
+    height: 36px;
+    left: 60%;
+    top: 3.5rem;
+}
+
+.rightEclipse {
+    position: absolute;
+    width: 112px;
+    height: 112px;
+    right: -10%;
+    top: -3rem;
+
+    background: linear-gradient(134.22deg, #937863 -7.72%, #B58760 74.66%);
+    opacity: 0.5;
+    border-radius: 72px;
+    z-index: 0;
+}
+

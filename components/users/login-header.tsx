@@ -12,12 +12,12 @@ export default function LoginHeader() {
     
     return (
         <div className={styles.container}>
-            <Image className={styles.login1}  style={{ width: '14%', height: '21%', objectFit:"contain" }} alt="" src={LogIn1}  width="600" height="300" />
-            <Image className={styles.login2}  style={{ width: '9%', height: '9%', objectFit:"contain" }} alt="" src={LogIn2}  width="600" height="300" />
-            <Image className={styles.signup1}  style={{ width: '12%', height: '22%', objectFit:"contain" }} alt="" src={SignUp1}  width="600" height="300" />
-            <Image className={styles.arrow}  style={{ width: '6%', height: '6%', objectFit:"contain" }} alt="" src={LocationPointer}  width="600" height="300" />
-            <Image className={styles.signup2}  style={{ width: '28%', height: '20%', objectFit:"contain" }} alt="" src={SignUp2}  width="600" height="300" />
-            <Image className={styles.signup3}  style={{ width: '12%', height: '12%', objectFit:"contain" }} alt="" src={SignUp3}  width="600" height="300" />
+            <Image className={styles.login1} style={{ objectFit:"contain" }} alt="" src={LogIn1} />
+            <Image className={styles.login2} style={{ objectFit:"contain" }} alt="" src={LogIn2} />
+            <Image className={styles.signup1} style={{ objectFit:"contain" }} alt="" src={SignUp1} />
+            <Image className={styles.arrow} style={{ objectFit:"contain" }} alt="" src={LocationPointer} />
+            <Image className={styles.signup2} style={{ objectFit:"contain" }} alt="" src={SignUp2} />
+            <Image className={styles.signup3} style={{ objectFit:"contain" }} alt="" src={SignUp3} />
         </div>
     );
 }
