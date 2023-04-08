@@ -36,10 +36,11 @@ const TopBanner:React.FC<props> = (props) => {
             <a href="#" onClick={() => handleNavItemClick()}>
                 <Image className={styles.cart} alt="Cart button" src={cart} />
             </a>
-            <Image className="leftEclipse" alt="Background eclipse design" src={leftEclipse} width="600" height="300"/>
-            <Image className="middleBottomEclipse" alt="Background eclipse design" src={middleBottomEclipse} />
-            <Image className="middleTopEclipse" alt="Background eclipse design" src={middleTopEclipse} />
-            <Image className="rightEclipse" alt="Background eclipse design" src={rightEclipse} />
+            <Image className={styles.leftEclipse} alt="Background eclipse design" src={leftEclipse}/>
+            <Image className={styles.middleTopEclipse} alt="Background eclipse design" src={middleTopEclipse} />
+            <Image className={styles.middleBottomEclipse} alt="Background eclipse design" src={middleBottomEclipse} />
+            <Image className={styles.middleLeftEclipse} alt="Background eclipse design" src={middleTopEclipse} />
+            <Image className={styles.rightEclipse} alt="Background eclipse design" src={rightEclipse} />
         </div>
     );
 }
