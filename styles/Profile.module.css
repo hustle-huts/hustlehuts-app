@@ -2,6 +2,7 @@
     height: 100%;
     width: 100%;
     display: flex;
+    
     background-color: brown;
     flex-direction: column;
     align-content: center;
@@ -10,14 +11,68 @@
 
 .profileContainer {
     height: 85%;
+    padding-top: 10px;
     width: 100%;
     position: absolute;
     bottom: 0px;
+    margin-top: 15%; /* set margin-top to the same value as the height to push it down */
+    display: flex;
+    padding-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 42px 42px 0px 0px;
+}
+
+.box {
+    height: 100%;/* set height to 100% to fill the parent container */
+    width: 100%;
     display: flex;
     align-items: center;
     background-color: white;
+    border-radius: 42px 42px 0px 0px;
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    border-radius: 42px 42px 0px 0px;
+}
+
+.feedback {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.linkBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.cafeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+
+.feedbackText {
+    display: flex;
+    margin-left: 20px;
+    flex-direction: column;
+    height: 45px;
+}
+
+.hit {
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+}
+
+.link {
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: underline;
+    color: #D89B60;
 }

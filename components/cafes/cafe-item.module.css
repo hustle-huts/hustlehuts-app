@@ -10,23 +10,53 @@
 
 @media  (min-width: 510px) {
     .card {
-        height: 30%;
-        width: 60%;
+        height: 35%;
+        width: 80%;
     }
     .title {
-        font-size: 1.25vw !important;
+        font-size: 1.75vw !important;
     }
 
     .rightHeadingText {
-        font-size: 1.25vw !important;
+        font-size: 1.75vw !important;
+    }
+
+    .badge {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        right: 13px;
+        top: 20px;
     }
     
     .topleftHeadingText {
-        font-size: 2vw !important;
+        font-size: 3vw !important;
     }
     
     .bottomleftHeadingText {
-        font-size:1vw !important;
+        font-size:1.5vw !important;
+    }
+}
+
+@media  (min-width: 1024px) {
+    .card {
+        height: 30%;
+        width: 80%;
+    }
+    .title {
+        font-size: 0.75vw !important;
+    }
+
+    .rightHeadingText {
+        font-size: 0.75vw !important;
+    }
+    
+    .topleftHeadingText {
+        font-size: 1.25vw !important;
+    }
+    
+    .bottomleftHeadingText {
+        font-size:0.75vw !important;
     }
 }
 
@@ -34,7 +64,6 @@
 .title {
     font-size: 2vw;
     color: white;
-    line-height: 16.5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,12 +88,12 @@
 
 .badge {
     position: absolute;
-    width: 60px;
+    width: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 60px;
+    height: 40px;
     right: 13px;
     top: 20px;
 }
@@ -73,7 +102,7 @@
     align-items: center;
     color: white;
     padding-top: 5px;
-    font-size: 3vw;
+    font-size: 2vw;
     font-weight: 400;
     justify-content: center;
     text-align: center;
