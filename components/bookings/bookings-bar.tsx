@@ -16,7 +16,7 @@ export default function BookingsBar() {
                     <div style={{ height: '4px', color:"#D89B60", marginTop:'4px' }}>
                         <LinearProgress color='inherit' variant='determinate' value={66.67} />
                     </div>
-                    <p className={styles.desc}>Place 3 bookings by 29 March to unlock a mystery reward</p>
+                    <p className={styles.desc}>1 more to get a mystery reward at your favourite cafe.</p>
                 </div>
             </div>
         </div>

@@ -1,9 +1,11 @@
 import styles from '../../styles/Bookings.module.css';
-import CafeItem from '@/components/cafes/cafe-item';
+import BookingItem from '@/components/bookings/booking-item';
 import BottomNavbar from '@/components/bottomNavbar/bottom-navbar';
 import TopBanner from '@/components/topBanner/top-banner';
-import BookingsBar from '@/components/users/bookings-bar';
-import { LinearProgress } from '@mui/material';
+import BookingsBar from '@/components/bookings/bookings-bar';
+import SendIcon from '../../public/images/bookings-send.svg'
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function BookingsPage() {
     return (
@@ -11,16 +13,27 @@ export default function BookingsPage() {
             <TopBanner currentPage='book' />
             <div className={styles.bookingContainer}>
                 <BookingsBar />
-                <h1 className={styles.title}>
+                <p className={styles.title}>
                     My Booking List
-                </h1>
+                </p>
+
                 <div className={styles.cafeContainer} >
-                    <CafeItem isOpen />
+                    {/* <BookingsList userId=""></BookingsList> */}
+                    <BookingItem />
                 </div>
                 
-                <h1 className={styles.title}>
-                    Need to cancel?
-                </h1>
+                <div>
+                    <p className={styles.title}>
+                        Need to cancel?
+                    </p>
+                    
+                    <Link href='mailto:admin@hustlehuts.com'>
+                        <button className={styles.contactButton}>
+                            <Image className={styles.contactIcon} alt="Contact Icon" src={SendIcon}/>
+                            <p className={styles.contactText}>Send us an email at <span className={styles.emailText}>admin@hustlehuts.com</span></p>
+                        </button>
+                    </ Link>
+                </div>
             </div>
             <BottomNavbar currentPage="book" />
         </div>
