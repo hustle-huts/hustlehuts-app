@@ -3,10 +3,11 @@
     width: 100%;
     /* the height of the elements below the top banner is set to 90% of \
     the page, leaving 10% total for the top-banner in the pages' css */
-    height: 15%; 
+    height: 4.5rem; 
     left: 0px;
     top: 0px;
     background: linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%);
+    z-index: 3;
 }
 
 .header {
@@ -26,18 +27,11 @@
 
 .cart {
     position: absolute;
-    width: 70%;
-    height: 70%;
-    right: -15%;
+    width: 100%;
+    height: 100%;
     top: 0%;
-    
+    right: -30%;
     z-index: 3;
-}
-
-@media (min-width: 600px) {
-    .cart {
-        right: -5%;
-    }
 }
 
 .leftEclipse {

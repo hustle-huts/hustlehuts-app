@@ -1,23 +1,22 @@
-.container {
-    height: 100%;
-    width: 100%;
+.bookingContainer {
+    padding-top: 5.5rem;   /* 4.5rem is the height of top banner, and then add some more margin for aesthetics */
+    padding-bottom: 3.5rem;   /* height of bottom navbar */
+    text-align: center;
+
     display: flex;
-    background-color: brown;
     flex-direction: column;
-    align-content: center;
     justify-content: center;
+    align-items: center;
 }
 
-.profileContainer {
-    height: 90%;
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
+.title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    height: 3rem; /* to overwrite the globals.css */
+    font-size: 1.2rem;
+}
+
+.cafeContainer {
     display: flex;
-    align-items: center;
-    background-color: white;
-    flex-direction: column;
-    align-content: center;
     justify-content: center;
-    border-radius: 42px 42px 0px 0px;
 }
