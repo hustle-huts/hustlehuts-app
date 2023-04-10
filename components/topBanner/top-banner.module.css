@@ -1,37 +1,37 @@
 .background {
-    position: absolute;
+    position: fixed;
     width: 100%;
     /* the height of the elements below the top banner is set to 90% of \
     the page, leaving 10% total for the top-banner in the pages' css */
-    height: 160px; 
+    height: 15%; 
     left: 0px;
     top: 0px;
-
     background: linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%);
 }
 
 .header {
-    /* font-family: 'Poppins'; */
     font-style: normal;
     font-weight: 700;
     font-size: 22px;
     line-height: 42px;
-    /* identical to box height */
 
     color: #FFFFFF;
 
     text-align: center;
-    margin-top: 1.5rem;
+    display: flex;
+    margin-top: 1rem;
+
+    z-index: 3;
 }
 
 .cart {
     position: absolute;
-    width: 60%;
-    height: 60%;
+    width: 70%;
+    height: 70%;
     right: -15%;
-    top: -0.15rem;
-    /* So that the cart is above the right eclipse */
-    z-index: 3; 
+    top: 0%;
+    
+    z-index: 3;
 }
 
 @media (min-width: 600px) {
