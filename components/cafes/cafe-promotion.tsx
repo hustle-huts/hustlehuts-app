@@ -17,7 +17,7 @@ const CafePromotion:React.FC<props> = (props) => {
       <Container className={styles.outerContainer} maxWidth="sm">
         <Container className={styles.container} sx={{  borderRadius: '16px', border: '1px solid #DADADA', bgcolor: 'white', height: '10vh' }} >
             <Container  className={styles.image}>
-            <img alt="" style={{ borderRadius: '12px', width: '100%', height: '100%', objectFit:"contain" }}  height="30" width="30" src={props.image.src}  />
+            <img alt="" style={{ borderRadius: '12px', maxWidth: '100%', height: '80%', objectFit:"contain" }}  height="30" width="30" src={props.image.src}  />
             </Container>
             <Container className={styles.txt}>
                 <Typography fontFamily='inherit' fontSize={18} fontWeight={700}>

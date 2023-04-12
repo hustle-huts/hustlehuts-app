@@ -88,7 +88,7 @@ export default function SwipeToConfirmButtom({onConfirm} : SwipeToConfirmButtonP
   };
   return (
     <Box>
-      <Box sx={{ m: 3 }} />
+      <Box sx={{ m: 3, mx: 2 }} />
       <SliderCustom
         onChange={handleChange}
         onChangeCommitted={update}

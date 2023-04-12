@@ -12,9 +12,10 @@
 .profileContainer {
     padding-top: 10px;
     width: 100%;
+    z-index: 10;
     position: absolute;
     bottom: 0px;
-    top: 15%;
+    top: 10%;
     display: flex;
     padding-bottom: 30px;
     flex-direction: column;

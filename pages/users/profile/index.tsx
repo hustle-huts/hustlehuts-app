@@ -2,7 +2,7 @@ import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import styles from '../../../styles/Profile.module.css';
 import CafeItem from '@/components/cafes/cafe-item';
-
+import TopBanner from '@/components/topBanner/top-banner';
 import ProfileBox from '@/components/users/profile-box';
 import { Container, LinearProgress, Typography } from '@mui/material';
 import UserReward from '@/components/users/user-reward';
@@ -113,6 +113,7 @@ export default function ProfilePage() {
     
     return (
         <div className={styles.container}>
+            <TopBanner currentPage='profile' />
             <div className={styles.profileContainer}>
                 <div className={styles.box}>
                     <ProfileBox />
