@@ -1,0 +1,38 @@
+.button {
+    position: relative;
+    width: 200px;
+    height: 50px;
+    background-color: red;
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .button_track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-color: red;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .handle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: black;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #007bff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  }
+  

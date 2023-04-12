@@ -10,16 +10,15 @@
 }
 
 .profileContainer {
-    height: 85%;
     padding-top: 10px;
     width: 100%;
     position: absolute;
     bottom: 0px;
-    margin-top: 15%; /* set margin-top to the same value as the height to push it down */
+    top: 15%;
     display: flex;
     padding-bottom: 30px;
     flex-direction: column;
-    align-items: center;
+    align-content: center;
     background-color: white;
     border-radius: 42px 42px 0px 0px;
 }
@@ -50,11 +49,71 @@
     flex-direction: row;
     justify-content: flex-start;
 }
+
+.desc {
+    height: 15%;
+    width: 90%;
+    padding-top: 20px;
+
+}
+
+.descRedemption {
+    height: 5%;
+    width: 90%;
+    padding-top: 10px;
+
+}
+.descWord {
+    height: 10%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 20px;
+    
+
+}
+
+.time {
+    width: 90%;
+    height: 15%;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.redemption {
+    height: max-content;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+.slide {
+    height: 0;
+    width: 90%;
+
+}
+
+.descDetail {
+    height: 15%;
+    width: 90%;
+    padding-left: 40px;
+    padding-top: 15px;
+}
+
 .cafeContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    margin: 80px 0;
+  }
+
+  .cafeItem {
+    flex: 1;
   }
 
 .feedbackText {

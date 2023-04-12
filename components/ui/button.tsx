@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, ReactElement, ReactNode } from "react";
+import React, { ButtonHTMLAttributes, MouseEventHandler, ReactElement, ReactNode } from "react";
 import styles from './button.module.css';
 
 interface Props extends ButtonHTMLAttributes<any> {
@@ -8,7 +8,7 @@ interface Props extends ButtonHTMLAttributes<any> {
   btntype?: "primary" | "secondary" | "outline";
   size?: "large" | "medium";
   children?: any;
-  clickEvent?: Function;
+  clickEvent?: MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button: React.FC<Props> = (Props) => {
@@ -24,7 +24,7 @@ const Button: React.FC<Props> = (Props) => {
   } = Props;
   return (
     <div >
-      <button className={btntype === "primary" ? styles.primary : btntype === "secondary" ? styles.secondary : styles.outline}>
+      <button onClick={clickEvent} className={btntype === "primary" ? styles.primary : btntype === "secondary" ? styles.secondary : styles.outline}>
         {icon && <span className={styles.icon}>{icon}</span>}
         {children}
         {affixicon && <span className="icon-holder right">{affixicon}</span>}
