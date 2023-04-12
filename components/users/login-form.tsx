@@ -10,6 +10,7 @@ interface Values {
     password: string;
 }
 
+// This is for the main login/signup page with Google, FB and Outlook sign in 
 export default function LoginForm() {
     return (
         <form className={styles.form}>
