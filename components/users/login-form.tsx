@@ -28,9 +28,9 @@ export default function LoginForm() {
                     <div style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
                 </span>
                 
-                <Button icon={<GoogleIcon/>} btntype="outline">Sign Up with Google</Button>
-                <Button icon={<FacebookIcon/>} btntype="outline">Sign Up with Facebook</Button>
-                <Button icon={<OutlookIcon/>} btntype="outline">Sign Up with Outlook</Button>
+                <Button icon={<GoogleIcon/>} btntype="login">Sign Up with Google</Button>
+                <Button icon={<FacebookIcon/>} btntype="login">Sign Up with Facebook</Button>
+                <Button icon={<OutlookIcon/>} btntype="login">Sign Up with Outlook</Button>
             </div>
            
         </form>

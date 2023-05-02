@@ -3,7 +3,7 @@
     width: 100%;
     /* the height of the elements below the top banner is set to 90% of \
     the page, leaving 10% total for the top-banner in the pages' css */
-    height:50%; 
+    height: 10%; 
     left: 0px;
     top: 0px;
     background: linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%);
