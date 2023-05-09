@@ -22,9 +22,16 @@ const Button: React.FC<Props> = (Props) => {
     children,
     ...rest
   } = Props;
+
+  const handleClick = () => {
+    if (clickEvent) {
+      clickEvent();
+    }
+  };
+
   return (
     <div >
-      <button className={btntype === "primary" ? styles.primary : btntype === "secondary" ? styles.secondary : styles.outline}>
+      <button className={btntype === "primary" ? styles.primary : btntype === "secondary" ? styles.secondary : styles.outline} onClick={handleClick}>
         {icon && <span className={styles.icon}>{icon}</span>}
         {children}
         {affixicon && <span className="icon-holder right">{affixicon}</span>}
