@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Logo from './/../../public/images/logo.png'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-export default function HomePage() {
+export default function SignUpOrHomePage() {
     return (
         <>
         <GoogleOAuthProvider clientId="554539700276-7ofmtmaendohcdss79l752c1e25leb7e.apps.googleusercontent.com">
