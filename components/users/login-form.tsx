@@ -6,7 +6,6 @@ import Button from '../ui/button';
 import Input from '../ui/input';
 import styles from './login-form.module.css';
 import { useGoogleLogin, TokenResponse } from '@react-oauth/google';
-import axios from 'axios';
 
 
 interface Values {
@@ -14,30 +13,14 @@ interface Values {
     password: string;
 }
 
-declare global {
-    interface Window {
-        google: any;
-    }
-}
-
 // This is for the main login/signup page with Google, FB and Outlook sign in 
 export default function LoginForm() {
     const [tokenResponse, setTokenResponse] = useState<TokenResponse | null>();
     const [user, setUser] = useState<any>(null);
 
-    const googleLogin = useGoogleLogin({
-        onSuccess: async tokenResponse => {
-        const userInfo = await axios
-            .get('https://www.googleapis.com/oauth2/v3/userinfo', {
-            headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-            })
-            .then((res: { data: any; }) => res.data);
-        console.log("hello");
-        setTokenResponse(tokenResponse);
-        setUser(userInfo);
-        },
-        onError: errorResponse => console.log(errorResponse),
-    });
+    const login = useGoogleLogin({
+        onSuccess: tokenResponse => console.log(tokenResponse),
+      });
 
 
     return (
@@ -57,8 +40,8 @@ export default function LoginForm() {
                 </span>
 
 
-                <Button clickEvent={() => googleLogin()} icon={<GoogleIcon />} btntype="outline">
-                    Sign Up with Google
+                <Button clickEvent={() => login()} icon={<GoogleIcon />} btntype="outline">
+                    Sign in with Google
                 </Button>
                 <Button icon={<FacebookIcon/>} btntype="outline">Sign Up with Facebook</Button>
                 <Button icon={<OutlookIcon/>} btntype="outline">Sign Up with Outlook</Button>

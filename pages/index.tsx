@@ -5,14 +5,12 @@ import styles from '@/styles/Home.module.css'
 import CafeList from '@/components/cafes/cafe-list'
 import LoginForm from '@/components/users/login-form'
 import SignUp from './users'
-import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
     <>
-    <GoogleOAuthProvider clientId="554539700276-7ofmtmaendohcdss79l752c1e25leb7e.apps.googleusercontent.com">
       <Head>
         <title>HustleHuts App</title>
         {/* TO BE CHANGED */}
@@ -23,7 +21,6 @@ export default function Home() {
       <main className={styles.main}>
         <SignUp />
       </main>
-      </GoogleOAuthProvider>
     </>
   )
 }
