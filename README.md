@@ -17,6 +17,12 @@ Next, install next dev server:
 npm install next --save-dev
 ```
 
+Next, install the following dependencies:
+```
+npm install @react-oauth/google
+npm install axios
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
