@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
 import { AppBar, Toolbar, Typography, Badge } from "@mui/material";
 import { useEffect, useState } from "react";
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 interface props {
   currentPage?: string;
@@ -15,7 +14,7 @@ const TopBanner: React.FC<props> = (props) => {
 
   useEffect(() => {
     setCurrentPage(props.currentPage || "home");
-  }, [props.currentPage])
+  }, [props.currentPage]);
 
   const handleNavItemClick = () => {
     // router.push(`/bookings/${props.userId}`); // adjust this code when we confirm the urls
@@ -23,7 +22,7 @@ const TopBanner: React.FC<props> = (props) => {
 
   return (
     <AppBar
-      position="static"
+      position="sticky"
       sx={{
         background: "linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%)",
         root: {
