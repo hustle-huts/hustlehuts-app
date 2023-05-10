@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { BottomNavigation, BottomNavigationAction, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import StoreIcon from "@mui/icons-material/Store";
@@ -23,6 +23,10 @@ const BottomNavbar: React.FC<props> = (props) => {
   const [currentPage, setCurrentPage] = useState(props.currentPage || "home");
   const selectedColor = "#FFFEFF";
   const unselectedColor = "#E2CCB9";
+
+  useEffect(() => {
+    setCurrentPage(props.currentPage || "home");
+  }, [props.currentPage])
 
   return (
     <BottomNavigation
