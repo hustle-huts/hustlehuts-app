@@ -6,7 +6,7 @@ import BookingsBar from "@/components/bookings/bookings-bar";
 import SendIcon from "../../public/images/bookings-send.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { Typography } from "@mui/material";
+import { ImageList, Stack, Typography } from "@mui/material";
 
 export default function BookingsPage() {
   return (
@@ -43,6 +43,14 @@ export default function BookingsPage() {
       <Typography variant="h6" component="div" sx={{ fontWeight: "800", fontSize: "1.1rem", color: "black", marginLeft: "5%", marginTop: "1vh" }}>
         My Booking List
       </Typography>
+
+      <Stack mx="20%" mt="1%" width="60%">
+        <ImageList sx={{width: "100%", height: "100%"}} cols={1}>
+            <BookingItem />
+            <BookingItem />
+        </ImageList>
+      </Stack>
+
       <BottomNavbar currentPage="book" />
     </div>
   );
