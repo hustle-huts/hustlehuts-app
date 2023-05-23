@@ -1,0 +1,98 @@
+.cafeContainer {
+    padding-top: 5.5rem;
+    padding-bottom: 4.5rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: auto;
+    background-color: #f5f5f5;
+}
+
+@media screen and (min-width: 810px) {
+    .cafeContainer {
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+}
+
+.searchTextField>div {
+    font-family: inherit;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 25px;
+}
+
+.searchTextField>div::after,
+.searchTextField>div::before {
+    border-bottom: 0 !important;
+}
+
+.searchTextField>div>input {
+    font-size: 13px;
+}
+
+.searchIcon {
+    width: 1.3rem;
+    height: 1.3rem;
+    margin: 0 5px 0 10px;
+}
+
+.searchFilterButton {
+    height: auto;
+    width: auto;
+    padding: 0;
+    min-width: 0;
+}
+
+.filterIcon {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+/* Filter Bar */
+.filterButton {
+    color: black;
+    background: #fdf7f0;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+    text-transform: none;
+    width: auto;
+    margin: 0 5px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgb(235, 199, 164, 0.3);
+}
+
+.filterButtonSelected {
+    color: white;
+    background: linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%);
+    opacity: unset;
+}
+
+.titleBar {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    width: auto;
+}
+
+.seeAllButton {
+    color: #d89b60;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    text-transform: none;
+    width: auto;
+}
