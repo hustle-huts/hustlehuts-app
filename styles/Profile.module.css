@@ -3,7 +3,6 @@
     width: 100%;
     display: flex;
     
-    background-color: brown;
     flex-direction: column;
     align-content: center;
     justify-content: center;
@@ -12,28 +11,38 @@
 .profileContainer {
     padding-top: 10px;
     width: 100%;
+    align-items: center;
     z-index: 10;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     top: 10%;
     display: flex;
     padding-bottom: 30px;
     flex-direction: column;
-    align-content: center;
     background-color: white;
     border-radius: 42px 42px 0px 0px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .box {
     height: 100%;/* set height to 100% to fill the parent container */
-    width: 100%;
+    width: 90%;
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
     background-color: white;
     border-radius: 42px 42px 0px 0px;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+}
+
+@media (min-width: 480px) {
+    .box {
+        width: 70%
+    }
 }
 
 .feedback {
@@ -42,7 +51,7 @@
     font-size: 18px;
     line-height: 27px;
     color: black;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .linkBox {
@@ -124,6 +133,12 @@
     height: 45px;
 }
 
+.contactText {
+    display: flex;
+    flex-direction: column;
+    height: 45px;
+}
+
 .hit {
     font-weight: 500;
     font-size: 14px;
@@ -136,3 +151,15 @@
     text-decoration: underline;
     color: #D89B60;
 }
+
+.items {
+    margin-top: 10px;
+    padding: 10px 0px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+

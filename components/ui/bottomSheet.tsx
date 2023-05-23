@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { grey } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
+import { useMediaQuery, ThemeProvider, createTheme } from '@mui/material';
 import styles from './SwipeToConfirmButton.module.css'
 import { SwipeableDrawer, Box, Typography, Container } from '@mui/material';
 
@@ -32,6 +33,9 @@ function BottomSheet({ isOpen, onClose, children }: BottomSheetProps) {
     }
   };
 
+  const theme = createTheme();
+  const lgBreakpointMatches = useMediaQuery(theme.breakpoints.up('lg'));
+  
   const Puller = styled(Box)(({ theme }) => ({
     width: 130,
     height: 6,
@@ -46,6 +50,7 @@ function BottomSheet({ isOpen, onClose, children }: BottomSheetProps) {
   }));
 
   return (
+    <ThemeProvider theme={theme}>
     <SwipeableDrawer
       anchor="bottom"
       open={isOpen}
@@ -56,7 +61,10 @@ function BottomSheet({ isOpen, onClose, children }: BottomSheetProps) {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          alignItems: ' center'
+          alignItems: ' center',
+          paddingBottom: 10,
+          paddingLeft: lgBreakpointMatches ? '30%' : 0,
+          paddingRight: lgBreakpointMatches ? '30%' : 0
         }
         }}
         SwipeAreaProps={{
@@ -112,6 +120,7 @@ function BottomSheet({ isOpen, onClose, children }: BottomSheetProps) {
       </Container>
       
     </SwipeableDrawer>
+    </ThemeProvider>
   );
 }
 

@@ -21,7 +21,7 @@ main {
 @media (min-width: 1024px) {
   main {
     justify-content: center;
-    width: 724px;
+    width: 100%;
   }
 }
 

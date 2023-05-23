@@ -173,11 +173,19 @@ export default function BookingsPage() {
               size="large"
               name="simple-controlled"
               value={value}
+              max={5}
               onChange={(event, newValue) => {
                 setValue(newValue);
               }}
               sx={{
                 paddingBottom: 1,
+                "& .MuiRating-pristine": {
+                  display: 'none'
+                },
+                "& .MuiRating-icon": {
+                  display: 'flex',
+                  justifyContent: 'center'
+                },
               }}
             />
             <Typography
@@ -190,7 +198,7 @@ export default function BookingsPage() {
             </Typography>
           </Container>
 
-          <Container className={styles.cafeImageModalContainer}>
+          <Container  className={styles.cafeImageModalContainer}>
             <Typography
               paddingTop={1}
               paddingBottom={1}
@@ -215,8 +223,11 @@ export default function BookingsPage() {
                 />
               ))}
               <div onClick={handleSuccess}>
+              <input style={{zIndex: 2, opacity: 0, position: 'relative',height: '15vh', width: '15vh'}}  accept="image/*" multiple type="file" />
+
                 <img
                   style={{
+                    position: 'relative',
                     width: "15vh",
                     paddingRight: "4px",
                     height: "100%",
@@ -329,7 +340,9 @@ export default function BookingsPage() {
             src={BGM.src}
           />
         </Container>
-        <Container className={styles.descIcon}>
+        <Container
+        sx={{ marginBottom: '30px' }}
+        className={styles.descIcon}>
           <Container className={styles.descTime}>
             <AccessTimeIcon />
             <Typography
@@ -415,9 +428,8 @@ export default function BookingsPage() {
     <div className={styles.container}>
       <TopBanner currentPage="book" />
       <div className={styles.bookingContainer}>
-        <BookingsBar />
+        <BookingsBar subtitle="You’ve unlocked a mystery reward!" stepNumber={3} title="Congratulation!" description="Place 5 more bookings by Feb 2023 to unlock another mystery reward" />
         <p className={styles.title}>My Booking List</p>
-
         <div className={styles.cafeContainer}>
           {/* <BookingsList userId=""></BookingsList> */}
           <BookingItem modalHandler={handleBottomSheetOpen} />
