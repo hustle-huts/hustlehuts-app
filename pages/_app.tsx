@@ -6,14 +6,16 @@ import '@fontsource/poppins/400.css';
 import '@fontsource/poppins/500.css';
 import '@fontsource/poppins/700.css';
 const font = Poppins({
-  weight: ['400', '700', '500'],
-  subsets: ['latin'],
-})
+  weight: ["400", "700", "500"],
+  subsets: ["latin"],
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-  <main className={font.className}>
-    <Component {...pageProps} />
-  </main>
-  
-)}
+    <RecoilRoot>
+      <main className={font.className}>
+        <Component {...pageProps} />
+      </main>
+    </RecoilRoot>
+  );
+}

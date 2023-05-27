@@ -1,9 +1,12 @@
+import React, { useEffect, useState } from 'react';
 import GoogleIcon from '../icons/google_icon';
 import FacebookIcon from '../icons/facebook-icon';
 import OutlookIcon from '../icons/outlook-icon';
 import Button from '../ui/button';
 import Input from '../ui/input';
-import styles from './login-form.module.css'
+import styles from './login-form.module.css';
+import { useGoogleLogin, TokenResponse } from '@react-oauth/google';
+
 
 interface Values {
     username: string;
@@ -12,6 +15,14 @@ interface Values {
 
 // This is for the main login/signup page with Google, FB and Outlook sign in 
 export default function LoginForm() {
+    const [tokenResponse, setTokenResponse] = useState<TokenResponse | null>();
+    const [user, setUser] = useState<any>(null);
+
+    const login = useGoogleLogin({
+        onSuccess: tokenResponse => console.log(tokenResponse),
+      });
+
+
     return (
         <form className={styles.form}>
             <div className={styles.form_row}>
@@ -27,10 +38,13 @@ export default function LoginForm() {
                     <h3>OR</h3>
                     <div style={{flex: 1, height: '1px', backgroundColor: 'black'}} />
                 </span>
-                
-                <Button icon={<GoogleIcon/>} btntype="login">Sign Up with Google</Button>
-                <Button icon={<FacebookIcon/>} btntype="login">Sign Up with Facebook</Button>
-                <Button icon={<OutlookIcon/>} btntype="login">Sign Up with Outlook</Button>
+
+
+                <Button clickEvent={() => login()} icon={<GoogleIcon />} btntype="outline">
+                    Sign in with Google
+                </Button>
+                <Button icon={<FacebookIcon/>} btntype="outline">Sign Up with Facebook</Button>
+                <Button icon={<OutlookIcon/>} btntype="outline">Sign Up with Outlook</Button>
             </div>
            
         </form>
