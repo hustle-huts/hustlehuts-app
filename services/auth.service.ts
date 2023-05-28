@@ -1,5 +1,5 @@
 import axios_instance from "./axios";
-import { ILoginResponse, IUser } from "@/types/user";
+import { ILoginResponse, IUser } from "@/models/user";
 
 const AUTH_PREFIX_URL = `/api/auth`;
 
