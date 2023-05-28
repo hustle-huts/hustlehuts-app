@@ -1,4 +1,9 @@
-import React, { ButtonHTMLAttributes, ReactElement, ReactNode } from "react";
+import React, {
+  ButtonHTMLAttributes,
+  MouseEventHandler,
+  ReactElement,
+  ReactNode,
+} from "react";
 import styles from "./button.module.css";
 
 interface Props extends ButtonHTMLAttributes<any> {
@@ -8,7 +13,7 @@ interface Props extends ButtonHTMLAttributes<any> {
   btntype?: "primary" | "secondary" | "outline";
   size?: "large" | "medium";
   children?: any;
-  onClick?: Function;
+  onClick?: MouseEventHandler<any> | undefined;
 }
 
 const Button: React.FC<Props> = (Props) => {
@@ -18,16 +23,10 @@ const Button: React.FC<Props> = (Props) => {
     affixicon,
     btntype = "primary",
     size,
-    onClick,
+    onClick = () => {},
     children,
     ...rest
   } = Props;
-
-  const handleClick = () => {
-    if (onClick) {
-      onClick();
-    }
-  };
 
   return (
     <div>
@@ -39,7 +38,7 @@ const Button: React.FC<Props> = (Props) => {
             ? styles.secondary
             : styles.outline
         }
-        onClick={handleClick}
+        onClick={onClick}
       >
         {icon && <span className={styles.icon}>{icon}</span>}
         {children}
