@@ -3,6 +3,13 @@ import { ILoginRequest, ILoginResponse, IUser } from "@/models/user";
 
 const AUTH_PREFIX_URL = `/api/auth`;
 
+const authApi = async () => {
+  const { data: user }: { data: IUser } = await axios_instance.get(
+    `${AUTH_PREFIX_URL}/auth`
+  );
+  return user;
+};
+
 const loginApi = async (payload: ILoginRequest) => {
   const { data: user, access_token }: ILoginResponse =
     await axios_instance.post(`${AUTH_PREFIX_URL}/login`, payload);
@@ -32,4 +39,4 @@ const registerApi = async (
   return user;
 };
 
-export { loginApi, registerApi };
+export { authApi, loginApi, registerApi };

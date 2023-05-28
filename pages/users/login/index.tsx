@@ -13,9 +13,9 @@ export default function LogInPage() {
   const loginDetails = useRecoilValue<ILoginRequest>(loginDetailsState);
   const [password, setPassword] = useState<string>("");
 
-  const onLoginSubmit = async (event: React.SyntheticEvent) => {
+  const onLoginSubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
     try {
-      event.preventDefault();
       const { email } = loginDetails;
       const user = await loginApi({ email, password });
       setUser(user);

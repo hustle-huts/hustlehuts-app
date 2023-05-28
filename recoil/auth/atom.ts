@@ -1,12 +1,12 @@
 import { atom } from "recoil";
-import { ILoginRequest, IUser } from "@/models/user";
+import { ILoginRequest, IRegisterRequest, IUser } from "@/models/user";
 
-const userState = atom({
+export const userState = atom({
   key: "userState",
   default: {} as IUser,
 });
 
-const loginDetailsState = atom({
+export const loginDetailsState = atom({
   key: "loginDetailsState",
   default: {
     email: "",
@@ -14,4 +14,12 @@ const loginDetailsState = atom({
   } as ILoginRequest,
 });
 
-export { userState, loginDetailsState };
+export const registerDetailsState = atom({
+  key: "registerDetailsState",
+  default: {
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+  } as IRegisterRequest,
+});

@@ -1,6 +1,6 @@
 import LoginForm from "@/components/users/login-form";
 import Image from "next/image";
-import Logo from ".//../../public/images/logo.png";
+import Logo from "./../../public/images/logo.png";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 export default function SignUpOrHomePage() {
@@ -14,7 +14,7 @@ export default function SignUpOrHomePage() {
           width="600"
           height="300"
         />
-        <LoginForm></LoginForm>
+        <LoginForm />
       </GoogleOAuthProvider>
     </>
   );
