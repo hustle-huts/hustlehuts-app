@@ -37,7 +37,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## Sample User Login Credentials
 
 ```
-Email: user+1@hustlehuts.com
+Email: user@hustlehuts.com
 Password: password
 ```
 
