@@ -21,5 +21,7 @@ export const registerDetailsState = atom({
     last_name: "",
     email: "",
     password: "",
+    phone_number: "",
+    telegram_handle: "",
   } as IRegisterRequest,
 });

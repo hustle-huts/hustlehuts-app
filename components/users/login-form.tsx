@@ -7,14 +7,9 @@ import Input from "../ui/input";
 import styles from "./login-form.module.css";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useRecoilState } from "recoil";
-import { ILoginRequest } from "@/models/user";
-import { loginDetailsState } from "@/recoil/auth/atom";
+import { ILoginRequest, IRegisterRequest } from "@/models/user";
+import { loginDetailsState, registerDetailsState } from "@/recoil/auth/atom";
 import { useRouter } from "next/router";
-
-interface Values {
-  username: string;
-  password: string;
-}
 
 // This is for the main login/signup page with Google, FB and Outlook sign in
 export default function LoginForm() {
@@ -22,13 +17,20 @@ export default function LoginForm() {
   const [email, setEmail] = useState<string>("");
   const [loginDetails, setLoginDetails] =
     useRecoilState<ILoginRequest>(loginDetailsState);
+  const [registerDetails, setRegisterDetails] =
+    useRecoilState<IRegisterRequest>(registerDetailsState);
   const loginGoogle = useGoogleLogin({
     onSuccess: (tokenResponse) => console.log(tokenResponse),
   });
 
-  const login = async () => {
+  const onLoginClick = async () => {
     setLoginDetails({ ...loginDetails, email });
     router.push("/users/login");
+  };
+
+  const onRegisterClick = async () => {
+    setRegisterDetails({ ...registerDetails, email });
+    router.push("/users/signup");
   };
 
   return (
@@ -45,8 +47,8 @@ export default function LoginForm() {
         {/* <div className="invalid-feedback">{errors.firstName?.message}</div> */}
       </div>
       <div className={styles.btn_groups}>
-        <Button onClick={login}>Login</Button>
-        <Button btntype="secondary" onClick={login}>
+        <Button onClick={onLoginClick}>Login</Button>
+        <Button btntype="secondary" onClick={onRegisterClick}>
           Sign Up
         </Button>
         <span className={styles.line}>

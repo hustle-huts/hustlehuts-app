@@ -1,5 +1,10 @@
 import axios_instance from "./axios";
-import { ILoginRequest, ILoginResponse, IUser } from "@/models/user";
+import {
+  ILoginRequest,
+  ILoginResponse,
+  IRegisterRequest,
+  IUser,
+} from "@/models/user";
 
 const AUTH_PREFIX_URL = `/api/auth`;
 
@@ -19,22 +24,10 @@ const loginApi = async (payload: ILoginRequest) => {
   return user;
 };
 
-const registerApi = async (
-  first_name: string,
-  last_name: string,
-  email: string,
-  password: string,
-  telegram_handle?: string
-) => {
+const registerApi = async (payload: IRegisterRequest) => {
   const { data: user }: { data: IUser } = await axios_instance.post(
     `${AUTH_PREFIX_URL}`,
-    {
-      first_name,
-      last_name,
-      email,
-      password,
-      telegram_handle,
-    }
+    payload
   );
   return user;
 };
