@@ -1,39 +1,39 @@
 .primary {
-    border: 0;
-    color: #fff;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%);
-    box-shadow: 0px 4px 40px rgba(160, 116, 78, 0.18);
-    font-size: 18px;
-    line-height: 27px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 10px 0px;
-    font-family: inherit;
-    min-width: 186px;
-    width: 100%;
-    font-weight: 700;
-    transition: all 0.3s ease-in-out;
-    height: 8vh;
-    width: 100%;
+  border: 0;
+  color: #fff;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(176.54deg, #6d5747 -11.89%, #b88151 64.46%);
+  box-shadow: 0px 4px 40px rgba(160, 116, 78, 0.18);
+  font-size: 18px;
+  line-height: 27px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 10px 0px;
+  font-family: inherit;
+  min-width: 186px;
+  width: 100%;
+  font-weight: 700;
+  transition: all 0.3s ease-in-out;
+  height: 8vh;
+  width: 100%;
 }
 
 .secondary {
   border: 0;
   margin: 10px 0px;
   font-family: inherit;
-  color: #6D5747;
+  color: #6d5747;
   border-radius: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   width: 100%;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 40px rgba(160, 116, 78, 0.18);
   font-size: 18px;
   height: 8vh;
@@ -43,7 +43,6 @@
   min-width: 186px;
   font-weight: 700;
   transition: all 0.3s ease-in-out;
-
 }
 
 .outline {
@@ -57,7 +56,7 @@
   justify-content: center;
   text-align: center;
   width: 100%;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 40px rgba(160, 116, 78, 0.18);
   font-size: 16px;
   line-height: 27px;
@@ -67,7 +66,6 @@
   min-width: 186px;
   font-weight: 700;
   transition: all 0.3s ease-in-out;
-
 }
 
 .icon {
@@ -75,8 +73,8 @@
   width: 25px !important;
   height: auto;
 }
-        
-    /* :disabled {
+
+/* :disabled {
       background: #d6d6d6;
       cursor: not-allowed;
     }

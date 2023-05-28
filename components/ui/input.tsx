@@ -1,12 +1,8 @@
-import React, {
-  ReactElement,
-  ReactNode,
-  TextareaHTMLAttributes,
-  useState,
-} from "react";
+import React, { ReactElement, ReactNode, TextareaHTMLAttributes } from "react";
 import styles from "./input.module.css";
 import classnames from "classnames";
 import PhoneInput from "react-phone-input-2";
+
 interface Props
   extends Partial<React.InputHTMLAttributes<any>>,
     Partial<TextareaHTMLAttributes<any>> {
@@ -41,34 +37,8 @@ const Input: React.FC<Props> = (Props) => {
     prefixicon,
     ...rest
   } = Props;
-  const [phoneValue, setPhoneValue] = useState("3424234");
-  function handleOnChange(f: string) {
-    setPhoneValue(f);
-  }
-  if (!phone) {
-    return (
-      <div className={styles.form_group}>
-        {label && (
-          <label className={classnames(styles.form_label)}>
-            {label}
-            {isRequired && <span className={styles.required}>*</span>}
-          </label>
-        )}
-        {prefixicon && <span className="input-icon">{prefixicon}</span>}
-        <input
-          type={type}
-          className={classnames(styles.input, error && styles.error_input)}
-          placeholder={placeholder}
-          {...rest}
-        >
-          {children}
-        </input>
-        {error && (
-          <span className={error && styles.error_message}>{error}</span>
-        )}
-      </div>
-    );
-  } else {
+
+  if (phone) {
     return (
       <>
         <div className={styles.form_group} style={{ marginBottom: "10px" }}>
@@ -97,8 +67,6 @@ const Input: React.FC<Props> = (Props) => {
               error && styles.error_input,
               styles.phone
             )}
-            // value="029293"
-            // onChange={phone => handleOnChange(phone)}
             onBlur={() => {}}
             specialLabel=""
             disabled={false}
@@ -110,6 +78,27 @@ const Input: React.FC<Props> = (Props) => {
       </>
     );
   }
+
+  return (
+    <div className={styles.form_group}>
+      {label && (
+        <label className={classnames(styles.form_label)}>
+          {label}
+          {isRequired && <span className={styles.required}>*</span>}
+        </label>
+      )}
+      {prefixicon && <span className="input-icon">{prefixicon}</span>}
+      <input
+        type={type}
+        className={classnames(styles.input, error && styles.error_input)}
+        placeholder={placeholder}
+        {...rest}
+      >
+        {children}
+      </input>
+      {error && <span className={error && styles.error_message}>{error}</span>}
+    </div>
+  );
 };
 
 export default Input;

@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, ReactElement, ReactNode } from "react";
-import styles from './button.module.css';
+import styles from "./button.module.css";
 
 interface Props extends ButtonHTMLAttributes<any> {
   className?: string;
@@ -8,7 +8,7 @@ interface Props extends ButtonHTMLAttributes<any> {
   btntype?: "primary" | "secondary" | "outline";
   size?: "large" | "medium";
   children?: any;
-  clickEvent?: Function;
+  onClick?: Function;
 }
 
 const Button: React.FC<Props> = (Props) => {
@@ -18,20 +18,29 @@ const Button: React.FC<Props> = (Props) => {
     affixicon,
     btntype = "primary",
     size,
-    clickEvent,
+    onClick,
     children,
     ...rest
   } = Props;
 
   const handleClick = () => {
-    if (clickEvent) {
-      clickEvent();
+    if (onClick) {
+      onClick();
     }
   };
 
   return (
-    <div >
-      <button className={btntype === "primary" ? styles.primary : btntype === "secondary" ? styles.secondary : styles.outline} onClick={handleClick}>
+    <div>
+      <button
+        className={
+          btntype === "primary"
+            ? styles.primary
+            : btntype === "secondary"
+            ? styles.secondary
+            : styles.outline
+        }
+        onClick={handleClick}
+      >
         {icon && <span className={styles.icon}>{icon}</span>}
         {children}
         {affixicon && <span className="icon-holder right">{affixicon}</span>}
@@ -41,4 +50,3 @@ const Button: React.FC<Props> = (Props) => {
 };
 
 export default Button;
-

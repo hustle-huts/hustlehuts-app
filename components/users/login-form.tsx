@@ -45,8 +45,8 @@ export default function LoginForm() {
         {/* <div className="invalid-feedback">{errors.firstName?.message}</div> */}
       </div>
       <div className={styles.btn_groups}>
-        <Button clickEvent={login}>Login</Button>
-        <Button btntype="secondary" clickEvent={login}>
+        <Button onClick={login}>Login</Button>
+        <Button btntype="secondary" onClick={login}>
           Sign Up
         </Button>
         <span className={styles.line}>
@@ -63,7 +63,7 @@ export default function LoginForm() {
         </span>
 
         <Button
-          clickEvent={() => loginGoogle()}
+          onClick={() => loginGoogle()}
           icon={<GoogleIcon />}
           btntype="outline"
         >
