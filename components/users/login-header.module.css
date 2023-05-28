@@ -1,146 +1,146 @@
 /* Also adjusted for container below from 758-1024px screen width */
 .container {
-    height: 50%;
-    overflow: visible;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    background-image: url('../../public/images/loginbackground.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+  height: 50%;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  background-image: url("../../public/images/loginbackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .arrow {
-    position: absolute;
-    z-index: 2;
-    width: 6%;
-    height: 6%;
-    left: 68%;
-    top: 13%
+  position: absolute;
+  z-index: 2;
+  width: 6%;
+  height: 6%;
+  left: 68%;
+  top: 13%;
 }
 
 .title {
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 45px;
-    z-index: 10;
-    margin-top: 18rem;
-    height: fit-content;
-    position: absolute;
-    text-align: center;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 45px;
+  z-index: 10;
+  margin-top: 18rem;
+  height: fit-content;
+  position: absolute;
+  text-align: center;
 }
 
 .signup1 {
-    position: absolute;
-    z-index: 4;
-    width: 12%;
-    height: 22%;
-    top: 10px;
-    left: -3%;
+  position: absolute;
+  z-index: 4;
+  width: 12%;
+  height: 22%;
+  top: 10px;
+  left: -3%;
 }
 
 .signup2 {
-    position: absolute;
-    z-index: 4;
-    width: 28%;
-    height: 20%;
-    top: 15%;
-    left: 33%
+  position: absolute;
+  z-index: 4;
+  width: 28%;
+  height: 20%;
+  top: 15%;
+  left: 33%;
 }
 
 .signup3 {
+  position: absolute;
+  z-index: 4;
+  width: 12%;
+  height: 12%;
+  top: 17%;
+  right: -4%;
+}
+
+.login1 {
+  position: absolute;
+  z-index: 4;
+  width: 14%;
+  height: 21%;
+  top: -7%;
+  left: 35%;
+}
+
+.login2 {
+  position: absolute;
+  z-index: 4;
+  width: 9%;
+  height: 9%;
+  top: -4%;
+  right: -3%;
+}
+
+@media screen and (max-width: 440px) {
+  .signup1 {
+    position: absolute;
+    z-index: 4;
+    width: 15%;
+    height: 22%;
+    top: 10px;
+    left: -3%;
+  }
+
+  .signup2 {
+    position: absolute;
+    z-index: 4;
+    width: 32%;
+    height: 20%;
+    top: 15%;
+    left: 30%;
+  }
+
+  .signup3 {
     position: absolute;
     z-index: 4;
     width: 12%;
     height: 12%;
     top: 17%;
     right: -4%;
-}
+  }
 
-.login1 {
+  .login1 {
     position: absolute;
     z-index: 4;
-    width: 14%;
+    width: 18%;
     height: 21%;
-    top: -7%;
+    top: -5%;
     left: 35%;
-}
+  }
 
-.login2 {
+  .login2 {
     position: absolute;
     z-index: 4;
-    width: 9%;
-    height: 9%;
+    width: 12%;
+    height: 12%;
     top: -4%;
     right: -3%;
-}
-
-@media screen and (max-width: 440px) {
-    .signup1 {
-        position: absolute;
-        z-index: 4;
-        width: 15%;
-        height: 22%;
-        top: 10px;
-        left: -3%;
-    }
-    
-    .signup2 {
-        position: absolute;
-        z-index: 4;
-        width: 32%;
-        height: 20%;
-        top: 15%;
-        left: 30%
-    }
-    
-    .signup3 {
-        position: absolute;
-        z-index: 4;
-        width: 12%;
-        height: 12%;
-        top: 17%;
-        right: -4%;
-    }
-    
-    .login1 {
-        position: absolute;
-        z-index: 4;
-        width: 18%;
-        height: 21%;
-        top: -5%;
-        left: 35%;
-    }
-    
-    .login2 {
-        position: absolute;
-        z-index: 4;
-        width: 12%;
-        height: 12%;
-        top: -4%;
-        right: -3%;
-    }
+  }
 }
 
 /* Also adjusted for title "Log In" and form in Login.module.css for these screen widths */
 @media screen and (min-width: 758px) and (max-width: 1024px) {
-    .container {
-        height: 70%;
-    }
+  .container {
+    height: 70%;
+  }
 
-    .signup2 {
-        top: 20%;
-        left: 35%
-    }
+  .signup2 {
+    top: 20%;
+    left: 35%;
+  }
 
-    .signup3 {
-        top: 17%;
-        right: -4%;
-    }
+  .signup3 {
+    top: 17%;
+    right: -4%;
+  }
 
-    .login2 {
-        top: -4%;
-        right: -4%;
-    }
+  .login2 {
+    top: -4%;
+    right: -4%;
+  }
 }

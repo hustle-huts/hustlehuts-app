@@ -24,6 +24,11 @@ export interface IUser {
   updated_at: Date;
 }
 
+export interface ILoginRequest {
+  email: string;
+  password: string;
+}
+
 export interface ILoginResponse {
   access_token: string;
   data: IUser;

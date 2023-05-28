@@ -1,9 +1,17 @@
 import { atom } from "recoil";
-import { IUser } from "@/models/user";
+import { ILoginRequest, IUser } from "@/models/user";
 
 const userState = atom({
   key: "userState",
   default: {} as IUser,
 });
 
-export { userState };
+const loginDetailsState = atom({
+  key: "loginDetailsState",
+  default: {
+    email: "",
+    password: "",
+  } as ILoginRequest,
+});
+
+export { userState, loginDetailsState };
