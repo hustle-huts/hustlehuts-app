@@ -1,8 +1,10 @@
 import Button from "@/components/ui/button";
 import Image from "next/image";
 import styles from "../../../styles/SignupSuccess.module.css";
+import { useRouter } from "next/router";
 
 export default function SignUpSuccess() {
+  const router = useRouter();
   return (
     <div className={styles.container}>
       <Image
@@ -24,7 +26,7 @@ export default function SignUpSuccess() {
         </h1>
       </div>
       <div style={{ padding: "30px 50px" }}>
-        <Button>Continue</Button>
+        <Button onClick={() => router.push("/")}>Done</Button>
       </div>
     </div>
   );

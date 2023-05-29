@@ -7,8 +7,11 @@ import { loginDetailsState, userState } from "@/recoil/auth/atom";
 import { ILoginRequest, IUser } from "@/models/user";
 import { useState } from "react";
 import { loginApi } from "@/services/auth.service";
+import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 export default function LogInPage() {
+  const router = useRouter();
   const setUser = useSetRecoilState<IUser>(userState);
   const loginDetails = useRecoilValue<ILoginRequest>(loginDetailsState);
   const [password, setPassword] = useState<string>("");
@@ -19,6 +22,8 @@ export default function LogInPage() {
       const { email } = loginDetails;
       const user = await loginApi({ email, password });
       setUser(user);
+      toast.success("Successfully created!");
+      router.push("/cafes");
     } catch (error) {
       console.error(error);
     }

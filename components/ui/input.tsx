@@ -92,6 +92,7 @@ const Input: React.FC<Props> = (Props) => {
         type={type}
         className={classnames(styles.input, error && styles.error_input)}
         placeholder={placeholder}
+        value={value}
         {...rest}
       >
         {children}
