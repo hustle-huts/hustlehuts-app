@@ -21,49 +21,31 @@ const getCafesApi = async (
     return response.data as PaginatedCafeResult;
 };
 
-
 /**
  * Non-paginated GET request for Cafe API
  * Path: /api/cafe/query
  * 
- * @param name 
- * @param address 
- * @param credit 
- * @param query 
- * @param sort_by 
- * @param longitude 
- * @param latitude 
+ * @param options - query params for GET cafe request
  * @returns ICafe[] - list of cafe objects
  */
 const getCafesByQueryApi = async (
-    name?: string,
-    address?: string,
-    credit?: string,
-    query?: string,
-    sort_by?: string,
-    longitude?: string,
-    latitude?: string
+    options?: GetCafeRequest
   ): Promise<ICafe[]> => {
-    const params: Record<string, string | undefined> = {
-      name,
-      address,
-      credit,
-      query,
-      sort_by,
-      longitude,
-      latitude,
-};
+    const queryParams: GetCafeRequest = options || {};
   
-    // Remove undefined parameters from queryParams if they are not specified
-    Object.keys(params).forEach((key) =>
-      params[key] === undefined ? delete params[key] : {}
-    );
+    // Exclude page and entries_per_page from the query parameters if specified as this is non-paginated
+    if (queryParams.page !== undefined) {
+      delete queryParams.page;
+    }
+    if (queryParams.entries_per_page !== undefined) {
+      delete queryParams.entries_per_page;
+    }
   
-    const response = await axios_instance.get(`${CAFE_PREFIX_URL}`, {
-      params,
+    const response = await axios_instance.get(`${CAFE_PREFIX_URL}/query`, {
+      params: queryParams,
     });
     return response.data as ICafe[];
-  };
+};
 
 
 /**
