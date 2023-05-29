@@ -39,6 +39,7 @@ const Button: React.FC<Props> = (Props) => {
             : styles.outline
         }
         onClick={onClick}
+        disabled={rest.disabled}
       >
         {icon && <span className={styles.icon}>{icon}</span>}
         {children}

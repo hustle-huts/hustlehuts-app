@@ -1,34 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
 import GoogleIcon from "../icons/google_icon";
 import FacebookIcon from "../icons/facebook-icon";
 import OutlookIcon from "../icons/outlook-icon";
 import Button from "../ui/button";
-import Input from "../ui/input";
 import styles from "./login-form.module.css";
+import { emailFormControlName } from "./constants";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useRecoilState } from "recoil";
 import { ILoginRequest, IRegisterRequest } from "@/models/user";
 import { loginDetailsState, registerDetailsState } from "@/recoil/auth/atom";
 import { useRouter } from "next/router";
+import { TextField } from "@mui/material";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { loginEmailFormSchema } from "./validation-schema";
+import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
 
 // This is for the main login/signup page with Google, FB and Outlook sign in
 export default function LoginForm() {
   const router = useRouter();
-  const [email, setEmail] = useState<string>("");
+  const {
+    register,
+    formState: { errors },
+    getValues,
+  } = useForm({
+    mode: "all",
+    resolver: yupResolver(loginEmailFormSchema),
+    shouldUnregister: true,
+  });
+
   const [loginDetails, setLoginDetails] =
     useRecoilState<ILoginRequest>(loginDetailsState);
   const [registerDetails, setRegisterDetails] =
     useRecoilState<IRegisterRequest>(registerDetailsState);
+
   const loginGoogle = useGoogleLogin({
     onSuccess: (tokenResponse) => console.log(tokenResponse),
   });
 
   const onLoginClick = async () => {
+    const email = getValues(emailFormControlName);
     setLoginDetails({ ...loginDetails, email });
     router.push("/users/login");
   };
 
   const onRegisterClick = async () => {
+    const email = getValues(emailFormControlName);
     setRegisterDetails({ ...registerDetails, email });
     router.push("/users/signup");
   };
@@ -36,18 +53,42 @@ export default function LoginForm() {
   return (
     <div className={styles.form}>
       <div className={styles.form_row}>
-        <Input
-          error="Only alphabetical characters allowed!"
-          isRequired={true}
-          label="Enter Your Email to Begin"
+        <TextField
+          {...register(emailFormControlName)}
+          sx={{
+            width: "100%",
+            "& .MuiFormLabel-root": {
+              fontWeight: 500,
+              color: "#6D5747",
+            },
+          }}
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        ></Input>
-        {/* <div className="invalid-feedback">{errors.firstName?.message}</div> */}
+          label={"Enter Your Email to Begin"}
+          variant="outlined"
+          InputLabelProps={{ shrink: true }}
+          error={errors[emailFormControlName] ? true : false}
+          helperText={errors[emailFormControlName]?.message?.toString()}
+          // InputProps={{
+          //   endAdornment: (
+          //     <InputAdornment position="end">
+          //       {getValues("email") && !errors.email && (
+          //         <CheckCircleOutlinedIcon color={"success"} />
+          //       )}
+          //     </InputAdornment>
+          //   ),
+          // }}
+          autoFocus
+        />
       </div>
       <div className={styles.btn_groups}>
-        <Button onClick={onLoginClick}>Login</Button>
+        <Button
+          onClick={onLoginClick}
+          disabled={
+            !getValues(emailFormControlName) || !!errors[emailFormControlName]
+          }
+        >
+          Login
+        </Button>
         <Button btntype="secondary" onClick={onRegisterClick}>
           Sign Up
         </Button>
