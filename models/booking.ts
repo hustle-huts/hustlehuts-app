@@ -25,7 +25,15 @@ export interface CreateBookingRequest {
     deleted_at?: string;
     created_at: string;
     updated_at: string;
-  }
+}
+
+export interface GetBookingRequest {
+    query?: string;
+    page?: number;
+    entries_per_page?: number;
+    sort_by?: string;
+    cafe_id? : string;
+}
 
 export interface PaginatedBookingResult {
     data: IBooking[];

@@ -1,5 +1,5 @@
 import axios_instance from "./axios";
-import { IBooking, CreateBookingRequest, PaginatedBookingResult } from "@/models/booking";
+import { IBooking, CreateBookingRequest, PaginatedBookingResult, GetBookingRequest } from "@/models/booking";
 
 const BOOKING_PREFIX_URL = `/api/booking`;
 
@@ -19,35 +19,16 @@ const createBookingApi = async (requestBody: CreateBookingRequest): Promise<IBoo
  * Paginated GET request for retrieving bookings
  * Path: /api/booking
  * 
- * @param page 
- * @param entries_per_page 
- * @param sort_by 
- * @param cafe_id 
- * @param query 
+ * @param options - query params for GET bookings request
  * @returns PaginatedBookingResult - list of bookings with pagination details
  */
-const getBookingsApi = async (
-    page?: number,
-    entries_per_page?: number,
-    sort_by?: string,
-    cafe_id?: string,
-    query?: string
+ const getBookingsApi = async (
+    options?: GetBookingRequest
   ): Promise<PaginatedBookingResult> => {
-    const params: Record<string, string | number | undefined> = {
-      page,
-      entries_per_page,
-      sort_by,
-      cafe_id,
-      query,
-    };
-  
-    // Remove undefined parameters from queryParams if they are not specified
-    Object.keys(params).forEach((key) =>
-      params[key] === undefined ? delete params[key] : {}
-    );
+    const queryParams: GetBookingRequest = options || {};
   
     const response = await axios_instance.get(`${BOOKING_PREFIX_URL}`, {
-      params,
+      params: queryParams,
     });
     return response.data as PaginatedBookingResult;
 };

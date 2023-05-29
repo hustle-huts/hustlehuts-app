@@ -27,6 +27,18 @@ export interface ICafe {
     updated_at: Date;
 }
 
+export interface GetCafeRequest {
+    name?: string;
+    address?: string;
+    credit?: string;
+    query?: string;
+    page?: number;
+    entries_per_page?: number;
+    sort_by?: string;
+    longitude?: string;
+    latitude?: string;
+}
+
 export interface PaginatedCafeResult {
     data: ICafe[];
     pagination: {
