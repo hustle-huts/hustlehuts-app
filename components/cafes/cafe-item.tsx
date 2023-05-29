@@ -3,16 +3,17 @@ import Button from '../ui/button';
 import Image from 'next/image';
 import Booking from '../../public/images/booking-image.png'
 import CafeBadge from './cafe-badge';
+import { MouseEventHandler } from 'react';
 interface props {
     className?: string;
     isOpen: boolean;
-    modalHandler?: Function;
+    modalHandler: MouseEventHandler<HTMLDivElement>;
     closeHandler?: Function;
 }
 
 const CafeItem:React.FC<props> = (props) => {
     return (
-        <div className={styles.card} style={{ backgroundImage: `url(${Booking.src})` }}>
+        <div onClick={props.modalHandler} className={styles.card} style={{ backgroundImage: `url(${Booking.src})` }}>
             <div className={styles.titleContainer} >
                 <h3 className={styles.title}>Home Coffee Roasters</h3>
             </div>

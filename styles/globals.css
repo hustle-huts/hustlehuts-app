@@ -22,7 +22,7 @@ main {
 @media (min-width: 1024px) {
   main {
     justify-content: center;
-    /* width: 724px; */
+    width: 100%;
   }
 }
 
@@ -32,6 +32,7 @@ body {
   overflow-x: hidden;
   height: 100%;
   width: 100%;
+  font-family: 'Poppins', sans-serif;
 }
 
 @media (min-width: 800px) {

@@ -10,7 +10,7 @@ interface Props extends ButtonHTMLAttributes<any> {
   className?: string;
   icon?: string | ReactElement | ReactNode;
   affixicon?: string | ReactElement | ReactNode;
-  btntype?: "primary" | "secondary" | "outline";
+  btntype?: "primary" | "secondary" | "outline" | "login" | "tertiary";
   size?: "large" | "medium";
   children?: any;
   onClick?: MouseEventHandler<any> | undefined;

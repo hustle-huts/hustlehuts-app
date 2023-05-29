@@ -1,11 +1,13 @@
 import styles from './booking-item.module.css';
 import Button from '../ui/button';
 import Image from 'next/image';
+import { MouseEventHandler } from 'react';
 import Booking from '../../public/images/booking-image.png'
 interface props {
     bookingId?: Number;
     imageLink?: String;
     cafeName?: String;
+    modalHandler: MouseEventHandler<HTMLDivElement>;
     noOfPax?: Number;
     reservationDate?: String;
     reservationTime?: String;
@@ -14,7 +16,7 @@ interface props {
 
 const CafeItem:React.FC<props> = (props) => {
     return (
-        <div className={styles.card} style={{ backgroundImage: `url(${Booking.src})` }}>
+        <div onClick={props.modalHandler} className={styles.card} style={{ backgroundImage: `url(${Booking.src})` }}>
             <div className={styles.badge}>
                 <p className={styles.badgeText}>4 Credits</p>
             </div>

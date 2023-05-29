@@ -9,6 +9,28 @@
     margin: 20px 80px;;
 }
 
+@media (min-width: 1024px) {
+    .container {
+        width: 50% !important;
+    }
+
+    .text {
+        font-size: 80px !important;
+    }
+    
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 80%;
+    }
+
+    .text {
+        font-size: 50px !important;
+    }
+    
+}
+
 .textContainer {
     margin-top: 40px;
 }

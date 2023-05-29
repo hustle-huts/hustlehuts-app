@@ -1,7 +1,7 @@
 export default function OutlookIcon() {
     return (
         <>
-<svg width="20px" height="10px !important" viewBox="0 0 32 32" fill="none" >
+<svg width="20px" height="20px" viewBox="0 0 32 32" fill="none" >
 <rect x="10" y="2" width="20" height="28" rx="2" fill="#1066B5"/>
 <rect x="10" y="2" width="20" height="28" rx="2" fill="url(#paint0_linear_87_7742)"/>
 <rect x="10" y="5" width="10" height="10" fill="#32A9E7"/>
@@ -21,24 +21,24 @@ export default function OutlookIcon() {
 <path d="M14 16.0693V15.903C14 13.0222 11.9272 11 9.01582 11C6.08861 11 4 13.036 4 15.9307V16.097C4 18.9778 6.07278 21 9 21C11.9114 21 14 18.964 14 16.0693ZM11.6424 16.097C11.6424 18.0083 10.5665 19.1579 9.01582 19.1579C7.46519 19.1579 6.37342 17.9806 6.37342 16.0693V15.903C6.37342 13.9917 7.44937 12.8421 9 12.8421C10.5348 12.8421 11.6424 14.0194 11.6424 15.9307V16.097Z" fill="white"/>
 <defs>
 <linearGradient id="paint0_linear_87_7742" x1="10" y1="16" x2="30" y2="16" gradientUnits="userSpaceOnUse">
-<stop stop-color="#064484"/>
-<stop offset="1" stop-color="#0F65B5"/>
+<stop stopColor="#064484"/>
+<stop offset="1" stopColor="#0F65B5"/>
 </linearGradient>
 <linearGradient id="paint1_linear_87_7742" x1="8" y1="26.7692" x2="32" y2="26.7692" gradientUnits="userSpaceOnUse">
-<stop stop-color="#1B366F"/>
-<stop offset="1" stop-color="#2657B0"/>
+<stop stopColor="#1B366F"/>
+<stop offset="1" stopColor="#2657B0"/>
 </linearGradient>
 <linearGradient id="paint2_linear_87_7742" x1="32" y1="23" x2="8" y2="23" gradientUnits="userSpaceOnUse">
-<stop stop-color="#44DCFD"/>
-<stop offset="0.453125" stop-color="#259ED0"/>
+<stop stopColor="#44DCFD"/>
+<stop offset="0.453125" stopColor="#259ED0"/>
 </linearGradient>
 <linearGradient id="paint3_linear_87_7742" x1="8" y1="23" x2="32" y2="23" gradientUnits="userSpaceOnUse">
-<stop stop-color="#259ED0"/>
-<stop offset="1" stop-color="#44DCFD"/>
+<stop stopColor="#259ED0"/>
+<stop offset="1" stopColor="#44DCFD"/>
 </linearGradient>
 <linearGradient id="paint4_linear_87_7742" x1="0" y1="16" x2="18" y2="16" gradientUnits="userSpaceOnUse">
-<stop stop-color="#064484"/>
-<stop offset="1" stop-color="#0F65B5"/>
+<stop stopColor="#064484"/>
+<stop offset="1" stopColor="#0F65B5"/>
 </linearGradient>
 </defs>
 </svg> </>   )
