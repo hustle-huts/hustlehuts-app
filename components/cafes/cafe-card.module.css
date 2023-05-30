@@ -14,11 +14,13 @@
     position: relative
 }
 
-.cafeOpenButton {
+.ifCafeIsOpenIndicator {
     position: absolute;
     right: 0;
-    width: auto;
-    height: auto;
+    text-align: center;
+    padding-top: 0.2rem;
+    width: 3.5rem;
+    height: 1.5rem;
     background-color: rgba(48, 43, 43, 0.5);
     color: white;
     border-radius: 0 16px 0 16px;

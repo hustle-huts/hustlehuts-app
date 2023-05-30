@@ -10,7 +10,7 @@ import Link from "next/link";
 import BGM from "../../public/images/coffee.png";
 import Upload from "../../public/images/upload.png";
 import Box from "@mui/material/Box";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { AccessTime } from '@mui/icons-material';
 import Button from "@/components/ui/button";
 import BottomSheet from "@/components/ui/bottomSheet";
 import { Container, TextField, Typography } from "@mui/material";
@@ -276,7 +276,7 @@ export default function BookingsPage() {
           </Container>
 
           <Container className={styles.buttonModal}>
-            <Button clickEvent={handleReviewList}>Submit</Button>
+            <Button onClick={handleReviewList}>Submit</Button>
           </Container>
         </Container>
       </BottomSheet>
@@ -344,7 +344,7 @@ export default function BookingsPage() {
         sx={{ marginBottom: '30px' }}
         className={styles.descIcon}>
           <Container className={styles.descTime}>
-            <AccessTimeIcon />
+            <AccessTime />
             <Typography
               align="center"
               fontFamily="inherit"
@@ -355,7 +355,7 @@ export default function BookingsPage() {
             </Typography>
           </Container>
           <Container className={styles.buttonModal}>
-            <Button clickEvent={handleReview}>Check Out</Button>
+            <Button onClick={handleReview}>Check Out</Button>
           </Container>
         </Container>
       </BottomSheet>
@@ -382,7 +382,7 @@ export default function BookingsPage() {
           <BookingItem modalHandler={handleBottomSheetOpen} />
         </Container>
         <Container className={styles.cafeButtonModalContainer}>
-          <Button clickEvent={handleInput} btntype="tertiary">
+          <Button onClick={handleInput} btntype="tertiary">
             Check In
           </Button>
         </Container>
@@ -416,7 +416,7 @@ export default function BookingsPage() {
           <Input isRequired={true} label="Enter Check In Code"></Input>
         </Container>
         <Container className={styles.cafeButtonModalContainer}>
-          <Button clickEvent={handleSuccess} btntype="primary">
+          <Button onClick={handleSuccess} btntype="primary">
             Submit
           </Button>
         </Container>
@@ -428,7 +428,7 @@ export default function BookingsPage() {
     <div className={styles.container}>
       <TopBanner currentPage="book" />
       <div className={styles.bookingContainer}>
-        <BookingsBar subtitle="You’ve unlocked a mystery reward!" stepNumber={3} title="Congratulation!" description="Place 5 more bookings by Feb 2023 to unlock another mystery reward" />
+        <BookingsBar subtitle="You've unlocked a mystery reward!" stepNumber={3} title="Congratulation!" description="Place 5 more bookings by Feb 2023 to unlock another mystery reward" />
         <p className={styles.title}>My Booking List</p>
         <div className={styles.cafeContainer}>
           {/* <BookingsList userId=""></BookingsList> */}

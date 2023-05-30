@@ -2,7 +2,7 @@ import styles from './booking-item.module.css';
 import Button from '../ui/button';
 import Image from 'next/image';
 import { MouseEventHandler } from 'react';
-import Booking from '../../public/images/booking-image.png'
+import Booking from '../../public/images/mocked-cafe-for-booking.png'
 interface props {
     bookingId?: Number;
     imageLink?: String;

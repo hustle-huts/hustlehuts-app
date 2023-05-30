@@ -15,17 +15,104 @@ import { useState } from "react";
 export default function AllCafes() {
   const [selectedFilter, setSelectedFilters] = useState("filter1");
 
-  // Testing data
+  // Testing data with three mocked cafes
   const allCafes = [
     {
-      cafe_name: "Twenty Eight Cafe",
+      "name": "Twenty Eight Cafe",
+      "address": "string",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          0
+        ]
+      },
+      "open_at": "9am",
+      "close_at": "5pm",
+      "credit": 2,
+      "has_wifi": true,
+      "has_charging": false,
+      "has_ambience": false,
+      "image_url": "./images/mocked-cafe1.jpeg",
+      "availability_time_slots": [
+        {
+          "date": null,
+          "time": [
+            "string"
+          ],
+          "seat": 0
+        }
+      ],
+      "manager": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "rating": 4.5,
+      "deleted_at": "2023-05-29T11:35:22.788Z",
+      "created_at": "2023-05-29T11:35:22.788Z",
+      "updated_at": "2023-05-29T11:35:22.788Z",
+      "_id": "64C98dDcfCdA5FfB106e41AB"
     },
     {
-      cafe_name: "Twenty Nine Cafe",
+      "name": "Twenty Nine Cafe",
+      "address": "string",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          0
+        ]
+      },
+      "open_at": "10am",
+      "close_at": "2pm",
+      "credit": 3,
+      "has_wifi": true,
+      "has_charging": true,
+      "has_ambience": false,
+      "image_url": "./images/mocked-cafe2.jpg",
+      "availability_time_slots": [
+        {
+          "date": null,
+          "time": [
+            "string"
+          ],
+          "seat": 0
+        }
+      ],
+      "manager": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "rating": 4.6,
+      "deleted_at": "2023-05-29T11:35:22.788Z",
+      "created_at": "2023-05-29T11:35:22.788Z",
+      "updated_at": "2023-05-29T11:35:22.788Z",
+      "_id": "64C98dDcfCdA5FfB106e41AB"
     },
     {
-      cafe_name: "Thirty Cafe",
-    },
+      "name": "Thirty Cafe",
+      "address": "string",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          0
+        ]
+      },
+      "open_at": "11am",
+      "close_at": "5pm",
+      "credit": 4,
+      "has_wifi": true,
+      "has_charging": true,
+      "has_ambience": true,
+      "image_url": "./images/mocked-cafe3.png",
+      "availability_time_slots": [
+        {
+          "date": null,
+          "time": [
+            "string"
+          ],
+          "seat": 0
+        }
+      ],
+      "manager": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "rating": 4.7,
+      "deleted_at": "2023-05-29T11:35:22.788Z",
+      "created_at": "2023-05-29T11:35:22.788Z",
+      "updated_at": "2023-05-29T11:35:22.788Z",
+      "_id": "64C98dDcfCdA5FfB106e41AB"
+    }
   ];
 
   return (
@@ -112,10 +199,18 @@ export default function AllCafes() {
             </Button>
           </div>
           <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
-            {allCafes.map(({ cafe_name }) => (
+            {allCafes.map(({ name, open_at, close_at, credit, has_wifi, has_charging, has_ambience, image_url, rating}) => (
               <CafeCard
-                key={`popular-cafe-${cafe_name}`}
-                cafe_name={cafe_name}
+                key={`popular-cafe-${name}`}
+                name={name}
+                open_at={open_at}
+                close_at={close_at}
+                credit={credit}
+                has_wifi={has_wifi}
+                has_charging={has_charging}
+                has_ambience={has_ambience}
+                image_url={image_url}
+                rating={rating}
               />
             ))}
           </div>
@@ -131,8 +226,19 @@ export default function AllCafes() {
           </div>
 
           <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
-            {allCafes.map(({ cafe_name }) => (
-              <CafeCard key={`near-cafe-${cafe_name}`} cafe_name={cafe_name} />
+            {allCafes.map(({ name, open_at, close_at, credit, has_wifi, has_charging, has_ambience, image_url, rating}) => (
+              <CafeCard
+                key={`popular-cafe-${name}`}
+                name={name}
+                open_at={open_at}
+                close_at={close_at}
+                credit={credit}
+                has_wifi={has_wifi}
+                has_charging={has_charging}
+                has_ambience={has_ambience}
+                image_url={image_url}
+                rating={rating}
+              />
             ))}
           </div>
         </div>
@@ -147,10 +253,18 @@ export default function AllCafes() {
           </div>
 
           <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
-            {allCafes.map(({ cafe_name }) => (
+            {allCafes.map(({ name, open_at, close_at, credit, has_wifi, has_charging, has_ambience, image_url, rating}) => (
               <CafeCard
-                key={`hidden-gem-cafe-${cafe_name}`}
-                cafe_name={cafe_name}
+                key={`popular-cafe-${name}`}
+                name={name}
+                open_at={open_at}
+                close_at={close_at}
+                credit={credit}
+                has_wifi={has_wifi}
+                has_charging={has_charging}
+                has_ambience={has_ambience}
+                image_url={image_url}
+                rating={rating}
               />
             ))}
           </div>
