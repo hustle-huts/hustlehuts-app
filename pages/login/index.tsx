@@ -1,6 +1,6 @@
 import Button from "@/components/ui/button";
 import LoginHeader from "@/components/users/login-header";
-import styles from "../../../styles/Login.module.css";
+import styles from "@/styles/Login.module.css";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loginDetailsState, userState } from "@/recoil/auth/atom";
 import { ILoginRequest, IUser } from "@/models/user";

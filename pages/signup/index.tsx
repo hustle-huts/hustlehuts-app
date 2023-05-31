@@ -1,7 +1,7 @@
 import Button from "@/components/ui/button";
 import Input from "@/components/ui/input";
 import SignUpHeader from "@/components/users/signup-header";
-import styles from "../../../styles/Signup.module.css";
+import styles from "@/styles/Signup.module.css";
 import { useRouter } from "next/router";
 import { registerDetailsState } from "@/recoil/auth/atom";
 import { IRegisterRequest } from "@/models/user";
