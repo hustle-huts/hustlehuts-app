@@ -1,22 +1,24 @@
 import React from "react";
+import { useRouter } from "next/router";
+import { useGoogleLogin } from "@react-oauth/google";
+import { useRecoilState } from "recoil";
+import { loginDetailsState, registerDetailsState } from "@/recoil/auth/atom";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { InputAdornment } from "@mui/material";
+import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
+
+import { ILoginRequest, IRegisterRequest } from "@/models/user";
+import TextField from "../shared/TextField";
+import Button from "../shared/Button";
 import GoogleIcon from "../icons/google_icon";
 import FacebookIcon from "../icons/facebook-icon";
 import OutlookIcon from "../icons/outlook-icon";
-import Button from "../ui/button";
+import OldButton from "../ui/button";
 import styles from "./login-form.module.css";
-import { emailFormControlName } from "./constants";
-import { useGoogleLogin } from "@react-oauth/google";
-import { useRecoilState } from "recoil";
-import { ILoginRequest, IRegisterRequest } from "@/models/user";
-import { loginDetailsState, registerDetailsState } from "@/recoil/auth/atom";
-import { useRouter } from "next/router";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+
 import { loginEmailFormSchema } from "./validation-schema";
-import TextField from "../shared/TextField";
-import CustomButton from "../shared/Button";
-import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
-import { InputAdornment } from "@mui/material";
+import { emailFormControlName } from "./constants";
 
 // This is for the main login/signup page with Google, FB and Outlook sign in
 export default function LoginForm() {
@@ -75,16 +77,16 @@ export default function LoginForm() {
         />
       </div>
       <div className={styles.btn_groups}>
-        <CustomButton
+        <Button
           style={{ marginBottom: "12px" }}
           onClick={onLoginClick}
           disabled={!getValues(emailFormControlName) || !isValid}
         >
           Login
-        </CustomButton>
-        <CustomButton btnType="secondary" onClick={onRegisterClick}>
+        </Button>
+        <Button btnType="secondary" onClick={onRegisterClick}>
           Sign Up
-        </CustomButton>
+        </Button>
         <span className={styles.line}>
           <div
             style={{
@@ -98,19 +100,19 @@ export default function LoginForm() {
           <div style={{ flex: 1, height: "1px", backgroundColor: "black" }} />
         </span>
 
-        <Button
+        <OldButton
           onClick={() => loginGoogle()}
           icon={<GoogleIcon />}
           btntype="outline"
         >
           Sign in with Google
-        </Button>
-        <Button icon={<FacebookIcon />} btntype="outline">
+        </OldButton>
+        <OldButton icon={<FacebookIcon />} btntype="outline">
           Sign Up with Facebook
-        </Button>
-        <Button icon={<OutlookIcon />} btntype="outline">
+        </OldButton>
+        <OldButton icon={<OutlookIcon />} btntype="outline">
           Sign Up with Outlook
-        </Button>
+        </OldButton>
       </div>
     </div>
   );

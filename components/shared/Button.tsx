@@ -1,21 +1,19 @@
 import React from "react";
-import Button from "@mui/material/Button";
-import { ButtonProps as MUIButtonProps } from "@mui/material/Button";
-import styles from "./button.module.css";
+import MUIButton, { ButtonProps as MUIButtonProps } from "@mui/material/Button";
 import classNames from "classnames";
 
-type CustomButtonProps = MUIButtonProps & {
+import styles from "./button.module.css";
+
+type ButtonProps = MUIButtonProps & {
   btnType?: "primary" | "secondary" | "social";
 };
 
-const CustomButton: React.FC<CustomButtonProps> = (
-  props: CustomButtonProps
-) => {
+const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
   const { btnType = "primary", className, children, ...rest } = props;
   const buttonStyling = rest.disabled ? styles.disabled : styles[btnType];
 
   return (
-    <Button
+    <MUIButton
       {...rest}
       className={classNames(className, buttonStyling)}
       sx={{
@@ -30,8 +28,8 @@ const CustomButton: React.FC<CustomButtonProps> = (
       }}
     >
       {children}
-    </Button>
+    </MUIButton>
   );
 };
 
-export default CustomButton;
+export default Button;
