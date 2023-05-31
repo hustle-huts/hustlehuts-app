@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css';
 import { Box, Container, Grid, LinearProgress, MobileStepper, Stack, TextField, Typography, createTheme } from '@mui/material';
 import { Button as ButtonMUI } from '@mui/material';
 import BGM from '../public/images/redemption.png'
-import BGM2 from '../public/images/booking-image.png'
+import BGM2 from '../public/images/mocked-cafe-for-booking.png'
 import type { } from '@mui/x-date-pickers/themeAugmentation';
 import type { } from '@mui/x-date-pickers-pro/themeAugmentation';
 import BottomSheet from '@/components/ui/bottomSheet';
@@ -97,7 +97,7 @@ export default function Home() {
         </Container>
 
         <Container className={styles.desc}>
-          <Button clickEvent={handleBottomSheetClose}>Done</Button>
+          <Button onClick={handleBottomSheetClose}>Done</Button>
         </Container>
       </BottomSheet>
     )
@@ -293,17 +293,13 @@ export default function Home() {
             <CustomChip children="1100 - 1200" />
           </Stack>
         </Grid>
-
-
-
-
       </Grid>
     </BottomSheet>
   )
 
   return (
     <div className={styles.container}>
-      <Button clickEvent={handleBottomSheetOpen}></Button>
+      <Button onClick={handleBottomSheetOpen}></Button>
       {isSuccess ? successModal() : waitingModal()}
     </div>
   );

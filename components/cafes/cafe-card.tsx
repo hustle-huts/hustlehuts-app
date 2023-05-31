@@ -17,6 +17,7 @@ import ChargingIcon from '../../public/images/charging.svg'
 import NoChargingIcon from '../../public/images/charging-no.svg'
 import AmbienceIcon from '../../public/images/ambience.svg'
 import NoAmbienceIcon from '../../public/images/ambience-no.svg'
+import { MouseEventHandler } from 'react';
 
 interface props {
     name: String
@@ -28,6 +29,7 @@ interface props {
     has_ambience: Boolean
     image_url: string
     rating: number
+    modalHandler: MouseEventHandler<HTMLDivElement>;
 }
 
 const CafeCard: React.FC<props> = (props) => {
@@ -65,7 +67,7 @@ const CafeCard: React.FC<props> = (props) => {
     const indicatorText = openTimeParts && closeTimeParts ? (isOpen ? "OPEN" : "CLOSE") : "N.A.";
 
     return (
-        <Card className={styles.cafeCard}>
+        <Card className={styles.cafeCard} onClick={props.modalHandler}>
             <CardMedia
                 className={styles.cafeImage}
                 image={props.image_url}

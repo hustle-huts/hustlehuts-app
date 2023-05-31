@@ -59,7 +59,7 @@ export default function HomePage() {
         </Container>
           <Container className={styles.desc} >
             <Typography style={{paddingTop: 16}}  fontFamily='inherit' fontWeight={400} fontSize={16} align="left">
-            Enjoyed your experience? We’d love to hear all about it!            
+            Enjoyed your experience? We'd love to hear all about it!            
             </Typography>
           </Container>
           <Container className={styles.desc} >
@@ -75,7 +75,7 @@ export default function HomePage() {
           </Container>
           
         <Container className={styles.desc}>
-          <Button clickEvent={handleBottomSheetClose}>Done</Button>
+          <Button onClick={handleBottomSheetClose}>Done</Button>
         </Container>
       </BottomSheet>
       )
