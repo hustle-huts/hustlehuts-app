@@ -1,15 +1,15 @@
 .primary {
   background: linear-gradient(176.54deg, #6d5747 -11.89%, #b88151 64.46%);
-  color: white;
+  color: white !important;
 }
 
 .secondary {
   background: #ffffff;
-  color: #6d5747;
+  color: #6d5747 !important;
 }
 
 .disabled {
   background: #cccccc;
   cursor: not-allowed;
-  color: #8b8b8b;
+  color: #8b8b8b !important;
 }
