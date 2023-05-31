@@ -5,9 +5,9 @@ import TopBanner from "@/components/topBanner/top-banner";
 import CafeCard from "@/components/cafes/cafe-card";
 import InputAdornment from "@mui/material/InputAdornment";
 import Button from "@mui/material/Button";
-import { AccessTime } from '@mui/icons-material';
-import BottomSheet from "@/components/ui/bottomSheet";
 import CustomChip from '@/components/ui/chip';
+import { AccessTime, Diversity1 } from '@mui/icons-material';
+import BottomSheet from "@/components/ui/bottomSheet";
 import { Box, Container, Grid, MobileStepper, Stack, TextField, Typography } from '@mui/material';
 import MockedImg from '../../public/images/mocked-cafe-for-booking.png'
 
@@ -50,6 +50,19 @@ export default function AllCafes() {
             5,
             6,
             7
+          ]
+        },
+        {
+          "date": "05-31-2023",
+          "time": [
+            "2pm-3pm",
+            "3pm-4pm",
+            "4pm-5pm"
+          ],
+          "seat": [
+            10,
+            11,
+            12
           ]
         }
       ],
@@ -142,6 +155,9 @@ export default function AllCafes() {
   const [isChoosingSlotsModalOpen, setIsChoosingSlotsModalOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [selectedCafe, setSelectedCafe] = useState<any>(null);
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [selectedPossibleTimeSlots, setSelectedPossibleTimeSlots] = useState<string[] | null>(null);
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
   const handleBottomSheetOpen = (cafe: any) => {
     console.log(cafe)
@@ -152,7 +168,11 @@ export default function AllCafes() {
 
   const handleBottomSheetClose = () => {
     setIsBottomSheetOpen(false);
+    // erase all data when the modal is closed
     setSelectedCafe(null);
+    setSelectedDate(null);
+    setSelectedTime(null);
+    setSelectedPossibleTimeSlots(null);
   };
 
   // for the number of people
@@ -167,6 +187,87 @@ export default function AllCafes() {
   // Get the day of the week to show the correct opening hours in the choosingSlotsModal
   const currentTime = new Date();
   const dayOfWeek = (currentTime.getDay() + 6) % 7; // 0 for Monday, 1 for Tuesday, etc.
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+  const generateDateButtons = (cafe: any) => {
+    if (!cafe) {
+      return; // Return early if cafe is null or undefined
+    }
+
+    const availSlots = cafe.availability_time_slots;
+    const availDates = []
+    for (let i = 0; i < availSlots.length; i++) {
+      availDates.push(availSlots[i].date);
+    }
+
+    const buttons = availDates.map((currentDate) => (
+      <Button 
+      key={currentDate}
+      size="small"
+      variant='contained'
+      sx={{
+        background: 'linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%)',
+        boxShadow: '0px 4px 40px rgba(160, 116, 78, 0.18)',
+        borderRadius: '10px',
+        padding: 1,
+        marginBottom: 2,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        color: '#fff !important',
+      }}
+      onClick={() => showCorrespondingTimeSlotsButtons(currentDate, cafe)} >
+        {currentDate}, {days[dayOfWeek]}
+      </Button>
+    ));
+    
+    return (
+      <div>
+        {buttons}
+      </div>
+    )
+  }
+
+  const showCorrespondingTimeSlotsButtons = (currentDate: string, cafe: any) => {
+    const availSlots = cafe.availability_time_slots;
+
+    // for the chosen date, get all the corresponding time slots and no. of seats for each time slot
+    const availCorrespondingTimeSlots = [];
+    const availCorrespondingSeats = []
+    for (let i = 0; i < availSlots.length; i++) {
+      if (availSlots[i].date === currentDate) {
+        for (let j = 0; j < availSlots[i].time.length; j++) {
+          availCorrespondingTimeSlots.push(availSlots[i].time[j]);
+          availCorrespondingSeats.push(availSlots[i].seat[j]);
+        }
+      }
+    }
+
+    // build a button for each time slot and its no. of seats
+    const timeButtons = []
+    for (let i = 0; i < availCorrespondingTimeSlots.length; i++) {
+      timeButtons.push(
+        <Button 
+        size="small"
+        variant='contained'
+        sx={{
+          background: 'linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%)',
+          boxShadow: '0px 4px 40px rgba(160, 116, 78, 0.18)',
+          borderRadius: '10px',
+          padding: 1,
+          marginBottom: 2,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          maxWidth: '60%',
+          color: '#fff !important',
+        }}
+        key={i} >
+          {availCorrespondingTimeSlots[i]} ({availCorrespondingSeats[i]} seats left)
+        </Button>
+      )
+    }
+
+    setSelectedPossibleTimeSlots(timeButtons);
+  }
 
   const choosingSlotsModal = (cafe: any) => {
     if (!cafe) {
@@ -312,12 +413,9 @@ export default function AllCafes() {
                 -
               </Button>} />
           </Grid>
-
-
-          {/* Select slots */}
           
           
-          {/* Select Date and Calendar */}
+          {/* Select Date (with calendar) */}
           <Grid
             container
             direction="column"
@@ -331,17 +429,60 @@ export default function AllCafes() {
               width: '-webkit-fill-available'
             }}
           >
-            <Typography sx={{ width: 2 / 4, marginLeft: 1, height: 'fit-content', marginBottom: 2 }} textAlign='left' fontWeight={500} >
+            <Typography sx={{ width: 2 / 4, marginLeft: 1, height: 'fit-content', marginBottom: 2 }} textAlign='left' fontWeight={600} >
               Select Date
             </Typography>
-            <input
-              className={`${styles.date}`} type="date">
-            </input>
+
+            <Grid
+              container
+              direction="column"
+              justifyContent="flex-start"
+              alignItems="flex-start"
+              sx={{
+                height: 'fit-content',
+                marginLeft: 0,
+                marginTop: 2,
+                marginBottom: 2,
+                width: '-webkit-fill-available'
+              }}
+            >
+
+              {/* Show the dates available for this cafe */}
+              {generateDateButtons(cafe)}
+
+              <Typography sx={{ width: 2 / 4, marginLeft: 1, height: 'fit-content', marginBottom: 2 }} textAlign='left' fontWeight={600} >
+                Select Time 
+              </Typography>
+
+              {/* When they choose a date, the corresponding time will show */}
+              {selectedPossibleTimeSlots}
+            </Grid>
           </Grid>
 
-          
-          {/* Time slot selection */}
-          <Grid
+
+          {/* Continue button  */}
+          <Button
+            size="small"
+            variant='contained'
+            sx={{
+              background: 'linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%)',
+              boxShadow: '0px 4px 40px rgba(160, 116, 78, 0.18)',
+              borderRadius: '10px',
+              padding: 1,
+              marginBottom: 2,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              maxWidth: '60%',
+              maxHeight: '40px',
+              color: '#fff !important',
+            }}
+            >
+              Continue
+          </Button>
+
+
+          {/* Select Time */}
+          {/* <Grid
             container
             direction="column"
             rowGap={2}
@@ -372,7 +513,7 @@ export default function AllCafes() {
               <CustomChip children="1100 - 1200" />
               <CustomChip children="1100 - 1200" />
             </Stack>
-          </Grid>
+          </Grid> */}
         </Grid>
       </BottomSheet>
     );
