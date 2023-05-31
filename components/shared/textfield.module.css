@@ -1,0 +1,16 @@
+.required {
+  color: red;
+  margin-left: 5px;
+}
+
+.form_label {
+  margin: 10px 0px;
+  color: #6d5747;
+  height: fit-content;
+}
+
+.form_group {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}

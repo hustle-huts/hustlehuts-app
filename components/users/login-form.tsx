@@ -10,11 +10,13 @@ import { useRecoilState } from "recoil";
 import { ILoginRequest, IRegisterRequest } from "@/models/user";
 import { loginDetailsState, registerDetailsState } from "@/recoil/auth/atom";
 import { useRouter } from "next/router";
-import { TextField } from "@mui/material";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { loginEmailFormSchema } from "./validation-schema";
+import TextField from "../shared/TextField";
+import CustomButton from "../shared/Button";
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
+import { InputAdornment } from "@mui/material";
 
 // This is for the main login/signup page with Google, FB and Outlook sign in
 export default function LoginForm() {
@@ -54,44 +56,36 @@ export default function LoginForm() {
     <div className={styles.form}>
       <div className={styles.form_row}>
         <TextField
-          {...register(emailFormControlName)}
-          sx={{
-            width: "100%",
-            "& .MuiFormLabel-root": {
-              fontWeight: 500,
-              color: "#6D5747",
-            },
-          }}
+          name={emailFormControlName}
+          register={register}
           type="email"
-          label={"Enter Your Email to Begin"}
+          label={"Enter your email to begin"}
           variant="outlined"
-          InputLabelProps={{ shrink: true }}
           error={errors[emailFormControlName] ? true : false}
           helperText={errors[emailFormControlName]?.message?.toString()}
-          // InputProps={{
-          //   endAdornment: (
-          //     <InputAdornment position="end">
-          //       {getValues("email") && !errors.email && (
-          //         <CheckCircleOutlinedIcon color={"success"} />
-          //       )}
-          //     </InputAdornment>
-          //   ),
-          // }}
           autoFocus
+          InputProps={{
+            endAdornment: !errors[emailFormControlName] && (
+              <InputAdornment position="start">
+                <CheckCircleOutlinedIcon color="success" />
+              </InputAdornment>
+            ),
+          }}
         />
       </div>
       <div className={styles.btn_groups}>
-        <Button
+        <CustomButton
+          style={{ marginBottom: "12px" }}
           onClick={onLoginClick}
           disabled={
             !getValues(emailFormControlName) || !!errors[emailFormControlName]
           }
         >
           Login
-        </Button>
-        <Button btntype="secondary" onClick={onRegisterClick}>
+        </CustomButton>
+        <CustomButton btnType="secondary" onClick={onRegisterClick}>
           Sign Up
-        </Button>
+        </CustomButton>
         <span className={styles.line}>
           <div
             style={{
