@@ -10,9 +10,7 @@ export default function SignUpOrHomePage() {
         <Image
           alt=""
           src={Logo}
-          style={{ width: "50%", height: "auto", margin: "40px 0px" }}
-          width="600"
-          height="300"
+          style={{ width: "280px", height: "74px", margin: "30px 0px" }}
         />
         <LoginForm />
       </GoogleOAuthProvider>

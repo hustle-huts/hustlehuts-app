@@ -23,7 +23,7 @@ export default function LoginForm() {
   const router = useRouter();
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     getValues,
   } = useForm({
     mode: "all",
@@ -65,11 +65,12 @@ export default function LoginForm() {
           helperText={errors[emailFormControlName]?.message?.toString()}
           autoFocus
           InputProps={{
-            endAdornment: !errors[emailFormControlName] && (
-              <InputAdornment position="start">
-                <CheckCircleOutlinedIcon color="success" />
-              </InputAdornment>
-            ),
+            endAdornment: getValues(emailFormControlName) &&
+              !errors[emailFormControlName] && (
+                <InputAdornment position="start">
+                  <CheckCircleOutlinedIcon color="success" />
+                </InputAdornment>
+              ),
           }}
         />
       </div>
@@ -77,9 +78,7 @@ export default function LoginForm() {
         <CustomButton
           style={{ marginBottom: "12px" }}
           onClick={onLoginClick}
-          disabled={
-            !getValues(emailFormControlName) || !!errors[emailFormControlName]
-          }
+          disabled={!getValues(emailFormControlName) || !isValid}
         >
           Login
         </CustomButton>
