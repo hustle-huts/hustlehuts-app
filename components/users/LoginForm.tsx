@@ -15,13 +15,12 @@ import GoogleIcon from "../icons/google_icon";
 import FacebookIcon from "../icons/facebook-icon";
 import OutlookIcon from "../icons/outlook-icon";
 import OldButton from "../ui/button";
-import styles from "./login-form.module.css";
+import styles from "./LoginForm.module.css";
 
-import { loginEmailFormSchema } from "./validation-schema";
-import { emailFormControlName } from "./constants";
+import { loginEmailFormSchema } from "./utils/validation-schema";
+import { emailFormControlName } from "./utils/constants";
 
-// This is for the main login/signup page with Google, FB and Outlook sign in
-export default function LoginForm() {
+const LoginForm: React.FC = () => {
   const router = useRouter();
   const {
     register,
@@ -45,13 +44,13 @@ export default function LoginForm() {
   const onLoginClick = async () => {
     const email = getValues(emailFormControlName);
     setLoginDetails({ ...loginDetails, email });
-    router.push("/users/login");
+    router.push("/login");
   };
 
   const onRegisterClick = async () => {
     const email = getValues(emailFormControlName);
     setRegisterDetails({ ...registerDetails, email });
-    router.push("/users/signup");
+    router.push("/signup");
   };
 
   return (
@@ -80,13 +79,14 @@ export default function LoginForm() {
         <Button
           style={{ marginBottom: "12px" }}
           onClick={onLoginClick}
-          disabled={!getValues(emailFormControlName) || !isValid}
+          disabled={!isValid}
         >
           Login
         </Button>
         <Button btnType="secondary" onClick={onRegisterClick}>
           Sign Up
         </Button>
+
         <span className={styles.line}>
           <div
             style={{
@@ -116,4 +116,6 @@ export default function LoginForm() {
       </div>
     </div>
   );
-}
+};
+
+export default LoginForm;

@@ -1,19 +1,17 @@
 import Button from "@/components/ui/button";
-import Input from "@/components/ui/input";
 import LoginHeader from "@/components/users/login-header";
 import styles from "../../../styles/Login.module.css";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loginDetailsState, userState } from "@/recoil/auth/atom";
 import { ILoginRequest, IUser } from "@/models/user";
-import { useState } from "react";
 import { loginApi } from "@/services/auth.service";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginPasswordFormSchema } from "@/components/users/validation-schema";
+import { loginPasswordFormSchema } from "@/components/users/utils/validation-schema";
 import { TextField } from "@mui/material";
-import { passwordFormControlName } from "@/components/users/constants";
+import { passwordFormControlName } from "@/components/users/utils/constants";
 
 export default function LogInPage() {
   const router = useRouter();

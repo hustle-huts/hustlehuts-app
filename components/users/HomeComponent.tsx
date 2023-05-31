@@ -1,9 +1,10 @@
-import LoginForm from "@/components/users/login-form";
+import LoginForm from "@/components/users/LoginForm";
 import Image from "next/image";
 import Logo from "./../../public/images/logo.png";
+// FIXME
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
-export default function SignUpOrHomePage() {
+const HomeComponent: React.FC = () => {
   return (
     <>
       <GoogleOAuthProvider clientId="554539700276-7ofmtmaendohcdss79l752c1e25leb7e.apps.googleusercontent.com">
@@ -16,4 +17,6 @@ export default function SignUpOrHomePage() {
       </GoogleOAuthProvider>
     </>
   );
-}
+};
+
+export default HomeComponent;
