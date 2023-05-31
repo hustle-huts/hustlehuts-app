@@ -30,20 +30,27 @@ export default function AllCafes() {
           0
         ]
       },
-      "open_at": "9am",
-      "close_at": "5pm",
-      "credit": 2,
+      // start on Monday
+      "open_at": ["9am", "9am", "9am", "9am", "9am", "11am", "11am"],
+      "close_at": ["9pm", "9pm", "9pm", "9pm", "9pm", "11pm", "11pm"],
+      "credit": 28,
       "has_wifi": true,
       "has_charging": false,
       "has_ambience": false,
       "image_url": "./images/mocked-cafe1.jpeg",
       "availability_time_slots": [
         {
-          "date": null,
+          "date": "05-30-2023",
           "time": [
-            "string"
+            "9am-10am",
+            "10am-11am",
+            "11am-12pm"
           ],
-          "seat": 0
+          "seat": [
+            5,
+            6,
+            7
+          ]
         }
       ],
       "manager": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -62,20 +69,26 @@ export default function AllCafes() {
           0
         ]
       },
-      "open_at": "10am",
-      "close_at": "2pm",
-      "credit": 3,
+      "open_at": ["9am", "9am", "10am", "9am", "9am", "11am", "11am"],
+      "close_at": ["9pm", "9pm", "10pm", "9pm", "9pm", "11pm", "11pm"],
+      "credit": 29,
       "has_wifi": true,
-      "has_charging": true,
+      "has_charging": false,
       "has_ambience": false,
-      "image_url": "./images/mocked-cafe2.jpg",
+      "image_url": "./images/mocked-cafe1.jpeg",
       "availability_time_slots": [
         {
-          "date": null,
+          "date": "05-30-2023",
           "time": [
-            "string"
+            "10am-11am",
+            "11am-12pm",
+            "12pm-1pm"
           ],
-          "seat": 0
+          "seat": [
+            6,
+            7,
+            8
+          ]
         }
       ],
       "manager": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -94,20 +107,26 @@ export default function AllCafes() {
           0
         ]
       },
-      "open_at": "11am",
-      "close_at": "5pm",
-      "credit": 4,
+      "open_at": ["9am", "9am", "9am", "9am", "9am", "11am", "11am"],
+      "close_at": ["9pm", "9pm", "9pm", "9pm", "9pm", "11pm", "11pm"],
+      "credit": 30,
       "has_wifi": true,
-      "has_charging": true,
-      "has_ambience": true,
-      "image_url": "./images/mocked-cafe3.png",
+      "has_charging": false,
+      "has_ambience": false,
+      "image_url": "./images/mocked-cafe1.jpeg",
       "availability_time_slots": [
         {
-          "date": null,
+          "date": "05-30-2023",
           "time": [
-            "string"
+            "11am-12pm",
+            "12pm-1pm",
+            "1pm-2pm"
           ],
-          "seat": 0
+          "seat": [
+            7,
+            8,
+            9
+          ]
         }
       ],
       "manager": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -122,14 +141,18 @@ export default function AllCafes() {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [isChoosingSlotsModalOpen, setIsChoosingSlotsModalOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
+  const [selectedCafe, setSelectedCafe] = useState<any>(null);
 
-  const handleBottomSheetOpen = () => {
+  const handleBottomSheetOpen = (cafe: any) => {
+    console.log(cafe)
+    setSelectedCafe(cafe);
     setIsBottomSheetOpen(true);
     setIsChoosingSlotsModalOpen(true);
   };
 
   const handleBottomSheetClose = () => {
     setIsBottomSheetOpen(false);
+    setSelectedCafe(null);
   };
 
   // for the number of people
@@ -141,7 +164,14 @@ export default function AllCafes() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const choosingSlotsModal = () => {
+  // Get the day of the week to show the correct opening hours in the choosingSlotsModal
+  const currentTime = new Date();
+  const dayOfWeek = (currentTime.getDay() + 6) % 7; // 0 for Monday, 1 for Tuesday, etc.
+
+  const choosingSlotsModal = (cafe: any) => {
+    if (!cafe) {
+      return; // Return early if cafe is null or undefined
+    }
     return (
       <BottomSheet isOpen={isBottomSheetOpen} onClose={handleBottomSheetClose}>
         <Grid
@@ -150,17 +180,19 @@ export default function AllCafes() {
           justifyContent="center"
           alignItems="flex-start"
           sx={{
-            // overflow: "scroll",
             padding: 0,
-            paddingBottom: 10
+            paddingBottom: 10,
+            marginBottom: 20
           }}
         >
 
+          {/* Cafe details */}
           <Container sx={{
             border: "1px solid #E7E7E7",
             boxShadow: "0px 4px 20px -5px rgba(0, 0, 0, 0.15)",
             borderRadius: "20px",
             height: 'fit-content',
+            marginTop: 2,
             paddingBottom: 2
           }}>
             <Container className={styles.image}>
@@ -191,10 +223,10 @@ export default function AllCafes() {
               }}
             >
               <Typography sx={{ width: 2 / 5 }} textAlign='left' fontWeight={700}>
-                Twenty Eight Cafe
+                {cafe.name}
               </Typography>
               <Typography sx={{ width: 2 / 5, color: "#D89554" }} textAlign='right'>
-                16 Credit / hr
+                {cafe.credit} Credit(s) / hr
               </Typography>
             </Grid>
             <Grid
@@ -209,11 +241,13 @@ export default function AllCafes() {
             >
               <AccessTime />
               <Typography sx={{ width: 2 / 4, marginLeft: 1, }} textAlign='left'>
-                11am to 6pm
+                {cafe.open_at[dayOfWeek]} to {cafe.close_at[dayOfWeek]}
               </Typography>
             </Grid>
           </Container>
 
+          
+          {/* Number of people */}
           <Grid
             container
             direction="column"
@@ -279,6 +313,11 @@ export default function AllCafes() {
               </Button>} />
           </Grid>
 
+
+          {/* Select slots */}
+          
+          
+          {/* Select Date and Calendar */}
           <Grid
             container
             direction="column"
@@ -300,6 +339,8 @@ export default function AllCafes() {
             </input>
           </Grid>
 
+          
+          {/* Time slot selection */}
           <Grid
             container
             direction="column"
@@ -311,7 +352,8 @@ export default function AllCafes() {
               height: 'fit-content',
               marginLeft: 0,
               marginTop: 2,
-              marginBottom: 10,
+              marginBottom: 30,
+              paddingBottom: 5,
               width: '-webkit-fill-available'
             }}
           >
@@ -420,20 +462,13 @@ export default function AllCafes() {
             </Button>
           </div>
           <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
-            {allCafes.map(({ name, open_at, close_at, credit, has_wifi, has_charging, has_ambience, image_url, rating}) => (
-              <CafeCard modalHandler={handleBottomSheetOpen}
-                key={`popular-cafe-${name}`}
-                name={name}
-                open_at={open_at}
-                close_at={close_at}
-                credit={credit}
-                has_wifi={has_wifi}
-                has_charging={has_charging}
-                has_ambience={has_ambience}
-                image_url={image_url}
-                rating={rating}
-              />
-            ))}
+          {allCafes.map((cafe) => (
+            <CafeCard
+              cafe={cafe}
+              modalHandler={() => handleBottomSheetOpen(cafe)}
+              key={`popular-cafe-${cafe.name}`}
+            />
+          ))}
           </div>
         </div>
 
@@ -447,18 +482,11 @@ export default function AllCafes() {
           </div>
 
           <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
-            {allCafes.map(({ name, open_at, close_at, credit, has_wifi, has_charging, has_ambience, image_url, rating}) => (
-              <CafeCard modalHandler={handleBottomSheetOpen}
-                key={`popular-cafe-${name}`}
-                name={name}
-                open_at={open_at}
-                close_at={close_at}
-                credit={credit}
-                has_wifi={has_wifi}
-                has_charging={has_charging}
-                has_ambience={has_ambience}
-                image_url={image_url}
-                rating={rating}
+            {allCafes.map(cafe => (
+              <CafeCard
+                cafe={cafe}
+                modalHandler={() => handleBottomSheetOpen(cafe)}
+                key={`popular-cafe-${cafe.name}`}
               />
             ))}
           </div>
@@ -474,25 +502,19 @@ export default function AllCafes() {
           </div>
 
           <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
-            {allCafes.map(({ name, open_at, close_at, credit, has_wifi, has_charging, has_ambience, image_url, rating}) => (
-              <CafeCard modalHandler={handleBottomSheetOpen}
-                key={`popular-cafe-${name}`}
-                name={name}
-                open_at={open_at}
-                close_at={close_at}
-                credit={credit}
-                has_wifi={has_wifi}
-                has_charging={has_charging}
-                has_ambience={has_ambience}
-                image_url={image_url}
-                rating={rating}
+            {allCafes.map(cafe => (
+              <CafeCard
+                cafe={cafe}
+                modalHandler={() => handleBottomSheetOpen(cafe)}
+                key={`popular-cafe-${cafe.name}`}
               />
             ))}
           </div>
         </div>
       </div>
       <BottomNavbar currentPage="home" />
-      {choosingSlotsModal()}
+
+      {isChoosingSlotsModalOpen? choosingSlotsModal(selectedCafe) : null}
     </div>
   );
 }

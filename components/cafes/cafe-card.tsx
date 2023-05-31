@@ -20,25 +20,32 @@ import NoAmbienceIcon from '../../public/images/ambience-no.svg'
 import { MouseEventHandler } from 'react';
 
 interface props {
-    name: String
-    open_at: String
-    close_at: String
-    credit: number
-    has_wifi: Boolean
-    has_charging: Boolean
-    has_ambience: Boolean
-    image_url: string
-    rating: number
-    modalHandler: MouseEventHandler<HTMLDivElement>;
+    cafe: {
+        name: string;
+        open_at: string[];
+        close_at: string[];
+        credit: number;
+        has_wifi: boolean;
+        has_charging: boolean;
+        has_ambience: boolean;
+        image_url: string;
+        rating: number;
+    };
+    modalHandler: (cafe: any) => void; 
 }
 
 const CafeCard: React.FC<props> = (props) => {
+    const handleClick = () => {
+        props.modalHandler(props.cafe);
+    };
+
     // Get the current time
     const currentTime = new Date();
+    const dayOfWeek = (currentTime.getDay() + 6) % 7; // 0 for Monday, 1 for Tuesday, etc.
 
     // Convert the "open_at" and "close_at" props to Date objects
-    const openTimeParts = props.open_at.match(/(\d+)(am|pm)/);
-    const closeTimeParts = props.close_at.match(/(\d+)(am|pm)/);
+    const openTimeParts = props.cafe.open_at[dayOfWeek].match(/(\d+)(am|pm)/);
+    const closeTimeParts = props.cafe.close_at[dayOfWeek].match(/(\d+)(am|pm)/);
 
     const openTime = openTimeParts
     ? new Date().setHours(
@@ -67,13 +74,13 @@ const CafeCard: React.FC<props> = (props) => {
     const indicatorText = openTimeParts && closeTimeParts ? (isOpen ? "OPEN" : "CLOSE") : "N.A.";
 
     return (
-        <Card className={styles.cafeCard} onClick={props.modalHandler}>
+        <Card className={styles.cafeCard} onClick={handleClick}>
             <CardMedia
                 className={styles.cafeImage}
-                image={props.image_url}
+                image={props.cafe.image_url}
                 title="Cafe Image">
                 <div className={styles.ifCafeIsOpenIndicator}>{indicatorText}</div>
-                <div className={styles.cafeCredit}>{props.credit} Credit(s) /hr</div>
+                <div className={styles.cafeCredit}>{props.cafe.credit} Credit(s) /hr</div>
                 <Button className={styles.cafeLike}
                     onClick={() => console.log("Like Cafe")}
                     variant="text">
@@ -86,12 +93,12 @@ const CafeCard: React.FC<props> = (props) => {
                 <CardContent sx={{ padding: '4px' }}>
                     <small className={styles.rating}>
                         <Image className={styles.ratingIcon} alt="Rating Icon" src={RatingIcon} />
-                        {props.rating}
+                        {props.cafe.rating}
                     </small>
-                    <div className={styles.cafeName}>{props.name}</div>
+                    <div className={styles.cafeName}>{props.cafe.name}</div>
                     <div className={styles.cafeInfo}>
                         <Image className={styles.clockIcon} alt="Clock Icon" src={ClockIcon} />
-                        {props.open_at} To {props.close_at}
+                        {props.cafe.open_at[dayOfWeek]} To {props.cafe.close_at[dayOfWeek]}
                     </div>
                     {/* to show the distance between the user and the cafe, temporarily commented off
                     <div className={styles.cafeInfo}>
@@ -101,7 +108,7 @@ const CafeCard: React.FC<props> = (props) => {
                 </CardContent>
                 <CardActions className={styles.cafeActions}>
                     <div>
-                        {props.has_wifi ? (
+                        {props.cafe.has_wifi ? (
                             <Image className={styles.wifiIcon} alt="Wifi Icon" src={WifiIcon} />
                         ) : (
                             <Image className={styles.wifiIcon} alt="No Wifi Icon" src={NoWifiIcon} />
@@ -109,7 +116,7 @@ const CafeCard: React.FC<props> = (props) => {
                         <p>Wifi</p>
                     </div>
                     <div>
-                        {props.has_charging ? (
+                        {props.cafe.has_charging ? (
                             <Image className={styles.chargingIcon} alt="Charging Icon" src={ChargingIcon} />
                         ) : (
                             <Image className={styles.chargingIcon} alt="No Charging Icon" src={NoChargingIcon} />
@@ -117,7 +124,7 @@ const CafeCard: React.FC<props> = (props) => {
                         <p>Charging</p>
                     </div>
                     <div>
-                        {props.has_ambience ? (
+                        {props.cafe.has_ambience ? (
                             <Image className={styles.ambienceIcon} alt="Ambience Icon" src={AmbienceIcon} />
                         ) : (
                             <Image className={styles.ambienceIcon} alt="No Ambience Icon" src={NoAmbienceIcon} />
