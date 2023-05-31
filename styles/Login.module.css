@@ -3,7 +3,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-content: center;
   justify-content: center;
 }
 
@@ -24,8 +23,6 @@
   display: flex;
   margin-top: 5rem;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
   align-items: center;
 }
 
@@ -59,12 +56,10 @@
 }
 
 .btn_groups {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: space-between;
-  margin: 10px 0px;
+  margin-top: 35px;
   width: 80%;
+  flex-grow: 0 !important;
+  height: auto;
 }
 
 .form_row {

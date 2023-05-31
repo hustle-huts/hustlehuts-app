@@ -1,34 +1,46 @@
-import Button from "@/components/ui/button";
-import LoginHeader from "@/components/users/login-header";
-import styles from "@/styles/Login.module.css";
+import { useRouter } from "next/router";
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import LoginHeader from "@/components/users/login-header";
 import { loginDetailsState, userState } from "@/recoil/auth/atom";
 import { ILoginRequest, IUser } from "@/models/user";
 import { loginApi } from "@/services/auth.service";
-import toast from "react-hot-toast";
-import { useRouter } from "next/router";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import TextField from "@/components/shared/TextField";
+import Button from "@/components/shared/Button";
+
 import { loginPasswordFormSchema } from "@/components/users/utils/validation-schema";
-import { TextField } from "@mui/material";
 import { passwordFormControlName } from "@/components/users/utils/constants";
+
+import styles from "@/styles/Login.module.css";
+import { useEffect } from "react";
+import { useToast } from "use-toast-mui";
 
 export default function LogInPage() {
   const router = useRouter();
+  const toast = useToast();
   const setUser = useSetRecoilState<IUser>(userState);
   const loginDetails = useRecoilValue<ILoginRequest>(loginDetailsState);
+
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     getValues,
+    setError,
   } = useForm({
     mode: "all",
     resolver: yupResolver(loginPasswordFormSchema),
     shouldUnregister: true,
   });
 
-  const onLoginSubmit = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
+  useEffect(() => {
+    if (!loginDetails.email) {
+      router.push("/");
+    }
+  }, []);
+
+  const onLoginClick = async () => {
     try {
       const { email } = loginDetails;
       const user = await loginApi({
@@ -39,7 +51,11 @@ export default function LogInPage() {
       toast.success("Successfully login!");
       router.push("/cafes");
     } catch (error) {
-      console.error(error);
+      toast.error(error as string);
+      setError(passwordFormControlName, {
+        type: "manual",
+        message: error as string,
+      });
     }
   };
 
@@ -47,30 +63,25 @@ export default function LogInPage() {
     <div className={styles.container}>
       <LoginHeader />
       <h1 className={styles.title}>Log In</h1>
-      <form className={styles.form} onSubmit={onLoginSubmit}>
+      <div className={styles.form}>
         <div className={styles.form_row}>
           <TextField
-            {...register(passwordFormControlName)}
-            sx={{
-              width: "100%",
-              "& .MuiFormLabel-root": {
-                fontWeight: 500,
-                color: "#6D5747",
-              },
-            }}
+            register={register}
+            name={passwordFormControlName}
             type="password"
             label={"Enter Password"}
-            variant="outlined"
-            InputLabelProps={{ shrink: true }}
             error={errors[passwordFormControlName] ? true : false}
             helperText={errors[passwordFormControlName]?.message?.toString()}
             autoFocus
+            isRequired
           />
         </div>
         <div className={styles.btn_groups}>
-          <Button>Log In</Button>
+          <Button btnType="primary" disabled={!getValues(passwordFormControlName) || !isValid} onClick={onLoginClick}>
+            Log In
+          </Button>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
