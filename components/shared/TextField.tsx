@@ -1,9 +1,6 @@
 import React, { ReactElement, ReactNode } from "react";
 import { useFormContext } from "react-hook-form";
-import {
-  TextField as MUITextField,
-  TextFieldProps as MUITextFieldProps,
-} from "@mui/material";
+import { TextField as MUITextField, TextFieldProps as MUITextFieldProps } from "@mui/material";
 
 import styles from "./textfield.module.css";
 
@@ -16,15 +13,7 @@ type TextFieldProps = MUITextFieldProps & {
 };
 
 const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
-  const {
-    register,
-    name,
-    variant = "outlined",
-    label,
-    isRequired,
-    prefixicon,
-    ...rest
-  } = props;
+  const { register, name, variant = "outlined", label, isRequired, prefixicon, ...rest } = props;
   return (
     <div className={styles.form_group}>
       {label && (

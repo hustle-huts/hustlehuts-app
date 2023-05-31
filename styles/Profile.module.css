@@ -1,23 +1,23 @@
 .container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    background-color: brown;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-color: brown;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
 
 .profileContainer {
-    height: 85%;
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-    display: flex;
-    align-items: center;
-    background-color: white;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    border-radius: 42px 42px 0px 0px;
+  height: 85%;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  border-radius: 42px 42px 0px 0px;
 }

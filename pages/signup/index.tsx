@@ -9,13 +9,11 @@ import { useRecoilState } from "recoil";
 
 export default function SignUpName() {
   const router = useRouter();
-  const [registerDetails, setRegisterDetails] =
-    useRecoilState<IRegisterRequest>(registerDetailsState);
+  const [registerDetails, setRegisterDetails] = useRecoilState<IRegisterRequest>(registerDetailsState);
 
-  const onTypeChange =
-    (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      setRegisterDetails({ ...registerDetails, [key]: e.target.value });
-    };
+  const onTypeChange = (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRegisterDetails({ ...registerDetails, [key]: e.target.value });
+  };
 
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -35,18 +33,10 @@ export default function SignUpName() {
           }}
         >
           <div className={styles.name}>
-            <Input
-              isRequired={true}
-              label="First Name"
-              onChange={onTypeChange("first_name")}
-            ></Input>
+            <Input isRequired={true} label="First Name" onChange={onTypeChange("first_name")}></Input>
           </div>
           <div className={styles.name}>
-            <Input
-              isRequired={true}
-              label="Last Name"
-              onChange={onTypeChange("last_name")}
-            ></Input>
+            <Input isRequired={true} label="Last Name" onChange={onTypeChange("last_name")}></Input>
           </div>
         </div>
         <div className={styles.form_row}>
@@ -64,11 +54,7 @@ export default function SignUpName() {
             value={registerDetails.email}
             onChange={onTypeChange("email")}
           />
-          <Input
-            phone
-            label="Enter Phone Number"
-            onChange={onTypeChange("phone_number")}
-          ></Input>
+          <Input phone label="Enter Phone Number" onChange={onTypeChange("phone_number")}></Input>
         </div>
         <div className={styles.btn_groups}>
           <Button>Continue</Button>

@@ -8,11 +8,7 @@ const HomeComponent: React.FC = () => {
   return (
     <>
       <GoogleOAuthProvider clientId="554539700276-7ofmtmaendohcdss79l752c1e25leb7e.apps.googleusercontent.com">
-        <Image
-          alt=""
-          src={Logo}
-          style={{ width: "280px", height: "74px", margin: "30px 0px" }}
-        />
+        <Image alt="" src={Logo} style={{ width: "280px", height: "74px", margin: "30px 0px" }} />
         <LoginForm />
       </GoogleOAuthProvider>
     </>

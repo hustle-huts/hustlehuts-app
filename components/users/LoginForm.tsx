@@ -32,10 +32,8 @@ const LoginForm: React.FC = () => {
     shouldUnregister: true,
   });
 
-  const [loginDetails, setLoginDetails] =
-    useRecoilState<ILoginRequest>(loginDetailsState);
-  const [registerDetails, setRegisterDetails] =
-    useRecoilState<IRegisterRequest>(registerDetailsState);
+  const [loginDetails, setLoginDetails] = useRecoilState<ILoginRequest>(loginDetailsState);
+  const [registerDetails, setRegisterDetails] = useRecoilState<IRegisterRequest>(registerDetailsState);
 
   const loginGoogle = useGoogleLogin({
     onSuccess: (tokenResponse) => console.log(tokenResponse),
@@ -66,21 +64,16 @@ const LoginForm: React.FC = () => {
           helperText={errors[emailFormControlName]?.message?.toString()}
           autoFocus
           InputProps={{
-            endAdornment: getValues(emailFormControlName) &&
-              !errors[emailFormControlName] && (
-                <InputAdornment position="start">
-                  <CheckCircleOutlinedIcon color="success" />
-                </InputAdornment>
-              ),
+            endAdornment: getValues(emailFormControlName) && !errors[emailFormControlName] && (
+              <InputAdornment position="start">
+                <CheckCircleOutlinedIcon color="success" />
+              </InputAdornment>
+            ),
           }}
         />
       </div>
       <div className={styles.btn_groups}>
-        <Button
-          style={{ marginBottom: "12px" }}
-          onClick={onLoginClick}
-          disabled={!isValid}
-        >
+        <Button style={{ marginBottom: "12px" }} onClick={onLoginClick} disabled={!isValid}>
           Login
         </Button>
         <Button btnType="secondary" onClick={onRegisterClick}>
@@ -100,11 +93,7 @@ const LoginForm: React.FC = () => {
           <div style={{ flex: 1, height: "1px", backgroundColor: "black" }} />
         </span>
 
-        <OldButton
-          onClick={() => loginGoogle()}
-          icon={<GoogleIcon />}
-          btntype="outline"
-        >
+        <OldButton onClick={() => loginGoogle()} icon={<GoogleIcon />} btntype="outline">
           Sign in with Google
         </OldButton>
         <OldButton icon={<FacebookIcon />} btntype="outline">

@@ -9,8 +9,7 @@ import { registerApi } from "@/services/auth.service";
 import { useRouter } from "next/router";
 export default function SignUpTele() {
   const router = useRouter();
-  const [registerDetails, setRegisterDetails] =
-    useRecoilState<IRegisterRequest>(registerDetailsState);
+  const [registerDetails, setRegisterDetails] = useRecoilState<IRegisterRequest>(registerDetailsState);
 
   const onTelegramInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRegisterDetails({ ...registerDetails, telegram_handle: e.target.value });
@@ -31,10 +30,7 @@ export default function SignUpTele() {
       <SignUpHeader />
       <form className={styles.form} onSubmit={onSubmit}>
         <div className={styles.form_row}>
-          <Input
-            label="Enter Telegram Handle"
-            onChange={onTelegramInputChange}
-          ></Input>
+          <Input label="Enter Telegram Handle" onChange={onTelegramInputChange}></Input>
         </div>
         <div className={styles.btn_groups}>
           <Button>Continue</Button>

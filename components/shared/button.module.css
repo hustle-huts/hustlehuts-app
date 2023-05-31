@@ -1,9 +1,5 @@
 .primary {
-  background: linear-gradient(
-    176.54deg,
-    #6d5747 -11.89%,
-    #b88151 64.46%
-  ) !important;
+  background: linear-gradient(176.54deg, #6d5747 -11.89%, #b88151 64.46%) !important;
   color: white !important;
 }
 

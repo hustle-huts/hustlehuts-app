@@ -11,42 +11,12 @@ import Image from "next/image";
 export default function LoginHeader() {
   return (
     <div className={styles.container}>
-      <Image
-        className={styles.login1}
-        style={{ objectFit: "contain" }}
-        alt=""
-        src={LogIn1}
-      />
-      <Image
-        className={styles.login2}
-        style={{ objectFit: "contain" }}
-        alt=""
-        src={LogIn2}
-      />
-      <Image
-        className={styles.signup1}
-        style={{ objectFit: "contain" }}
-        alt=""
-        src={SignUp1}
-      />
-      <Image
-        className={styles.arrow}
-        style={{ objectFit: "contain" }}
-        alt=""
-        src={LocationPointer}
-      />
-      <Image
-        className={styles.signup2}
-        style={{ objectFit: "contain" }}
-        alt=""
-        src={SignUp2}
-      />
-      <Image
-        className={styles.signup3}
-        style={{ objectFit: "contain" }}
-        alt=""
-        src={SignUp3}
-      />
+      <Image className={styles.login1} style={{ objectFit: "contain" }} alt="" src={LogIn1} />
+      <Image className={styles.login2} style={{ objectFit: "contain" }} alt="" src={LogIn2} />
+      <Image className={styles.signup1} style={{ objectFit: "contain" }} alt="" src={SignUp1} />
+      <Image className={styles.arrow} style={{ objectFit: "contain" }} alt="" src={LocationPointer} />
+      <Image className={styles.signup2} style={{ objectFit: "contain" }} alt="" src={SignUp2} />
+      <Image className={styles.signup3} style={{ objectFit: "contain" }} alt="" src={SignUp3} />
     </div>
   );
 }

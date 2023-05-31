@@ -22,6 +22,6 @@ axios_instance.interceptors.request.use(
       error_string = JSON.stringify(final_error);
     }
     throw error_string;
-  }
+  },
 );
 export default axios_instance;
