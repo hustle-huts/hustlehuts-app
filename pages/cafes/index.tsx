@@ -4,7 +4,7 @@ import BottomNavbar from "@/components/bottomNavbar/bottom-navbar";
 import TopBanner from "@/components/topBanner/top-banner";
 import CafeCard from "@/components/cafes/cafe-card";
 import InputAdornment from "@mui/material/InputAdornment";
-import Button from "@mui/material/Button";
+import { Button, ButtonProps } from '@mui/material';
 import CustomChip from '@/components/ui/chip';
 import { AccessTime, Diversity1 } from '@mui/icons-material';
 import BottomSheet from "@/components/ui/bottomSheet";
@@ -158,13 +158,46 @@ const AllCafes = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [selectedCafe, setSelectedCafe] = useState<any>(null);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
-  const [selectedPossibleTimeSlots, setSelectedPossibleTimeSlots] = useState<string[] | null>(null);
+  const [selectedPossibleTimeSlots, setSelectedPossibleTimeSlots] = useState<any[] | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [buttonClickedList, setButtonClickedList] = useState<boolean[]>([]);
+  type ButtonVariant = 'text' | 'outlined' | 'contained';
+  const [variantList, setVariantList] = useState<Array<ButtonVariant>>([]);
+  const [buttonStyleList, setButtonStyleList] = useState<object[]>([]);
+  const selectedButtonStyle = {
+      background: 'linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%)',
+      boxShadow: '0px 4px 40px rgba(160, 116, 78, 0.18)',
+      borderRadius: '10px',
+      padding: 1,
+      marginBottom: 2,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      maxWidth: '60%',
+      color: '#fff !important',
+  };
+  const unselectedButtonStyle = {
+      background: '',
+      boxShadow: '',
+      borderRadius: '10px',
+      padding: 1,
+      marginBottom: 2,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      maxWidth: '60%',
+      color: '#000 !important',
+  }
 
   useEffect(() => {
     console.log('Button clicked list useEffect:', buttonClickedList);
   }, [buttonClickedList]);
+
+  useEffect(() => {
+    console.log('Variant list useEffect:', variantList);
+  }, [variantList]);
+
+  useEffect(() => {
+    console.log('Button style list useEffect:', buttonStyleList);
+  }, [buttonStyleList]);
 
   // open the modal pop-up with the correct cafe details
   const handleBottomSheetOpen = (cafe: any) => {
@@ -252,9 +285,34 @@ const AllCafes = () => {
     }
 
     setButtonClickedList(Array.from({ length: availCorrespondingTimeSlots.length }, () => false));
+    setVariantList(Array.from({ length: availCorrespondingTimeSlots.length }, () => 'outlined'));
+    setButtonStyleList(
+      Array.from({ length: availCorrespondingTimeSlots.length }, () => unselectedButtonStyle)
+    );
+    
 
     // to click or unclick a button
     const handleButtonClick = (index: number) => {
+      setVariantList((prevList) => {
+        const updatedList = [...prevList];
+        if (updatedList[index] === 'contained') {
+          updatedList[index] = 'outlined'
+        } else {
+          updatedList[index] = 'contained'
+        }
+        return updatedList;
+      });
+
+      setButtonStyleList((prevList) => {
+        const updatedList = [...prevList];
+        if (updatedList[index] === unselectedButtonStyle) {
+          updatedList[index] = selectedButtonStyle;
+        } else {
+          updatedList[index] = unselectedButtonStyle
+        }
+        return updatedList;
+      });
+
       setButtonClickedList((prevList) => {
         const updatedList = [...prevList];
         updatedList[index] = !updatedList[index];
@@ -264,34 +322,9 @@ const AllCafes = () => {
 
     // build a button for each time slot and its no. of seats
     const timeButtons = availCorrespondingTimeSlots.map((timeSlot, index) => {
-      const isButtonClicked = buttonClickedList[index];
-      const variant = isButtonClicked ? 'contained' : 'outlined';
-      const buttonStyle = isButtonClicked
-        ? {
-            background: 'linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%)',
-            boxShadow: '0px 4px 40px rgba(160, 116, 78, 0.18)',
-            borderRadius: '10px',
-            padding: 1,
-            marginBottom: 2,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            maxWidth: '60%',
-            color: '#fff !important',
-          }
-        : {
-            background: '',
-            boxShadow: '',
-            borderRadius: '10px',
-            padding: 1,
-            marginBottom: 2,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            maxWidth: '60%',
-            color: '#000 !important',
-          };
-    
-      console.log('Button style:', buttonStyle);
-    
+      const variant = variantList[index];
+      const buttonStyle = buttonStyleList[index];
+
       return (
         <Button 
           key={index} 
@@ -304,7 +337,7 @@ const AllCafes = () => {
           {timeSlot} ({availCorrespondingSeats[index]} seats left)
         </Button>
       );
-    });    
+    });
     
 
     setSelectedPossibleTimeSlots(timeButtons);
