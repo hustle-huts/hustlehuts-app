@@ -14,9 +14,11 @@ import MockedImg from '../../public/images/mocked-cafe-for-booking.png'
 import SearchIcon from "../../public/images/search.svg";
 import FilterIcon from "../../public/images/filter.svg";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { GetServerSideProps } from 'next';
 
-export default function AllCafes() {
+
+const AllCafes = () => {
   const [selectedFilter, setSelectedFilters] = useState("filter1");
 
   // Testing data with three mocked cafes
@@ -158,28 +160,34 @@ export default function AllCafes() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedPossibleTimeSlots, setSelectedPossibleTimeSlots] = useState<string[] | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [buttonClickedList, setButtonClickedList] = useState<boolean[]>([]);
 
+  useEffect(() => {
+    console.log('Button clicked list useEffect:', buttonClickedList);
+  }, [buttonClickedList]);
+
+  // open the modal pop-up with the correct cafe details
   const handleBottomSheetOpen = (cafe: any) => {
-    console.log(cafe)
     setSelectedCafe(cafe);
     setIsBottomSheetOpen(true);
     setIsChoosingSlotsModalOpen(true);
   };
 
+  // close the modal pop-up and reset all variables
   const handleBottomSheetClose = () => {
     setIsBottomSheetOpen(false);
-    // erase all data when the modal is closed
     setSelectedCafe(null);
     setSelectedDate(null);
     setSelectedTime(null);
     setSelectedPossibleTimeSlots(null);
   };
 
-  // for the number of people
+  // increase the number of people
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
+  // decrease the number of people
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
@@ -228,11 +236,12 @@ export default function AllCafes() {
   }
 
   const showCorrespondingTimeSlotsButtons = (currentDate: string, cafe: any) => {
+    // get the timeslots for the cafe again
     const availSlots = cafe.availability_time_slots;
 
     // for the chosen date, get all the corresponding time slots and no. of seats for each time slot
     const availCorrespondingTimeSlots = [];
-    const availCorrespondingSeats = []
+    const availCorrespondingSeats: number[] = [];
     for (let i = 0; i < availSlots.length; i++) {
       if (availSlots[i].date === currentDate) {
         for (let j = 0; j < availSlots[i].time.length; j++) {
@@ -242,29 +251,61 @@ export default function AllCafes() {
       }
     }
 
+    setButtonClickedList(Array.from({ length: availCorrespondingTimeSlots.length }, () => false));
+
+    // to click or unclick a button
+    const handleButtonClick = (index: number) => {
+      setButtonClickedList((prevList) => {
+        const updatedList = [...prevList];
+        updatedList[index] = !updatedList[index];
+        return updatedList;
+      });
+    };
+
     // build a button for each time slot and its no. of seats
-    const timeButtons = []
-    for (let i = 0; i < availCorrespondingTimeSlots.length; i++) {
-      timeButtons.push(
+    const timeButtons = availCorrespondingTimeSlots.map((timeSlot, index) => {
+      const isButtonClicked = buttonClickedList[index];
+      const variant = isButtonClicked ? 'contained' : 'outlined';
+      const buttonStyle = isButtonClicked
+        ? {
+            background: 'linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%)',
+            boxShadow: '0px 4px 40px rgba(160, 116, 78, 0.18)',
+            borderRadius: '10px',
+            padding: 1,
+            marginBottom: 2,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            maxWidth: '60%',
+            color: '#fff !important',
+          }
+        : {
+            background: '',
+            boxShadow: '',
+            borderRadius: '10px',
+            padding: 1,
+            marginBottom: 2,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            maxWidth: '60%',
+            color: '#000 !important',
+          };
+    
+      console.log('Button style:', buttonStyle);
+    
+      return (
         <Button 
-        size="small"
-        variant='contained'
-        sx={{
-          background: 'linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%)',
-          boxShadow: '0px 4px 40px rgba(160, 116, 78, 0.18)',
-          borderRadius: '10px',
-          padding: 1,
-          marginBottom: 2,
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          maxWidth: '60%',
-          color: '#fff !important',
-        }}
-        key={i} >
-          {availCorrespondingTimeSlots[i]} ({availCorrespondingSeats[i]} seats left)
+          key={index} 
+          onClick={() => handleButtonClick(index)}
+          size="small"
+          variant={variant}
+          color="warning"
+          sx={buttonStyle}
+        >
+          {timeSlot} ({availCorrespondingSeats[index]} seats left)
         </Button>
-      )
-    }
+      );
+    });    
+    
 
     setSelectedPossibleTimeSlots(timeButtons);
   }
@@ -659,3 +700,5 @@ export default function AllCafes() {
     </div>
   );
 }
+
+export default AllCafes;
