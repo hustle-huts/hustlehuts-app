@@ -15,11 +15,9 @@ import { passwordFormControlName } from "@/components/users/utils/constants";
 
 import styles from "@/styles/Login.module.css";
 import { useEffect } from "react";
-import { useToast } from "use-toast-mui";
 
 export default function LogInPage() {
   const router = useRouter();
-  const toast = useToast();
   const setUser = useSetRecoilState<IUser>(userState);
   const loginDetails = useRecoilValue<ILoginRequest>(loginDetailsState);
 
@@ -48,10 +46,8 @@ export default function LogInPage() {
         password: getValues(passwordFormControlName),
       });
       setUser(user);
-      toast.success("Successfully login!");
       router.push("/cafes");
     } catch (error) {
-      toast.error(error as string);
       setError(passwordFormControlName, {
         type: "manual",
         message: error as string,
