@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import { loginDetailsState, registerDetailsState } from "@/recoil/auth/atom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { InputAdornment } from "@mui/material";
+import { Divider, InputAdornment } from "@mui/material";
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
 
 import { ILoginRequest, IRegisterRequest } from "@/models/user";
@@ -19,6 +19,8 @@ import styles from "./LoginForm.module.css";
 
 import { loginEmailFormSchema } from "./utils/validation-schema";
 import { emailFormControlName } from "./utils/constants";
+import SocialButton from "../shared/SocialButton";
+import { SocialButtonType } from "../shared/constants";
 
 const LoginForm: React.FC = () => {
   const router = useRouter();
@@ -80,28 +82,31 @@ const LoginForm: React.FC = () => {
           Sign Up
         </Button>
 
-        <span className={styles.line}>
-          <div
-            style={{
-              flex: 1,
-              height: "1px",
-              backgroundColor: "black",
-              width: "40%",
-            }}
-          />
-          <h3>OR</h3>
-          <div style={{ flex: 1, height: "1px", backgroundColor: "black" }} />
-        </span>
+        <Divider
+          sx={{
+            height: "1px",
+            padding: "34px 26px",
+            "& .MuiDivider-wrapper": {
+              fontWeight: 500,
+              fontSize: "14px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#6D5747",
+              width: "100px",
+            },
+          }}
+        >
+          Or
+        </Divider>
 
-        <OldButton onClick={() => loginGoogle()} icon={<GoogleIcon />} btntype="outline">
-          Sign in with Google
-        </OldButton>
-        <OldButton icon={<FacebookIcon />} btntype="outline">
-          Sign Up with Facebook
-        </OldButton>
-        <OldButton icon={<OutlookIcon />} btntype="outline">
-          Sign Up with Outlook
-        </OldButton>
+        <SocialButton onClick={() => loginGoogle()} btnType={SocialButtonType.GOOGLE}>
+          Continue with Google
+        </SocialButton>
+        <SocialButton btnType={SocialButtonType.FACEBOOK} style={{ margin: "10px 0" }}>
+          Continue with Facebook
+        </SocialButton>
+        <SocialButton btnType={SocialButtonType.OUTLOOK}>Continue with Outlook</SocialButton>
       </div>
     </div>
   );
