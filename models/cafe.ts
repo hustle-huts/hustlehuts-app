@@ -8,8 +8,8 @@ export interface ICafe {
     type: string;
     coordinates: [number, number];
   };
-  open_at: string;
-  close_at: string;
+  open_at: string[];
+  close_at: string[];
   credit: number;
   has_wifi: boolean;
   has_charging: boolean;
@@ -18,7 +18,7 @@ export interface ICafe {
   availability_time_slots: {
     date: string;
     time: string[];
-    seat: number;
+    seat: number[];
   }[];
   manager?: IUser;
   rating?: number;
