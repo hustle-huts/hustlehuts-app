@@ -41,7 +41,7 @@ const AllCafes = () => {
       "image_url": "./images/mocked-cafe1.jpeg",
       "availability_time_slots": [
         {
-          "date": "05-30-2023",
+          "date": "30-05-2023",
           "time": [
             "9am-10am",
             "10am-11am",
@@ -54,7 +54,7 @@ const AllCafes = () => {
           ]
         },
         {
-          "date": "05-31-2023",
+          "date": "31-05-2023",
           "time": [
             "2pm-3pm",
             "3pm-4pm",
@@ -92,7 +92,7 @@ const AllCafes = () => {
       "image_url": "./images/mocked-cafe1.jpeg",
       "availability_time_slots": [
         {
-          "date": "05-30-2023",
+          "date": "30-05-2023",
           "time": [
             "10am-11am",
             "11am-12pm",
@@ -130,7 +130,7 @@ const AllCafes = () => {
       "image_url": "./images/mocked-cafe1.jpeg",
       "availability_time_slots": [
         {
-          "date": "05-30-2023",
+          "date": "30-05-2023",
           "time": [
             "11am-12pm",
             "12pm-1pm",

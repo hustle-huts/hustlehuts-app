@@ -18,46 +18,31 @@ interface props {
 
 // function ModalToChooseSlots(props: any) {
 const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | null => {
-    const selectedButtonStyle = {
-        background: 'linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%)',
-        boxShadow: '0px 4px 40px rgba(160, 116, 78, 0.18)',
-        borderRadius: '10px',
-        padding: 1,
-        marginBottom: 2,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        maxWidth: '60%',
-        color: '#fff !important',
-    };
-    const unselectedButtonStyle = {
-        background: '',
-        boxShadow: '',
-        borderRadius: '10px',
-        padding: 1,
-        marginBottom: 2,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        maxWidth: '60%',
-        color: '#000 !important',
-    }
-    
     const [activeStep, setActiveStep] = useState(0);
-    const [buttonClickedList, setButtonClickedList] = useState<boolean[]>([]);
-    type ButtonVariant = 'text' | 'outlined' | 'contained';
-    const [variantList, setVariantList] = useState<Array<ButtonVariant>>([]);
-    const [buttonStyleList, setButtonStyleList] = useState<object[]>([]);
+
+    // to keep track of the date that the user has clicked in the modal
+    const [buttonTimeClickedList, setButtonTimeClickedList] = useState<boolean[]>([]);
+    const [buttonTimeStyleList, setButtonTimeStyleList] = useState<string[]>([]);
+
+    // to keep track of the time slots that the user has clicked in the modal
+    const [buttonDateClickedList, setButtonDateClickedList] = useState<boolean[]>([]);
+    const [buttonDateStyleList, setButtonDateStyleList] = useState<string[]>([]);
+
+    useEffect(() => {
+        console.log('Button clicked list useEffect:', buttonDateClickedList);
+    }, [buttonDateClickedList]);
     
     useEffect(() => {
-        console.log('Button clicked list useEffect:', buttonClickedList);
-    }, [buttonClickedList]);
+        console.log('Button style list useEffect:', buttonDateStyleList);
+    }, [buttonDateStyleList]);
     
     useEffect(() => {
-        console.log('Variant list useEffect:', variantList);
-    }, [variantList]);
+        console.log('Button clicked list useEffect:', buttonTimeClickedList);
+    }, [buttonTimeClickedList]);
     
     useEffect(() => {
-        console.log('Button style list useEffect:', buttonStyleList);
-    }, [buttonStyleList]);
+        console.log('Button style list useEffect:', buttonTimeStyleList);
+    }, [buttonTimeStyleList]);
     
     
     // increase the number of people
@@ -76,11 +61,24 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
     }
 
 
-    // Get the day of the week to show the correct opening hours in the choosingSlotsModal
-    const currentTime = new Date();
-    const dayOfWeek = (currentTime.getDay() + 6) % 7; // 0 for Monday, 1 for Tuesday, etc.
-    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    // Get the day of the week from"dd-mm-yyyy" 
+    const getDayOfWeek = (dateString: string) => {
+        const parts = dateString.split("-"); // Split the date string into day, month, and year parts
+        const formattedDate = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`); // Create a new Date object in the "yyyy-mm-dd" format
+        const dayOfWeek = formattedDate.toLocaleDateString("en-US", { weekday: "long" }); // Get the day of the week in long format (e.g., "Monday")
+        return dayOfWeek;
+    }
 
+    // Get the day of the week to show the correct opening hours in the choosingSlotsModal
+    const getCurrentDayOfWeekIndex = () => {
+        const currentTime = new Date();
+        const dayOfWeekIndex = (currentTime.getDay() + 6) % 7; // 0 for Monday, 1 for Tuesday, etc.
+        return dayOfWeekIndex;
+        // const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    }
+    
+
+    // show all the available dates as buttons
     const generateDateButtons = (cafe: any) => {
         if (!cafe) {
             return; // Return early if cafe is null or undefined
@@ -92,23 +90,52 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
             availDates.push(availSlots[i].date);
         }
 
-        const buttons = availDates.map((currentDate) => (
+        // // create the arrays to keep track of whether the date buttons are clicked on
+        // setButtonDateClickedList(Array.from({ length: availDates.length }, () => false));
+        // setButtonDateStyleList(
+        //     Array.from({ length: availDates.length }, () => styles.outlinedButton)
+        // );
+
+        // // change color of the button for the date the user clicks on
+        // const handleDateClick = (index: number) => {
+        //     setButtonDateStyleList((prevList) => {
+        //         const dateStyleUpdatedList = [...prevList];
+        //         if (dateStyleUpdatedList[index] === styles.outlinedButton) {
+        //             dateStyleUpdatedList[index] = styles.filledButton;
+        //         } else {
+        //             dateStyleUpdatedList[index] = styles.outlinedButton;
+        //         }
+        //         return dateStyleUpdatedList;
+        //     });
+
+        //     setButtonDateClickedList((prevList) => {
+        //         const dateClickedUpdatedList = [...prevList];
+        //         dateClickedUpdatedList[index] = !dateClickedUpdatedList[index];
+        //         return dateClickedUpdatedList;
+        //     });
+        // }
+
+        const buttons = availDates.map((currentDate, index) => (
             <Button 
-            key={currentDate}
-            className={styles.filledButton}
-            onClick={() => showCorrespondingTimeSlotsButtons(currentDate, cafe)} >
-            {currentDate}, {days[dayOfWeek]}
+            key={index}
+            className={styles.outlinedButton}
+            onClick={() => {
+                showCorrespondingTimeSlotsButtons(currentDate, cafe);
+                // handleDateClick(index);
+                }} >
+                {currentDate}, {getDayOfWeek(currentDate)}
             </Button>
         ));
         
         return (
             <div>
-            {buttons}
+                {buttons}
             </div>
         )
     }
 
     const showCorrespondingTimeSlotsButtons = (currentDate: string, cafe: any) => {
+
         // get the timeslots for the cafe again
         const availSlots = cafe.availability_time_slots;
 
@@ -117,62 +144,47 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
         const availCorrespondingSeats: number[] = [];
         for (let i = 0; i < availSlots.length; i++) {
             if (availSlots[i].date === currentDate) {
-            for (let j = 0; j < availSlots[i].time.length; j++) {
-                availCorrespondingTimeSlots.push(availSlots[i].time[j]);
-                availCorrespondingSeats.push(availSlots[i].seat[j]);
-            }
+                for (let j = 0; j < availSlots[i].time.length; j++) {
+                    availCorrespondingTimeSlots.push(availSlots[i].time[j]);
+                    availCorrespondingSeats.push(availSlots[i].seat[j]);
+                }
             }
         }
 
-        setButtonClickedList(Array.from({ length: availCorrespondingTimeSlots.length }, () => false));
-        setVariantList(Array.from({ length: availCorrespondingTimeSlots.length }, () => 'outlined'));
-        setButtonStyleList(
-            Array.from({ length: availCorrespondingTimeSlots.length }, () => unselectedButtonStyle)
+        setButtonTimeClickedList(Array.from({ length: availCorrespondingTimeSlots.length }, () => false));
+        setButtonTimeStyleList(
+            Array.from({ length: availCorrespondingTimeSlots.length }, () => styles.outlinedButton)
         );
-        
 
         // to click or unclick a button
         const handleButtonClick = (index: number) => {
-            setVariantList((prevList) => {
-            const updatedList = [...prevList];
-            if (updatedList[index] === 'contained') {
-                updatedList[index] = 'outlined'
-            } else {
-                updatedList[index] = 'contained'
-            }
-            return updatedList;
+            setButtonTimeStyleList((prevList) => {
+                const timeStyleUpdatedList = [...prevList];
+                if (timeStyleUpdatedList[index] === styles.outlinedButton) {
+                    timeStyleUpdatedList[index] = styles.filledButton;
+                } else {
+                    timeStyleUpdatedList[index] = styles.outlinedButton;
+                }
+                return timeStyleUpdatedList;
             });
 
-            setButtonStyleList((prevList) => {
-            const updatedList = [...prevList];
-            if (updatedList[index] === unselectedButtonStyle) {
-                updatedList[index] = selectedButtonStyle;
-            } else {
-                updatedList[index] = unselectedButtonStyle
-            }
-            return updatedList;
-            });
-
-            setButtonClickedList((prevList) => {
-            const updatedList = [...prevList];
-            updatedList[index] = !updatedList[index];
-            return updatedList;
+            setButtonTimeClickedList((prevList) => {
+                const timeClickedUpdatedList = [...prevList];
+                timeClickedUpdatedList[index] = !timeClickedUpdatedList[index];
+                return timeClickedUpdatedList;
             });
         };
 
         // build a button for each time slot and its no. of seats
         const timeButtons = availCorrespondingTimeSlots.map((timeSlot, index) => {
-            const variant = variantList[index];
-            const buttonStyle = buttonStyleList[index];
+            const buttonStyle = buttonTimeStyleList[index];
 
             return (
             <Button 
                 key={index} 
                 onClick={() => handleButtonClick(index)}
-                // variant={variant}
-                // color="warning"
                 // sx={buttonStyle}
-                className={styles.outlinedButton}
+                className={buttonStyle}
             >
                 {timeSlot} ({availCorrespondingSeats[index]} seats left)
             </Button>
@@ -258,7 +270,7 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                             marginLeft: 1, 
                         }} 
                         textAlign='left'>
-                        {props.cafe.open_at[dayOfWeek]} to {props.cafe.close_at[dayOfWeek]}
+                        {props.cafe.open_at[getCurrentDayOfWeekIndex()]} to {props.cafe.close_at[getCurrentDayOfWeekIndex()]}
                         </Typography>
                     </Grid>
                     </Container>
