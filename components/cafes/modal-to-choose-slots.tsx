@@ -1,6 +1,6 @@
 import { ReactElement, useState, useEffect } from 'react';
-import styles from './modal-to-choose-slots.module.css'
-import { Button, ButtonProps } from '@mui/material';
+import styles from './modal-to-choose-slots.module.css';
+import Button from '@mui/material/Button';
 import { AccessTime } from '@mui/icons-material';
 import BottomSheet from "@/components/ui/bottomSheet";
 import { Box, Container, Grid, MobileStepper, Typography } from '@mui/material';
@@ -95,18 +95,7 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
         const buttons = availDates.map((currentDate) => (
             <Button 
             key={currentDate}
-            size="small"
-            variant='contained'
-            sx={{
-            background: 'linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%)',
-            boxShadow: '0px 4px 40px rgba(160, 116, 78, 0.18)',
-            borderRadius: '10px',
-            padding: 1,
-            marginBottom: 2,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            color: '#fff !important',
-            }}
+            className={styles.filledButton}
             onClick={() => showCorrespondingTimeSlotsButtons(currentDate, cafe)} >
             {currentDate}, {days[dayOfWeek]}
             </Button>
@@ -180,10 +169,10 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
             <Button 
                 key={index} 
                 onClick={() => handleButtonClick(index)}
-                size="small"
-                variant={variant}
-                color="warning"
-                sx={buttonStyle}
+                // variant={variant}
+                // color="warning"
+                // sx={buttonStyle}
+                className={styles.outlinedButton}
             >
                 {timeSlot} ({availCorrespondingSeats[index]} seats left)
             </Button>
@@ -263,7 +252,12 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                         }}
                     >
                         <AccessTime />
-                        <Typography sx={{ width: 2 / 4, marginLeft: 1, }} textAlign='left'>
+                        <Typography 
+                        sx={{ 
+                            width: 2 / 4, 
+                            marginLeft: 1, 
+                        }} 
+                        textAlign='left'>
                         {props.cafe.open_at[dayOfWeek]} to {props.cafe.close_at[dayOfWeek]}
                         </Typography>
                     </Grid>
@@ -284,52 +278,39 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                         marginBottom: 2,
                     }}
                     >
-                    <Typography sx={{ width: 2 / 4, marginLeft: 1, height: 'fit-content', marginBottom: 2 }} textAlign='left' fontWeight={600}>
+                    <Typography 
+                    sx={{ 
+                        width: 2 / 4, 
+                        marginLeft: 1, 
+                        height: 'fit-content',
+                        marginTop: 2,
+                        marginBottom: 2 
+                        }} 
+                    textAlign='left'
+                    fontWeight={600}>
                         Number of People
                     </Typography>
                     <MobileStepper
                         variant='text'
                         steps={100}
-                        sx={{
-                        fontWeight: 600,
-                        height: 'fit-content',
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        background: 'rgba(216, 169, 119, 0.1)',
-                        borderRadius: '14px'
-                        }}
+                        className={styles.mobileStepper}
                         position='static'
                         activeStep={activeStep}
-                        nextButton={<Button
-                        size="small"
-                        variant='contained'
-                        sx={{
-                            width: '18px',
-                            background: 'linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%)',
-                            boxShadow: '0px 4px 40px rgba(160, 116, 78, 0.18)',
-                            borderRadius: '10px',
-                            padding: 1,
-                            color: '#fff !important',
-                            fontSize: '16px'
-                        }}
+                        
+                        // Next/add button
+                        nextButton={
+                        <Button
+                        className={styles.mobileStepperButton}
                         disabled={activeStep >= 100}
                         onClick={handleNext}
                         >
                         +
                         </Button>}
-                        backButton={<Button
-                        size="small"
-                        variant='contained'
-                        sx={{
-                            width: '18px',
-                            background: 'linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%)',
-                            boxShadow: '0px 4px 40px rgba(160, 116, 78, 0.18)',
-                            borderRadius: '10px',
-                            padding: 1,
-                            color: '#fff !important',
-                            fontSize: '16px'
-                        }}
+
+                        // Back/substract button
+                        backButton={
+                        <Button
+                        className={styles.mobileStepperButton}
                         disabled={activeStep <= 0}
                         onClick={handleBack}>
                         -
@@ -337,7 +318,7 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                     </Grid>
                     
                     
-                    {/* Select Date (with calendar) */}
+                    {/* Select Date */}
                     <Grid
                     container
                     direction="column"
@@ -351,42 +332,44 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                         width: '-webkit-fill-available'
                     }}
                     >
-                    <Typography sx={{ width: 2 / 4, marginLeft: 1, height: 'fit-content', marginBottom: 2 }} textAlign='left' fontWeight={600} >
-                        Select Date
-                    </Typography>
-
-                    <Grid
-                        container
-                        direction="column"
-                        justifyContent="flex-start"
-                        alignItems="flex-start"
-                        sx={{
-                        height: 'fit-content',
-                        marginLeft: 0,
-                        marginTop: 2,
-                        marginBottom: 2,
-                        width: '-webkit-fill-available'
-                        }}
-                    >
+                        <Typography 
+                        sx={{ 
+                            width: 2 / 4, 
+                            marginLeft: 1, 
+                            height: 'fit-content', 
+                            marginTop: 2,
+                            marginBottom: 2 
+                            }} 
+                        textAlign='left' 
+                        fontWeight={600} >
+                            Select Date
+                        </Typography>
 
                         {/* Show the dates available for this cafe */}
                         {generateDateButtons(props.cafe)}
 
-                        <Typography sx={{ width: 2 / 4, marginLeft: 1, height: 'fit-content', marginBottom: 2 }} textAlign='left' fontWeight={600} >
-                        Select Time 
+                        <Typography 
+                        sx={{ 
+                            width: 2 / 4, 
+                            marginLeft: 1, 
+                            height: 'fit-content', 
+                            marginTop: 2,
+                            marginBottom: 2 
+                            }} 
+                        textAlign='left' 
+                        fontWeight={600} >
+                            Select Time 
                         </Typography>
 
-                        {/* When they choose a date, the corresponding time will show */}
+                        {/* When they choose a date, the corresponding time slots will show */}
                         {props.selectedPossibleTimeSlots}
-                    </Grid>
                     </Grid>
 
 
                     {/* Continue button  */}
-                    <Button
-                        size="small"
-                        variant='contained'
+                    <Button 
                         className={styles.filledButton}
+                        size="small"
                     >
                         Continue
                     </Button>
