@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { DatePicker} from '@mui/lab';
 import { TextField } from '@mui/material';
 
+
+// NOT IN USE CURRENTLY 
 interface CalendarProps {
   availabilityTimeSlots: {
     date: string;
