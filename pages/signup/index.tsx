@@ -12,7 +12,7 @@ import { IRegisterRequest } from "@/models/user";
 import { signUpFormSchema } from "@/components/users/utils/validation-schema";
 import { SignUpStep } from "@/components/users/utils/constants";
 
-import styles from "@/styles/Signup.module.css";
+import styles from "@/styles/SignUp.module.css";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 

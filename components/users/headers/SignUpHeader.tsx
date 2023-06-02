@@ -6,7 +6,7 @@ import SignUp3 from "@/public/images/signup3.png";
 import LocationPointer from "@/public/images/arrow.png";
 import Image from "next/image";
 
-import styles from "@/styles/SignupHeader.module.css";
+import styles from "@/styles/SignUpHeader.module.css";
 
 export default function SignUpHeader() {
   return (
