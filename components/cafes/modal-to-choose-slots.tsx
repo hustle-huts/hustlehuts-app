@@ -134,6 +134,7 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
         )
     }
 
+    // to show the corresponding time slots for a date that a user clicks on
     const showCorrespondingTimeSlotsButtons = (currentDate: string, cafe: any) => {
 
         // get the timeslots for the cafe again
@@ -151,6 +152,7 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
             }
         }
 
+        // create the default lists for unclicked buttons 
         setButtonTimeClickedList(Array.from({ length: availCorrespondingTimeSlots.length }, () => false));
         setButtonTimeStyleList(
             Array.from({ length: availCorrespondingTimeSlots.length }, () => styles.outlinedButton)
