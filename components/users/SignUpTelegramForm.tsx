@@ -1,8 +1,10 @@
-import Button from "@/components/ui/button";
-import styles from "../../styles/SignupTele.module.css";
 import { useFormContext } from "react-hook-form";
+
 import TextField from "../shared/TextField";
+import Button from "../shared/Button";
 import { telegramHandlerFormControlName } from "./utils/constants";
+
+import styles from "@/styles/SignUpTelegramForm.module.css";
 
 type SignUpTelegramFormProps = {
   onContinue: () => void;

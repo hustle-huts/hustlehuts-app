@@ -1,5 +1,6 @@
 import { useFormContext } from "react-hook-form";
-import TextField from "../shared/TextField";
+import TextField from "@/components/shared/TextField";
+import Button from "@/components/shared/Button";
 import {
   emailFormControlName,
   firstNameFormControlName,
@@ -7,9 +8,8 @@ import {
   passwordFormControlName,
   phoneNumberFormControlName,
 } from "./utils/constants";
-import Button from "../shared/Button";
 
-import styles from "./SignUp.module.css";
+import styles from "@/styles/SignUpForm.module.css";
 
 type SignUpFormProps = {
   onContinue: () => void;
@@ -74,6 +74,9 @@ const SignUpForm = ({ onContinue }: SignUpFormProps) => {
           variant="outlined"
           isRequired={true}
           label="Phone Number"
+          InputProps={{
+            startAdornment: "+65",
+          }}
         />
       </div>
       <div className={styles.btn_groups}>

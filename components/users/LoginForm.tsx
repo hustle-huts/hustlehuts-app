@@ -10,7 +10,7 @@ import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
 import { ILoginRequest } from "@/models/user";
 import TextField from "../shared/TextField";
 import Button from "../shared/Button";
-import styles from "./LoginForm.module.css";
+import styles from "@/styles/LoginForm.module.css";
 
 import { loginEmailFormSchema } from "./utils/validation-schema";
 import { emailFormControlName } from "./utils/constants";
@@ -42,8 +42,12 @@ const LoginForm: React.FC = () => {
   };
 
   const onRegisterClick = async () => {
-    const email = getValues(emailFormControlName);
-    router.push({ pathname: "/signup", query: { email } });
+    const email: string = getValues(emailFormControlName);
+    const route: Record<string, string | Record<string, string>> = { pathname: "/signup" };
+    if (email) {
+      route.query = { email };
+    }
+    router.push(route);
   };
 
   return (

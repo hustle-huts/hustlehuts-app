@@ -1,9 +1,9 @@
-import Button from "@/components/ui/button";
-import Input from "@/components/ui/input";
-import styles from "../../../styles/Profile.module.css";
 import CafeItem from "@/components/cafes/cafe-item";
-import ProfileBox from "@/components/users/profile-box";
+import ProfileBox from "@/components/profile/ProfileBox";
 import { LinearProgress } from "@mui/material";
+
+import styles from "@/styles/Profile.module.css";
+
 export default function ProfilePage() {
   return (
     <div className={styles.container}>

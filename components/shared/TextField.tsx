@@ -32,14 +32,16 @@ const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
         sx={{
           "& legend": { display: "none" },
           "& fieldset": { top: 0 },
-          "& .MuiFormHelperText-root.Mui-error": {
-            textAlign: "end",
-            paddingRight: "20px",
+          "& .MuiFormHelperText-root": {
             fontFamily: "inherit",
             fontWeight: 400,
             fontSize: "10px",
             lineHeight: "12px",
-            marginTop: "4px",
+            color: "#000000",
+          },
+          "& .Mui-error": {
+            textAlign: "end",
+            paddingRight: "20px",
             color: "#FF2020",
           },
           "& .MuiInputAdornment-root": {

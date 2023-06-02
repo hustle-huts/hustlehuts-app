@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import SignUpHeader from "@/components/users/signup-header";
+import SignUpHeader from "@/components/users/headers/SignUpHeader";
 import SignUpForm from "@/components/users/SignUpForm";
 import SignUpTelegramForm from "@/components/users/SignUpTelegramForm";
 import SignUpSuccess from "@/components/users/SignUpSuccess";

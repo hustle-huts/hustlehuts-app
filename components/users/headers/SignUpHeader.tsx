@@ -1,11 +1,13 @@
-import styles from "./signup-header.module.css";
-import SignUpBgm from "../../public/images/signupheader.png";
-import SignUpCircles from "../../public/images/signupcircles.png";
-import SignUp1 from "../../public/images/signup1.png";
-import SignUp2 from "../../public/images/signup2.png";
-import SignUp3 from "../../public/images/signup3.png";
-import LocationPointer from "../../public/images/arrow.png";
+import SignUpBgm from "@/public/images/signupheader.png";
+import SignUpCircles from "@/public/images/signupcircles.png";
+import SignUp1 from "@/public/images/signup1.png";
+import SignUp2 from "@/public/images/signup2.png";
+import SignUp3 from "@/public/images/signup3.png";
+import LocationPointer from "@/public/images/arrow.png";
 import Image from "next/image";
+
+import styles from "@/styles/SignupHeader.module.css";
+
 export default function SignUpHeader() {
   return (
     <div className={styles.container}>

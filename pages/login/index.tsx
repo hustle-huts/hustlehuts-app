@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import LoginHeader from "@/components/users/login-header";
+import LoginHeader from "@/components/users/headers/LoginHeader";
 import { loginDetailsState, userState } from "@/recoil/auth/atom";
 import { ILoginRequest, IUser } from "@/models/user";
 import { loginApi } from "@/services/auth.service";
@@ -13,8 +14,10 @@ import Button from "@/components/shared/Button";
 import { loginPasswordFormSchema } from "@/components/users/utils/validation-schema";
 import { passwordFormControlName } from "@/components/users/utils/constants";
 
+import classNames from "classnames";
+
 import styles from "@/styles/Login.module.css";
-import { useEffect } from "react";
+import { Box } from "@mui/material";
 
 export default function LogInPage() {
   const router = useRouter();
@@ -56,28 +59,34 @@ export default function LogInPage() {
   };
 
   return (
-    <div className={styles.container}>
-      <LoginHeader />
-      <h1 className={styles.title}>Log In</h1>
-      <div className={styles.form}>
-        <div className={styles.form_row}>
-          <TextField
-            register={register}
-            name={passwordFormControlName}
-            type="password"
-            label={"Enter Password"}
-            error={errors[passwordFormControlName] ? true : false}
-            helperText={errors[passwordFormControlName]?.message?.toString()}
-            autoFocus
-            isRequired
-          />
-        </div>
-        <div className={styles.btn_groups}>
-          <Button btnType="primary" disabled={!getValues(passwordFormControlName) || !isValid} onClick={onLoginClick}>
-            Log In
-          </Button>
+    <Box
+      className="app-max-width"
+      display={"flex"}
+      flexDirection={"column"}
+      alignItems={"center"}
+      justifyContent={"center"}
+    >
+      <div className={styles.container}>
+        <LoginHeader />
+        <div className={styles.form}>
+          <div className={styles.form_row}>
+            <TextField
+              register={register}
+              name={passwordFormControlName}
+              type="password"
+              label={"Enter Password"}
+              errorText={errors[passwordFormControlName]?.message?.toString()}
+              autoFocus
+              isRequired
+            />
+          </div>
+          <div className={styles.btn_groups}>
+            <Button btnType="primary" disabled={!getValues(passwordFormControlName) || !isValid} onClick={onLoginClick}>
+              Log In
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </Box>
   );
 }

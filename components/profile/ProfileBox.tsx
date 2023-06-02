@@ -1,7 +1,9 @@
-import styles from "./profile-box.module.css";
+import Image from "next/image";
 import UserImage from "../../public/images/user-image.png";
 import ArrowRight from "../../public/images/arrow-right.png";
-import Image from "next/image";
+
+import styles from "@/styles/ProfileBox.module.css";
+
 export default function ProfileBox() {
   return (
     <button className={styles.container}>

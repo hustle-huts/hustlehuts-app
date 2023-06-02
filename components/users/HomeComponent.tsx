@@ -9,7 +9,10 @@ const HomeComponent: React.FC = () => {
   return (
     <Box
       className="app-max-width"
-      style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}
+      display={"flex"}
+      flexDirection={"column"}
+      alignItems={"center"}
+      justifyContent={"center"}
     >
       <GoogleOAuthProvider clientId="554539700276-7ofmtmaendohcdss79l752c1e25leb7e.apps.googleusercontent.com">
         <Image alt="" src={Logo} style={{ width: "280px", height: "74px", margin: "30px 0px" }} />
