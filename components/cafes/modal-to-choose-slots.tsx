@@ -13,7 +13,11 @@ interface props {
     isBottomSheetOpen: boolean,
     handleBottomSheetClose: functionType,
     selectedPossibleTimeSlots: any[] | null,
-    setSelectedPossibleTimeSlots: Function
+    setSelectedPossibleTimeSlots: Function,
+    setFinalSelectedDate: Function,
+    setFinalSelectedTimeSlots: Function,
+    finalSelectedTimeSlots: string[],
+    
 }
 
 // function ModalToChooseSlots(props: any) {
@@ -100,11 +104,14 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
         // const handleDateClick = (index: number) => {
         //     setButtonDateStyleList((prevList) => {
         //         const dateStyleUpdatedList = [...prevList];
-        //         if (dateStyleUpdatedList[index] === styles.outlinedButton) {
-        //             dateStyleUpdatedList[index] = styles.filledButton;
-        //         } else {
+
+        //         // only highlight one date at a time
+        //         for (let i = 0; i < availDates.length; i++) {
         //             dateStyleUpdatedList[index] = styles.outlinedButton;
         //         }
+        //         dateStyleUpdatedList[index] = styles.filledButton;
+        //         setFinalSelectedDate(availDates[index]);
+
         //         return dateStyleUpdatedList;
         //     });
 
@@ -140,8 +147,11 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
         // get the timeslots for the cafe again
         const availSlots = cafe.availability_time_slots;
 
+        // clear the previous selection of time slots by the user
+        props.setFinalSelectedTimeSlots([]);
+
         // for the chosen date, get all the corresponding time slots and no. of seats for each time slot
-        const availCorrespondingTimeSlots = [];
+        const availCorrespondingTimeSlots: string[] = [];
         const availCorrespondingSeats: number[] = [];
         for (let i = 0; i < availSlots.length; i++) {
             if (availSlots[i].date === currentDate) {
@@ -160,6 +170,10 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
 
         // to click or unclick a button
         const handleButtonClick = (index: number) => {
+            // add the selected time slot to user's final time slots chosen
+            // this list will be emptied when the user clicks on another date
+            props.setFinalSelectedTimeSlots((finalSelectedTimeSlots : string[]) => [...finalSelectedTimeSlots, availCorrespondingTimeSlots[index]]);
+            
             setButtonTimeStyleList((prevList) => {
                 const timeStyleUpdatedList = [...prevList];
                 if (timeStyleUpdatedList[index] === styles.outlinedButton) {
