@@ -1,4 +1,3 @@
-import styles from "./Signup.module.css";
 import { useFormContext } from "react-hook-form";
 import TextField from "../shared/TextField";
 import {
@@ -9,6 +8,8 @@ import {
   phoneNumberFormControlName,
 } from "./utils/constants";
 import Button from "../shared/Button";
+
+import styles from "./SignUp.module.css";
 
 type SignUpFormProps = {
   onContinue: () => void;
