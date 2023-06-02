@@ -1,65 +1,74 @@
-import Button from "@/components/ui/button";
-import Input from "@/components/ui/input";
+import { useEffect, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import SignUpHeader from "@/components/users/signup-header";
+import SignUpForm from "@/components/users/SignUpForm";
+import SignUpTelegramForm from "@/components/users/SignUpTelegramForm";
+import SignUpSuccess from "@/components/users/SignUpSuccess";
+
+import { registerApi } from "@/services/auth.service";
+import { IRegisterRequest } from "@/models/user";
+import { signUpFormSchema } from "@/components/users/utils/validation-schema";
+import { SignUpStep } from "@/components/users/utils/constants";
+
 import styles from "@/styles/Signup.module.css";
 import { useRouter } from "next/router";
-import { registerDetailsState } from "@/recoil/auth/atom";
-import { IRegisterRequest } from "@/models/user";
-import { useRecoilState } from "recoil";
+import classNames from "classnames";
 
-export default function SignUpName() {
+const SignUpPage = () => {
   const router = useRouter();
-  const [registerDetails, setRegisterDetails] = useRecoilState<IRegisterRequest>(registerDetailsState);
+  const methods = useForm({
+    mode: "all",
+    resolver: yupResolver(signUpFormSchema),
+    shouldUnregister: false,
+  });
+  const { setValue, getValues } = methods;
+  const [signUpStep, setSignUpStep] = useState<SignUpStep>(SignUpStep.FORM);
 
-  const onTypeChange = (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRegisterDetails({ ...registerDetails, [key]: e.target.value });
+  const onSubmit = async () => {
+    const registerDetails = getValues() as IRegisterRequest;
+    try {
+      await registerApi(registerDetails);
+      setSignUpStep(SignUpStep.SUCCESS);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const onSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    router.push("/users/signuptele");
-  };
+  useEffect(() => {
+    const { email } = router.query;
+    if (email) {
+      setValue("email", email);
+    }
+  }, []);
+
+  if (signUpStep === SignUpStep.SUCCESS) {
+    return <SignUpSuccess />;
+  }
 
   return (
-    <div className={styles.container}>
+    <div
+      className={classNames(styles.container, "app-max-width")}
+      style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}
+    >
       <SignUpHeader />
-      <form className={styles.form} onSubmit={onSubmit}>
-        <div
-          className={styles.form_row}
-          style={{
-            flexDirection: "row",
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <div className={styles.name}>
-            <Input isRequired={true} label="First Name" onChange={onTypeChange("first_name")}></Input>
-          </div>
-          <div className={styles.name}>
-            <Input isRequired={true} label="Last Name" onChange={onTypeChange("last_name")}></Input>
-          </div>
+      <FormProvider {...methods}>
+        <div className={styles.form}>
+          {signUpStep === SignUpStep.TELEGRAM ? (
+            <SignUpTelegramForm onContinue={() => onSubmit()} />
+          ) : (
+            <SignUpForm
+              onContinue={() => {
+                console.log(getValues());
+                setSignUpStep(SignUpStep.TELEGRAM);
+              }}
+            />
+          )}
         </div>
-        <div className={styles.form_row}>
-          <Input
-            type="password"
-            isRequired={true}
-            label="Enter Your Password"
-            onChange={onTypeChange("password")}
-          ></Input>
-          <Input
-            type="email"
-            isRequired={true}
-            disabled
-            label="Email"
-            value={registerDetails.email}
-            onChange={onTypeChange("email")}
-          />
-          <Input phone label="Enter Phone Number" onChange={onTypeChange("phone_number")}></Input>
-        </div>
-        <div className={styles.btn_groups}>
-          <Button>Continue</Button>
-        </div>
-      </form>
+      </FormProvider>
     </div>
   );
-}
+};
+
+export default SignUpPage;

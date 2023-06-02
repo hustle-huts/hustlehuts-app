@@ -1,15 +1,3 @@
-:root {
-  --max-width: 1100px;
-  height: 100%;
-}
-
-main {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
 /* FIXME: This is interrupting the toast from showing properly */
 * {
   box-sizing: border-box;
@@ -19,10 +7,26 @@ main {
   width: 100%;
 }
 
+:root {
+  --max-width: 1100px;
+  height: 100%;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.app-max-width {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 @media (min-width: 1024px) {
   main {
     justify-content: center;
-    /* width: 724px; */
   }
 }
 
@@ -34,7 +38,7 @@ body {
   width: 100%;
 }
 
-@media (min-width: 800px) {
+/* @media (min-width: 800px) {
   body {
     justify-content: center;
     display: flex;
@@ -45,9 +49,9 @@ body {
     flex-direction: column;
     align-items: center;
   }
-}
+} */
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: inherit !important;
+  text-decoration: none !important;
 }

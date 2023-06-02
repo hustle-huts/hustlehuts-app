@@ -1,9 +1,9 @@
-import Button from "@/components/ui/button";
-import Image from "next/image";
-import styles from "../../../styles/SignupSuccess.module.css";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import styles from "../../styles/SignupSuccess.module.css";
+import Button from "../shared/Button";
 
-export default function SignUpSuccess() {
+const SignUpSuccess = () => {
   const router = useRouter();
   return (
     <div className={styles.container}>
@@ -25,9 +25,11 @@ export default function SignUpSuccess() {
           Successful!
         </h1>
       </div>
-      <div style={{ padding: "30px 50px" }}>
+      <div style={{ padding: "30px 50px", height: "auto" }}>
         <Button onClick={() => router.push("/")}>Done</Button>
       </div>
     </div>
   );
-}
+};
+
+export default SignUpSuccess;

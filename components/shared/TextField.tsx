@@ -4,16 +4,17 @@ import { TextField as MUITextField, TextFieldProps as MUITextFieldProps } from "
 
 import styles from "./textfield.module.css";
 
-type TextFieldProps = MUITextFieldProps & {
+type TextFieldProps = Omit<MUITextFieldProps, "variant"> & {
   name: string;
   register: ReturnType<typeof useFormContext>["register"];
   isRequired?: boolean;
-  prefixicon?: string | ReactElement | ReactNode;
   value?: string | number;
+  errorText?: string;
+  variant?: "outlined" | "standard" | "filled";
 };
 
 const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
-  const { register, name, variant = "outlined", label, isRequired, prefixicon, ...rest } = props;
+  const { register, name, variant = "outlined", label, isRequired, errorText, helperText = "", ...rest } = props;
   return (
     <div className={styles.form_group}>
       {label && (
@@ -22,11 +23,12 @@ const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
           {isRequired && <span className={styles.required}>*</span>}
         </label>
       )}
-      {prefixicon && <span className="input-icon">{prefixicon}</span>}
       <MUITextField
         {...rest}
         {...register(name)}
         variant={variant}
+        error={!!errorText}
+        helperText={errorText ?? helperText}
         sx={{
           "& legend": { display: "none" },
           "& fieldset": { top: 0 },

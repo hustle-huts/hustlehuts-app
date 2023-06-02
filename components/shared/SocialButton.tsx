@@ -3,7 +3,7 @@ import MUIButton, { ButtonProps as MUIButtonProps } from "@mui/material/Button";
 import classNames from "classnames";
 
 import styles from "./button.module.css";
-import { SocialButtonType } from "./constants";
+import { SocialButtonType } from "./utils/constants";
 
 const Icons = {
   [SocialButtonType.GOOGLE]: (

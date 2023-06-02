@@ -1,26 +1,21 @@
-import React from "react";
 import { useRouter } from "next/router";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useRecoilState } from "recoil";
-import { loginDetailsState, registerDetailsState } from "@/recoil/auth/atom";
+import { loginDetailsState } from "@/recoil/auth/atom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Divider, InputAdornment } from "@mui/material";
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
 
-import { ILoginRequest, IRegisterRequest } from "@/models/user";
+import { ILoginRequest } from "@/models/user";
 import TextField from "../shared/TextField";
 import Button from "../shared/Button";
-import GoogleIcon from "../icons/google_icon";
-import FacebookIcon from "../icons/facebook-icon";
-import OutlookIcon from "../icons/outlook-icon";
-import OldButton from "../ui/button";
 import styles from "./LoginForm.module.css";
 
 import { loginEmailFormSchema } from "./utils/validation-schema";
 import { emailFormControlName } from "./utils/constants";
 import SocialButton from "../shared/SocialButton";
-import { SocialButtonType } from "../shared/constants";
+import { SocialButtonType } from "../shared/utils/constants";
 
 const LoginForm: React.FC = () => {
   const router = useRouter();
@@ -35,7 +30,6 @@ const LoginForm: React.FC = () => {
   });
 
   const [loginDetails, setLoginDetails] = useRecoilState<ILoginRequest>(loginDetailsState);
-  const [registerDetails, setRegisterDetails] = useRecoilState<IRegisterRequest>(registerDetailsState);
 
   const loginGoogle = useGoogleLogin({
     onSuccess: (tokenResponse) => console.log(tokenResponse),
@@ -49,8 +43,7 @@ const LoginForm: React.FC = () => {
 
   const onRegisterClick = async () => {
     const email = getValues(emailFormControlName);
-    setRegisterDetails({ ...registerDetails, email });
-    router.push("/signup");
+    router.push({ pathname: "/signup", query: { email } });
   };
 
   return (
@@ -59,11 +52,9 @@ const LoginForm: React.FC = () => {
         <TextField
           name={emailFormControlName}
           register={register}
+          errorText={errors[emailFormControlName]?.message?.toString()}
           type="email"
-          label={"Enter your email to begin"}
-          variant="outlined"
-          error={errors[emailFormControlName] ? true : false}
-          helperText={errors[emailFormControlName]?.message?.toString()}
+          label="Enter your email to begin"
           autoFocus
           InputProps={{
             endAdornment: getValues(emailFormControlName) && !errors[emailFormControlName] && (
