@@ -8,7 +8,13 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --check --ignore-path .gitignore .",
-    "format:fix": "prettier --write --ignore-path .gitignore ."
+    "format:fix": "prettier --write --ignore-path .gitignore .",
+    "pretty-quick": "pretty-quick --ignore-path .gitignore ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --ignore-path .gitignore ."
+    }
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -45,6 +51,8 @@
     "@types/axios": "^0.14.0",
     "@types/lodash": "^4.14.194",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "prettier": "^2.8.8"
+    "husky": "^8.0.3",
+    "prettier": "^2.8.8",
+    "pretty-quick": "^3.1.3"
   }
 }
