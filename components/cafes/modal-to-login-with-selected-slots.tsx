@@ -2,9 +2,9 @@ import { ReactElement, useState, useEffect } from 'react';
 import styles from './modal-to-choose-slots.module.css';
 import Button from '@mui/material/Button';
 import { AccessTime } from '@mui/icons-material';
-import BottomSheet from "@/components/ui/bottomSheet";
+import BottomSheet from "../../components/ui/bottomSheet";
 import { Box, Container, Grid, Typography } from '@mui/material';
-import MockedImg from '../../public/images/mocked-cafe-for-booking.png'
+import MockedImg from '../../public/images/mocked-cafe-for-booking.png';
 
 import ModalSelectedCafeDetails from './modal-selected-cafe-details';
 import LoginForm from "@/components/users/LoginForm";
