@@ -13,8 +13,6 @@ interface props {
 }
 
 const ModalSelectedCafeDetails: React.FC<props> = (props): ReactElement<any, any> | null => {
-
-
     return (
         <Container sx={{
             border: "1px solid #E7E7E7",

@@ -4,6 +4,7 @@ import BottomNavbar from "@/components/bottomNavbar/bottom-navbar";
 import TopBanner from "@/components/topBanner/top-banner";
 import CafeCard from "@/components/cafes/cafe-card";
 import ModalToChooseSlots from "@/components/cafes/modal-to-choose-slots";
+import ModalToLoginWithSelectedSlots from "@/components/cafes/modal-to-login-with-selected-slots";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Button, ButtonProps } from '@mui/material';
 // import CustomChip from '@/components/ui/chip';
@@ -154,6 +155,7 @@ const AllCafes = () => {
 
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [isModalToChooseSlotsOpen, setIsModalToChooseSlotsOpen] = useState(false);
+  const [isModalToLoginOpen, setIsModalToLoginOpen] = useState(false);
   const [selectedCafe, setSelectedCafe] = useState<any>({});
 
   // all the timeslots for the date that the user is currently looking at in the modal-to-choose-slots
@@ -173,7 +175,7 @@ const AllCafes = () => {
   // close the modal pop-up and reset all variables
   const handleBottomSheetClose = () => {
     setIsBottomSheetOpen(false);
-    setIsModalToChooseSlotsOpen(false);
+    setIsModalToLoginOpen(false);
     setSelectedCafe(null);
     setSelectedPossibleTimeSlots(null);
     setFinalSelectedDate("");
@@ -333,6 +335,18 @@ const AllCafes = () => {
           setFinalSelectedDate={setFinalSelectedDate}
           finalSelectedTimeSlots={finalSelectedTimeSlots}
           setFinalSelectedTimeSlots={setFinalSelectedTimeSlots}
+          setIsModalToLoginOpen={setIsModalToLoginOpen}
+          setIsModalToChooseSlotsOpen={setIsModalToChooseSlotsOpen}
+        />
+      ) : null}
+
+      {isModalToLoginOpen ? (
+        <ModalToLoginWithSelectedSlots 
+          cafe={selectedCafe} 
+          isBottomSheetOpen={isBottomSheetOpen}
+          handleBottomSheetClose={handleBottomSheetClose}
+          selectedDate={finalSelectedDate}
+          selectedTimeSlots={finalSelectedTimeSlots}
         />
       ) : null}
     </div>

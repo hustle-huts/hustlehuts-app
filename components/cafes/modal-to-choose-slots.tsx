@@ -2,7 +2,7 @@ import { ReactElement, useState, useEffect } from 'react';
 import styles from './modal-to-choose-slots.module.css';
 import Button from '@mui/material/Button';
 import { AccessTime } from '@mui/icons-material';
-import BottomSheet from "@/components/ui/bottomSheet";
+import BottomSheet from '../ui/bottomSheet';
 import { Box, Container, Grid, MobileStepper, Typography } from '@mui/material';
 import MockedImg from '../../public/images/mocked-cafe-for-booking.png'
 
@@ -17,7 +17,8 @@ interface props {
     setFinalSelectedDate: Function,
     setFinalSelectedTimeSlots: Function,
     finalSelectedTimeSlots: string[],
-    
+    setIsModalToLoginOpen: Function,
+    setIsModalToChooseSlotsOpen: Function
 }
 
 // function ModalToChooseSlots(props: any) {
@@ -233,6 +234,7 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                     boxShadow: "0px 4px 20px -5px rgba(0, 0, 0, 0.15)",
                     borderRadius: "20px",
                     height: 'fit-content',
+                    textAlign: 'center',
                     marginTop: 2,
                     paddingBottom: 2
                     }}>
@@ -246,6 +248,7 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                                 marginBottom: 2,
                                 maxHeight: { xs: 150, md: 220 },
                                 maxWidth: { xs: 280, md: 400 },
+
                             }}
                             alt="Cafe image."
                             src={MockedImg.src} />
@@ -398,6 +401,11 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                     {/* Continue button  */}
                     <Button 
                         className={styles.filledButton}
+                        onClick={() => {
+                            // open the next modal and close this current modal
+                            props.setIsModalToLoginOpen(true)
+                            props.setIsModalToChooseSlotsOpen(false)
+                        }}
                         size="small"
                     >
                         Continue
