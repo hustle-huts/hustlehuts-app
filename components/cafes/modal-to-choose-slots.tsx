@@ -28,6 +28,8 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
     // to keep track of the date that the user has clicked in the modal
     const [buttonTimeClickedList, setButtonTimeClickedList] = useState<boolean[]>([]);
     const [buttonTimeStyleList, setButtonTimeStyleList] = useState<string[]>([]);
+    const [availCorrespondingTimeSlots, setAvailCorrespondingTimeSlots] = useState<string[]>([]);
+    const [availCorrespondingSeats, setAvailCorrespondingSeats] = useState<number[]>([]);
 
     // to keep track of the time slots that the user has clicked in the modal
     const [buttonDateClickedList, setButtonDateClickedList] = useState<boolean[]>([]);
@@ -171,47 +173,32 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
         );
 
         // to click or unclick a button
-        const handleButtonClick = (index: number) => {
-            // add the selected time slot to user's final time slots chosen
-            // this list will be emptied when the user clicks on another date
-            props.setFinalSelectedTimeSlots((finalSelectedTimeSlots : string[]) => [...finalSelectedTimeSlots, availCorrespondingTimeSlots[index]]);
-            
-            setButtonTimeStyleList((prevList) => {
-                const timeStyleUpdatedList = [...prevList];
-                if (timeStyleUpdatedList[index] === styles.outlinedButton) {
-                    timeStyleUpdatedList[index] = styles.filledButton;
-                } else {
-                    timeStyleUpdatedList[index] = styles.outlinedButton;
-                }
-                return timeStyleUpdatedList;
-            });
-
-            setButtonTimeClickedList((prevList) => {
-                const timeClickedUpdatedList = [...prevList];
-                timeClickedUpdatedList[index] = !timeClickedUpdatedList[index];
-                return timeClickedUpdatedList;
-            });
-        };
-
-        // build a button for each time slot and its no. of seats
-        const timeButtons = availCorrespondingTimeSlots.map((timeSlot, index) => {
-            const buttonStyle = buttonTimeStyleList[index];
-
-            return (
-            <Button 
-                key={index} 
-                onClick={() => handleButtonClick(index)}
-                // sx={buttonStyle}
-                className={buttonStyle}
-            >
-                {timeSlot} ({availCorrespondingSeats[index]} seats left)
-            </Button>
-            );
-        });
-        
-
-        props.setSelectedPossibleTimeSlots(timeButtons);
+        setAvailCorrespondingTimeSlots(availCorrespondingTimeSlots)
+        setAvailCorrespondingSeats(availCorrespondingSeats)
     }
+
+    // to click or unclick a button
+    const handleButtonClick = (index: number) => {
+        // add the selected time slot to user's final time slots chosen
+        // this list will be emptied when the user clicks on another date
+        props.setFinalSelectedTimeSlots((finalSelectedTimeSlots : string[]) => [...finalSelectedTimeSlots, availCorrespondingTimeSlots[index]]);
+        
+        setButtonTimeStyleList((prevList) => {
+            const timeStyleUpdatedList = [...prevList];
+            if (timeStyleUpdatedList[index] === styles.outlinedButton) {
+                timeStyleUpdatedList[index] = styles.filledButton;
+            } else {
+                timeStyleUpdatedList[index] = styles.outlinedButton;
+            } 
+            return timeStyleUpdatedList;
+        });
+
+        setButtonTimeClickedList((prevList) => {
+            const timeClickedUpdatedList = [...prevList];
+            timeClickedUpdatedList[index] = !timeClickedUpdatedList[index];
+            return timeClickedUpdatedList;
+        });
+    };
 
     return (
         <div>
@@ -394,7 +381,21 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                         </Typography>
 
                         {/* When they choose a date, the corresponding time slots will show */}
-                        {props.selectedPossibleTimeSlots}
+                        {availCorrespondingTimeSlots.map((timeSlot, index) => {
+                            
+                            const buttonStyle = buttonTimeStyleList[index];
+
+                            return (
+                            <Button 
+                                key={index} 
+                                onClick={() => handleButtonClick(index)}
+                                // sx={buttonStyle}
+                                className={buttonStyle}
+                            >
+                                {timeSlot} ({availCorrespondingSeats[index]} seats left)
+                            </Button>
+                            );
+                        })}
                     </Grid>
 
 
