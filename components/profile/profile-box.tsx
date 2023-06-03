@@ -2,7 +2,7 @@ import Image from "next/image";
 import UserImage from "../../public/images/user-image.png";
 import ArrowRight from "../../public/images/arrow-right.png";
 
-import styles from "@/styles/ProfileBox.module.css";
+import styles from "./profile-box.module.css";
 
 export default function ProfileBox() {
   return (

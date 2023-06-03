@@ -3,7 +3,7 @@ import Input from '@/components/ui/input';
 import styles from '../../../styles/Profile.module.css';
 import CafeItem from '@/components/cafes/cafe-item';
 import TopBanner from '@/components/topBanner/top-banner';
-import ProfileBox from '@/components/users/profile-box';
+import ProfileBox from '@/components/profile/profile-box';
 import { Container, LinearProgress, Typography } from '@mui/material';
 import UserReward from '@/components/users/user-reward';
 import Image from 'next/image';
