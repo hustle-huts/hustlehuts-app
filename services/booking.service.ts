@@ -25,10 +25,11 @@ const createBookingApi = async (requestBody: CreateBookingRequest): Promise<IBoo
 const getBookingsApi = async (options?: GetBookingRequest): Promise<PaginatedBookingResult> => {
   const queryParams: GetBookingRequest = options || {};
 
-  const response = await axios_instance.get(`${BOOKING_PREFIX_URL}`, {
+  const data: PaginatedBookingResult = await axios_instance.get(`${BOOKING_PREFIX_URL}`, {
     params: queryParams,
   });
-  return response.data as PaginatedBookingResult;
+
+  return data;
 };
 
 /**
@@ -38,8 +39,8 @@ const getBookingsApi = async (options?: GetBookingRequest): Promise<PaginatedBoo
  * @returns IBooking - Single booking object
  */
 const getUserBookingsApi = async (): Promise<IBooking[]> => {
-  const response = await axios_instance.get(`${BOOKING_PREFIX_URL}/user`);
-  return response.data as IBooking[];
+  const { data: bookings }: { data: IBooking[] } = await axios_instance.get(`${BOOKING_PREFIX_URL}/user`);
+  return bookings;
 };
 
 /**
@@ -48,8 +49,8 @@ const getUserBookingsApi = async (): Promise<IBooking[]> => {
  * @returns IBooking - Single booking object
  */
 const getBookingByIdApi = async (bookingId: string): Promise<IBooking> => {
-  const response = await axios_instance.get(`${BOOKING_PREFIX_URL}/${bookingId}`);
-  return response.data as IBooking;
+  const { data: booking }: { data: IBooking } = await axios_instance.get(`${BOOKING_PREFIX_URL}/${bookingId}`);
+  return booking;
 };
 
 export { createBookingApi, getBookingsApi, getUserBookingsApi, getBookingByIdApi };

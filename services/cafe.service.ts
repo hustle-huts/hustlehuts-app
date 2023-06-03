@@ -13,10 +13,11 @@ const CAFE_PREFIX_URL = `/api/cafe`;
 const getCafesApi = async (options?: GetCafeRequest): Promise<PaginatedCafeResult> => {
   const queryParams: GetCafeRequest = options || {};
 
-  const response = await axios_instance.get(`${CAFE_PREFIX_URL}`, {
+  const data: PaginatedCafeResult = await axios_instance.get(`${CAFE_PREFIX_URL}`, {
     params: queryParams,
   });
-  return response.data as PaginatedCafeResult;
+
+  return data;
 };
 
 /**
@@ -37,10 +38,11 @@ const getCafesByQueryApi = async (options?: GetCafeRequest): Promise<ICafe[]> =>
     delete queryParams.entries_per_page;
   }
 
-  const response = await axios_instance.get(`${CAFE_PREFIX_URL}/query`, {
+  const { data }: { data: ICafe[] } = await axios_instance.get(`${CAFE_PREFIX_URL}/query`, {
     params: queryParams,
   });
-  return response.data as ICafe[];
+
+  return data;
 };
 
 /**
