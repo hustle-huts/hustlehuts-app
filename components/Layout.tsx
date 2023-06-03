@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
-const GUEST_PAGES = ["/", "/login", "/register"];
+const GUEST_PAGES = ["/", "/signup", "/login", "/login/password"];
 const LOGGED_IN_PAGES = ["/bookings", "/profile"];
 
 type LayoutProps = {
