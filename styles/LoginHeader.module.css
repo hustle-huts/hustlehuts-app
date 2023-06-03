@@ -6,7 +6,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  background-image: url("../../public/images/loginbackground.png");
+  background-image: url("../public/images/loginbackground.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -25,9 +25,13 @@
   font-size: 30px;
   line-height: 45px;
   z-index: 10;
-  margin-top: 18rem;
+  /* margin-top: 18rem; */
   height: fit-content;
   position: absolute;
+  /* center */
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 

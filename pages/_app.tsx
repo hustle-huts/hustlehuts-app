@@ -1,8 +1,8 @@
+import Head from "next/head";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Poppins } from "@next/font/google";
 import { RecoilRoot } from "recoil";
-import { Toaster } from "react-hot-toast";
 
 const font = Poppins({
   weight: ["400", "700", "500"],
@@ -11,11 +11,21 @@ const font = Poppins({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <RecoilRoot>
-      <main className={font.className}>
-        <Component {...pageProps} />
-        <Toaster />
-      </main>
-    </RecoilRoot>
+    <>
+      <Head>
+        <title>HustleHuts</title>
+        <meta
+          name="description"
+          content="Finding co-working spaces is challenging, and expensive. HustleHuts aims to connect you with conducive working spaces in cafes during off-peak hours, so you don't have to worry about finding work spots outside!"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <RecoilRoot>
+        <main className={font.className}>
+          <Component {...pageProps} />
+        </main>
+      </RecoilRoot>
+    </>
   );
 }

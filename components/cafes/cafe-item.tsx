@@ -1,7 +1,7 @@
 import styles from './cafe-item.module.css';
 import Button from '../ui/button';
 import Image from 'next/image';
-import Booking from '../../public/images/booking-image.png'
+import Booking from '../../public/images/mocked-cafe-for-booking.png'
 import CafeBadge from './cafe-badge';
 import { MouseEventHandler } from 'react';
 interface props {

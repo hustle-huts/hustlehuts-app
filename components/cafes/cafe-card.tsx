@@ -1,10 +1,10 @@
-import styles from './cafe-card.module.css';
-import Image from 'next/image';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import styles from "./cafe-card.module.css";
+import Image from "next/image";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 
 import HeartIcon from '../../public/images/heart.svg'
 import HeartEmptyIcon from '../../public/images/heart-empty.svg'

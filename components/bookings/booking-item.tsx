@@ -16,6 +16,7 @@ interface props {
 
 const CafeItem:React.FC<props> = (props) => {
     return (
+      <div>
         <div onClick={props.modalHandler} className={styles.card} style={{ backgroundImage: `url(${Booking.src})` }}>
             <div className={styles.badge}>
                 <p className={styles.badgeText}>4 Credits</p>
@@ -31,7 +32,12 @@ const CafeItem:React.FC<props> = (props) => {
                 </div>
             </div>
         </div>
-    );
-}
+        <div className={styles.rightHeading}>
+          <p className={styles.rightHeadingText}>28/01</p>
+          <p className={styles.rightHeadingText}>4pm-6pm</p>
+        </div>
+      </div>
+  );
+};
 
 export default CafeItem;

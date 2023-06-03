@@ -1,0 +1,45 @@
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.form {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  /* justify-content: center; */
+  align-items: center;
+  justify-items: center;
+}
+
+.name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: space-between;
+  width: 45%;
+}
+
+.btn_groups {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  margin: 10px 0px;
+  width: 80%;
+}
+
+.form_row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: fit-content;
+}

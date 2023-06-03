@@ -1,192 +1,191 @@
 .card {
-    background-size: cover;
-    position: absolute;
-    height: 30%;
-    width: 80%;
-    border-radius: 16px;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-size: cover;
+  position: absolute;
+  height: 30%;
+  width: 80%;
+  border-radius: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media  (min-width: 510px) {
-    .card {
-        height: 35%;
-        width: 70%;
-    }
-    .title {
-        font-size: 1.75vw !important;
-    }
+  .card {
+      height: 35%;
+      width: 70%;
+  }
+  .title {
+      font-size: 1.75vw !important;
+  }
 
-    .rightHeadingText {
-        font-size: 1.75vw !important;
-    }
+  .rightHeadingText {
+      font-size: 1.75vw !important;
+  }
 
-    .badge {
-        position: absolute;
-        width: 60px;
-        height: 60px;
-        right: 13px;
-        top: 20px;
-    }
-    
-    .topleftHeadingText {
-        font-size: 3vw !important;
-    }
-    
-    .bottomleftHeadingText {
-        font-size:1.5vw !important;
-    }
+  .badge {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      right: 13px;
+      top: 20px;
+  }
+  
+  .topleftHeadingText {
+      font-size: 3vw !important;
+  }
+  
+  .bottomleftHeadingText {
+      font-size:1.5vw !important;
+  }
 }
 
 @media  (min-width: 1024px) {
-    .card {
-        height: 30%;
-        width: 50%;
-    }
-    .title {
-        font-size: 0.75vw !important;
-    }
-    .badgeText {
-        font-size: 1vw !important;
-    }
+  .card {
+      height: 30%;
+      width: 50%;
+  }
+  .title {
+      font-size: 0.75vw !important;
+  }
+  .badgeText {
+      font-size: 1vw !important;
+  }
 
-    .rightHeadingText {
-        font-size: 0.75vw !important;
-    }
-    
-    .topleftHeadingText {
-        font-size: 1.25vw !important;
-    }
-    
-    .bottomleftHeadingText {
-        font-size:0.75vw !important;
-    }
+  .rightHeadingText {
+      font-size: 0.75vw !important;
+  }
+  
+  .topleftHeadingText {
+      font-size: 1.25vw !important;
+  }
+  
+  .bottomleftHeadingText {
+      font-size:0.75vw !important;
+  }
 }
 
 
 .title {
-    font-size: 2vw;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  font-size: 2vw;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 
 .titleContainer {
-    padding: 10px 14px;
-    gap: 10px;
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    width: 40%;
-    text-align: center;
-    height: 15%;
-    top: 0px;
-    background: linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%);
-    box-shadow: 0px 4px 40px rgba(160, 116, 78, 0.18);
-    border-radius: 16px 0px;
+  padding: 10px 14px;
+  gap: 10px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  width: 40%;
+  text-align: center;
+  height: 15%;
+  top: 0px;
+  background: linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%);
+  box-shadow: 0px 4px 40px rgba(160, 116, 78, 0.18);
+  border-radius: 16px 0px;
 }
 
 .badge {
-    position: absolute;
-    width: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    right: 13px;
-    top: 20px;
+  position: absolute;
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  right: 13px;
+  top: 20px;
 }
 
 .badgeText {
-    align-items: center;
-    color: white;
-    padding-top: 5px;
-    font-size: 2vw;
-    font-weight: 400;
-    justify-content: center;
-    text-align: center;
+  align-items: center;
+  color: white;
+  padding-top: 5px;
+  font-size: 2vw;
+  font-weight: 400;
+  justify-content: center;
+  text-align: center;
 }
 
 .redeem {
-    background: rgba(255, 255, 255, 0.17);
-    backdrop-filter: blur(3px);
-    border-radius: 10px;
-    height: 50%;
-    width: 60%;
-    padding: 7px 12px;
+  background: rgba(255, 255, 255, 0.17);
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+  height: 50%;
+  width: 60%;
+  padding: 7px 12px;
 }
 
 .rightHeadingText {
-    font-size: 2vw;
-    color: white;
-    line-height: 21px;
-    font-weight: 600;
-    text-align: center;
-    text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 2vw;
+  color: white;
+  line-height: 21px;
+  font-weight: 600;
+  text-align: center;
+  text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .topleftHeadingText {
-    font-size: 5vw;
-    color: white;
-    line-height: 16.5px;
-    font-weight: 600;
-    display: flex;
-    align-items: flex-end;
-    justify-content: left;
-    text-align: left;
+  font-size: 5vw;
+  color: white;
+  line-height: 16.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: flex-end;
+  justify-content: left;
+  text-align: left;
 }
 
 .bottomleftHeadingText {
-    font-size:2vw;
-    color: white;
-    line-height: 16.5px;
-    font-weight: 200;
-    padding-top: 5px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: left;
-    text-align: left;
+  font-size:2vw;
+  color: white;
+  line-height: 16.5px;
+  font-weight: 200;
+  padding-top: 5px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: left;
+  text-align: left;
 }
 
 .headingContainer {
-    gap: 10px;
-    display: flex;
-    align-items: center; 
-    flex-direction: row;
-    position: absolute;
-    justify-content: space-between;
-    width: 100%;
-    bottom: 0px;
-    text-align: center;
-    height: 30%;
-    background-size: cover;
-    background-color: linear-gradient(180deg, rgba(2, 2, 2, 0.38) 0%, rgba(2, 2, 2, 0.29) 100%);
-    backdrop-filter: blur(10.5px);
-    border-radius: 0px 0px 16px 16px;
+  gap: 10px;
+  display: flex;
+  align-items: center; 
+  flex-direction: row;
+  position: absolute;
+  justify-content: space-between;
+  width: 100%;
+  bottom: 0px;
+  text-align: center;
+  height: 30%;
+  background-size: cover;
+  background-color: linear-gradient(180deg, rgba(2, 2, 2, 0.38) 0%, rgba(2, 2, 2, 0.29) 100%);
+  backdrop-filter: blur(10.5px);
+  border-radius: 0px 0px 16px 16px;
 }
 
 .leftHeading {
-    display: flex;
-    width: 50%;
-    padding-left: 14px;
-    flex: 1.5;
-    flex-direction: column;
+  display: flex;
+  width: 50%;
+  padding-left: 14px;
+  flex: 1.5;
+  flex-direction: column;
 }
 
 .rightHeading {
-    width: 50%;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  width: 50%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-
 

@@ -1,0 +1,20 @@
+.primary {
+  background: linear-gradient(176.54deg, #6d5747 -11.89%, #b88151 64.46%) !important;
+  color: white !important;
+}
+
+.secondary {
+  background-color: #ffffff !important;
+  color: #6d5747 !important;
+}
+
+.disabled {
+  background-color: #cccccc !important;
+  cursor: not-allowed;
+  color: #8b8b8b !important;
+}
+
+.social {
+  background-color: #ffffff !important;
+  color: black !important;
+}

@@ -18,24 +18,24 @@
 }
 
 .title {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .icon {
-    flex: 1;
-    margin-right: 6px;
-    height: 40px;
+  flex: 1;
+  margin-right: 6px;
+  height: 40px;
 }
 
 .reward {
-    display: flex;
-    flex-direction: column;
-    flex: 5;
+  display: flex;
+  flex-direction: column;
+  flex: 5;
 }
 
 .bar {
-    color: #D89B60;
+  color: #d89b60;
 }
 
 .progress {
@@ -64,6 +64,5 @@
 }
 
 .MuiLinearProgress-root {
-    height: 10px;
-  }
-
+  height: 10px;
+}

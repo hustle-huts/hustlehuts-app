@@ -2,16 +2,18 @@ import axios from "axios";
 import _ from "lodash";
 
 const axios_instance = axios.create({ baseURL: process.env.API_URL });
-axios_instance.interceptors.request.use(
-  (config) => {
-    console.log("Making request to " + config.url);
-    const access_token = localStorage.getItem("access_token");
-    if (access_token) {
-      config.headers["Authorization"] = `Bearer ${access_token}`;
-      config.headers["token-type"] = "Bearer";
-    }
-    return config;
-  },
+axios_instance.interceptors.request.use((config) => {
+  console.log("Making request to " + config.url);
+  const access_token = localStorage.getItem("access_token");
+  if (access_token) {
+    config.headers["Authorization"] = `Bearer ${access_token}`;
+    config.headers["token-type"] = "Bearer";
+  }
+  return config;
+});
+
+axios_instance.interceptors.response.use(
+  (response) => response,
   (error) => {
     console.error(error);
     const default_error = _.get(error, "response.data.errors", error);
@@ -22,6 +24,7 @@ axios_instance.interceptors.request.use(
       error_string = JSON.stringify(final_error);
     }
     throw error_string;
-  }
+  },
 );
+
 export default axios_instance;

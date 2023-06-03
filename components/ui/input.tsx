@@ -3,9 +3,7 @@ import styles from "./input.module.css";
 import classnames from "classnames";
 import PhoneInput from "react-phone-input-2";
 
-interface Props
-  extends Partial<React.InputHTMLAttributes<any>>,
-    Partial<TextareaHTMLAttributes<any>> {
+interface Props extends Partial<React.InputHTMLAttributes<any>>, Partial<TextareaHTMLAttributes<any>> {
   className?: string;
   variation?: "primary" | "secondary";
   placeholder?: string;
@@ -52,10 +50,7 @@ const Input: React.FC<Props> = (Props) => {
           <PhoneInput
             placeholder=""
             country={"sg"}
-            dropdownClass={classnames(
-              error && styles.error_input,
-              styles.phone
-            )}
+            dropdownClass={classnames(error && styles.error_input, styles.phone)}
             inputClass={classnames(error && styles.error_input, styles.phone)}
             containerStyle={{ borderRadius: "14px !important" }}
             buttonStyle={{ borderRadius: "14px !important" }}
@@ -63,17 +58,12 @@ const Input: React.FC<Props> = (Props) => {
               borderRadius: "14px !important",
               padding: "0px 10px",
             }}
-            containerClass={classnames(
-              error && styles.error_input,
-              styles.phone
-            )}
+            containerClass={classnames(error && styles.error_input, styles.phone)}
             onBlur={() => {}}
             specialLabel=""
             disabled={false}
           />
-          {error && (
-            <span className={error && styles.error_message}>{error}</span>
-          )}
+          {error && <span className={error && styles.error_message}>{error}</span>}
         </div>
       </>
     );

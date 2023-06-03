@@ -1,9 +1,4 @@
-import React, {
-  ButtonHTMLAttributes,
-  MouseEventHandler,
-  ReactElement,
-  ReactNode,
-} from "react";
+import React, { ButtonHTMLAttributes, MouseEventHandler, ReactElement, ReactNode } from "react";
 import styles from "./button.module.css";
 
 interface Props extends ButtonHTMLAttributes<any> {
@@ -17,28 +12,14 @@ interface Props extends ButtonHTMLAttributes<any> {
 }
 
 const Button: React.FC<Props> = (Props) => {
-  const {
-    className,
-    icon,
-    affixicon,
-    btntype = "primary",
-    size,
-    onClick = () => {},
-    children,
-    ...rest
-  } = Props;
+  const { className, icon, affixicon, btntype = "primary", size, onClick = () => {}, children, ...rest } = Props;
 
   return (
     <div>
       <button
-        className={
-          btntype === "primary"
-            ? styles.primary
-            : btntype === "secondary"
-            ? styles.secondary
-            : styles.outline
-        }
+        className={btntype === "primary" ? styles.primary : btntype === "secondary" ? styles.secondary : styles.outline}
         onClick={onClick}
+        disabled={rest.disabled}
       >
         {icon && <span className={styles.icon}>{icon}</span>}
         {children}

@@ -1,9 +1,10 @@
-import Button from "@/components/ui/button";
-import Image from "next/image";
-import styles from "../../../styles/SignupSuccess.module.css";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import Button from "@/components/shared/Button";
 
-export default function SignUpSuccess() {
+import styles from "@/styles/SignUpSuccess.module.css";
+
+const SignUpSuccess = () => {
   const router = useRouter();
   return (
     <div className={styles.container}>
@@ -12,8 +13,7 @@ export default function SignUpSuccess() {
         src="/images/signupSuccess.png"
         style={{
           width: "100%",
-          height: "200%",
-          margin: "30px 40px 0px 0px",
+          margin: "50px 80px 0px 0px",
           objectFit: "contain",
         }}
         width="600"
@@ -24,10 +24,12 @@ export default function SignUpSuccess() {
         <h1 className={styles.text} style={{ color: "#DB9A5A" }}>
           Successful!
         </h1>
-      </div>
-      <div style={{ padding: "30px 50px" }}>
-        <Button onClick={() => router.push("/")}>Done</Button>
+        <div style={{ padding: "30px 100px", height: "auto" }}>
+          <Button onClick={() => router.push("/")}>Done</Button>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default SignUpSuccess;

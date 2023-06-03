@@ -1,37 +1,37 @@
 .bookingContainer {
-    padding-top: 5.5rem;   /* 4.5rem is the height of top banner, and then add some more margin for aesthetics */
-    padding-bottom: 3.5rem;   /* height of bottom navbar */
+  padding-top: 5.5rem; /* 4.5rem is the height of top banner, and then add some more margin for aesthetics */
+  padding-bottom: 3.5rem; /* height of bottom navbar */
 
-    padding-left: 5%;
-    padding-right: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 810px) {
-    .bookingContainer {
-        padding-left: 25%;
-        padding-right: 25%;  
-    }
+  .bookingContainer {
+    padding-left: 25%;
+    padding-right: 25%;
+  }
 }
 
 .title {
-    margin-top: 2rem;
-    text-align: left;
-    margin-bottom: 1rem;
-    height: 1.5rem; /* to overwrite the globals.css */
-    font-size: 1.2rem;
-    font-weight: 600;
+  margin-top: 2rem;
+  text-align: left;
+  margin-bottom: 1rem;
+  height: 1.5rem; /* to overwrite the globals.css */
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .cafeContainer {
-    display: flex;
-    justify-content: center;
-    height: 450px;
+  display: flex;
+  justify-content: center;
+  height: 450px;
 }
 
 .cafeModalContainer {
@@ -167,31 +167,31 @@
 }
 
 .contactButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 18rem;
-    border: none;
-    border-radius: 14px;
-    background: rgba(216, 169, 119, 0.2);
-    opacity: 0.9;   
-    cursor: pointer;
-    height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18rem;
+  border: none;
+  border-radius: 14px;
+  background: rgba(216, 169, 119, 0.2);
+  opacity: 0.9;
+  cursor: pointer;
+  height: 4rem;
 }
 
 .contactIcon {
-    margin-top: 0.3rem;
-    width: 4rem;
-    height: 4rem;
+  margin-top: 0.3rem;
+  width: 4rem;
+  height: 4rem;
 }
 
 .contactText {
-    text-align: left;
-    margin-top: 2rem;
+  text-align: left;
+  margin-top: 2rem;
 }
 
 .emailText {
-    color:#D89B60;
-    text-align: left;
-    text-decoration: underline;
+  color: #d89b60;
+  text-align: left;
+  text-decoration: underline;
 }

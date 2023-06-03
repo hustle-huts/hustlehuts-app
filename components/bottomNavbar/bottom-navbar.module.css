@@ -1,36 +1,35 @@
 .navbar {
-    background: linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%);
-    box-shadow: 0px 4px 40px rgba(160, 116, 78, 0.18);
-    position: fixed;
-    bottom: 0;
-    left: 0px;
-    height: 3.5rem;
-    display: flex;
-    padding: 10px 5%;
+  background: linear-gradient(176.54deg, #6d5747 -11.89%, #b88151 64.46%);
+  box-shadow: 0px 4px 40px rgba(160, 116, 78, 0.18);
+  position: fixed;
+  bottom: 0;
+  height: 3.5rem;
+  display: flex;
+  padding: 10px 5%;
 }
 
 @media (min-width: 700px) {
-    .navbar {
-        padding: 10px 18%;
-    }
+  .navbar {
+    padding: 10px 18%;
+  }
 }
 
 .navbar a {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* center the images horizontally */
-    margin: 0 10px; 
+  display: flex;
+  justify-content: center;
+  align-items: center; /* center the images horizontally */
+  margin: 0 10px;
 }
-  
+
 .navbar img {
-    max-width: 100%;
-    max-height: 100%; /* make the images fill the height of the link */
-    object-fit: contain; /* scale the image to fit the link without stretching it */
+  max-width: 100%;
+  max-height: 100%; /* make the images fill the height of the link */
+  object-fit: contain; /* scale the image to fit the link without stretching it */
 }
 
 .iconContainer {
-    flex: 1; /* distribute the containers evenly */
-    display: flex;
-    justify-content: center; /* center the icon horizontally */
-    align-items: center; /* center the icon vertically */
+  flex: 1; /* distribute the containers evenly */
+  display: flex;
+  justify-content: center; /* center the icon horizontally */
+  align-items: center; /* center the icon vertically */
 }

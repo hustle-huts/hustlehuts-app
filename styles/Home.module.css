@@ -7,31 +7,3 @@
   display: flex;
   flex-direction: column;
 }
-
-.image {
-  flex: 1.5;
-  border-radius: 12px;
-  height: fit-content;
-  justify-content: center;
-  align-items: center;
-  padding: 0px;
-  display: flex;
-}
-
-.date::-webkit-datetime-edit-text {
-  color: black;
-  font-family: inherit;
-  font-size: 14px;
-  /* Add more styles as needed */
-}
-
-.date {
-  width: -webkit-fill-available;
-  height: 55px;
-  padding: 10px;
-  background: #FFFFFF;
-  font-family: inherit;
-  border: 1px solid #CDCCCC;
-  border-radius: 14px;
-
-}

@@ -1,23 +1,15 @@
 import axios_instance from "./axios";
-import {
-  ILoginRequest,
-  ILoginResponse,
-  IRegisterRequest,
-  IUser,
-} from "@/models/user";
+import { ILoginRequest, ILoginResponse, IRegisterRequest, IUser } from "@/models/user";
 
 const AUTH_PREFIX_URL = `/api/auth`;
 
 const authApi = async () => {
-  const { data: user }: { data: IUser } = await axios_instance.get(
-    `${AUTH_PREFIX_URL}/auth`
-  );
+  const { data: user }: { data: IUser } = await axios_instance.get(`${AUTH_PREFIX_URL}/auth`);
   return user;
 };
 
 const loginApi = async (payload: ILoginRequest) => {
-  const { data: user, access_token }: ILoginResponse =
-    await axios_instance.post(`${AUTH_PREFIX_URL}/login`, payload);
+  const { data: user, access_token }: ILoginResponse = await axios_instance.post(`${AUTH_PREFIX_URL}/login`, payload);
   if (access_token) {
     localStorage.setItem("access_token", access_token);
   }
@@ -25,10 +17,7 @@ const loginApi = async (payload: ILoginRequest) => {
 };
 
 const registerApi = async (payload: IRegisterRequest) => {
-  const { data: user }: { data: IUser } = await axios_instance.post(
-    `${AUTH_PREFIX_URL}`,
-    payload
-  );
+  const { data: user }: { data: IUser } = await axios_instance.post(`${AUTH_PREFIX_URL}`, payload);
   return user;
 };
 

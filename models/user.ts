@@ -37,12 +37,5 @@ export interface ILoginResponse {
 
 export type IRegisterRequest = Omit<
   IUser,
-  | "_id"
-  | "type"
-  | "hash_password"
-  | "created_at"
-  | "updated_at"
-  | "deleted_at"
-  | "provider"
-  | "provider_meta"
+  "_id" | "type" | "hash_password" | "created_at" | "updated_at" | "deleted_at" | "provider" | "provider_meta"
 > & { password: string };
