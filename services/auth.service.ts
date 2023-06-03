@@ -9,7 +9,7 @@ const authApi = async () => {
 };
 
 const loginApi = async (payload: ILoginRequest) => {
-  const { data: user, access_token }: ILoginResponse = await axios_instance.post(`${AUTH_PREFIX_URL}/login`, payload);
+  const { access_token, data: user }: ILoginResponse = await axios_instance.post(`${AUTH_PREFIX_URL}/login`, payload);
   if (access_token) {
     localStorage.setItem("access_token", access_token);
   }

@@ -38,7 +38,7 @@ const LoginForm: React.FC = () => {
   const onLoginClick = async () => {
     const email = getValues(emailFormControlName);
     setLoginDetails({ ...loginDetails, email });
-    router.push("/login");
+    router.push("/login/password");
   };
 
   const onRegisterClick = async () => {

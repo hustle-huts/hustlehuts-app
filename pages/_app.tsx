@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Poppins } from "@next/font/google";
 import { RecoilRoot } from "recoil";
+import Layout from "@/components/Layout";
 
 const font = Poppins({
   weight: ["400", "700", "500"],
@@ -23,7 +24,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <RecoilRoot>
         <main className={font.className}>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </main>
       </RecoilRoot>
     </>
