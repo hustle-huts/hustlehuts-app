@@ -7,6 +7,9 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import MockedImg from '../../public/images/mocked-cafe-for-booking.png'
 
 import ModalSelectedCafeDetails from './modal-selected-cafe-details';
+import LoginForm from "@/components/users/LoginForm";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import HomeComponent from "@/components/users/HomeComponent";
 
 
 type functionType = () => void;
@@ -82,6 +85,26 @@ const ModalToLoginWithSelectedSlots: React.FC<props> = (props): ReactElement<any
                         selectedTimeSlots={props.selectedTimeSlots}
                     />
                 </Grid>
+
+                <Grid
+                    container
+                    direction="column"
+                    justifyContent="flex-start"
+                    alignItems="flex-start"
+                    sx={{
+                        height: 'fit-content',
+                        marginTop: 2,
+                        paddingBottom: 5,
+                        width: '-webkit-fill-available'
+                    }}
+                    >
+                    
+                    <GoogleOAuthProvider clientId="554539700276-7ofmtmaendohcdss79l752c1e25leb7e.apps.googleusercontent.com">
+                        <LoginForm />
+                    </GoogleOAuthProvider>
+                </Grid>
+
+
             </Grid>
         </BottomSheet>
     );
