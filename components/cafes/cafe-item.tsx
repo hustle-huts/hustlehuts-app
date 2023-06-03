@@ -1,6 +1,7 @@
 import Booking from "../../public/images/booking-image.png";
 import CafeBadge from "./cafe-badge";
 import styles from "./cafe-item.module.css";
+
 interface props {
   className?: string;
   isOpen: boolean;

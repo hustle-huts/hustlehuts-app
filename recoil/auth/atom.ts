@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+
 import { ILoginRequest, IUser } from "@/models/user";
 
 export const userState = atom({

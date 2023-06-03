@@ -1,5 +1,6 @@
 import Booking from "../../public/images/booking-image.png";
 import styles from "./booking-item.module.css";
+
 interface props {
   bookingId?: Number;
   imageLink?: String;

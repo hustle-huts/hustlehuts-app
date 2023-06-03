@@ -1,5 +1,5 @@
-import { IUser } from "./user";
 import { ICafe } from "./cafe";
+import { IUser } from "./user";
 
 export interface IBooking {
   _id: string;
