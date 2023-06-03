@@ -15,6 +15,7 @@ import { SignUpStep } from "@/components/users/utils/constants";
 import styles from "@/styles/SignUp.module.css";
 import { useRouter } from "next/router";
 import classNames from "classnames";
+import { Box } from "@mui/material";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -48,9 +49,12 @@ const SignUpPage = () => {
   }
 
   return (
-    <div
+    <Box
       className={classNames(styles.container, "app-max-width")}
-      style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}
+      display={"flex"}
+      flexDirection={"column"}
+      alignItems={"center"}
+      justifyContent={"center"}
     >
       <SignUpHeader />
       <FormProvider {...methods}>
@@ -67,7 +71,7 @@ const SignUpPage = () => {
           )}
         </div>
       </FormProvider>
-    </div>
+    </Box>
   );
 };
 

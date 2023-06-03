@@ -12,7 +12,7 @@ import FilterIcon from "../../public/images/filter.svg";
 
 import { useState } from "react";
 
-export default function AllCafes() {
+const CafesPage = () => {
   const [selectedFilter, setSelectedFilters] = useState("filter1");
 
   // Testing data
@@ -135,4 +135,6 @@ export default function AllCafes() {
       <BottomNavbar currentPage="home" />
     </>
   );
-}
+};
+
+export default CafesPage;
