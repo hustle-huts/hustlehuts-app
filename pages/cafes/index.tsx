@@ -154,13 +154,13 @@ const AllCafes = () => {
 
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
   const [isModalToChooseSlotsOpen, setIsModalToChooseSlotsOpen] = useState(false);
-  const [selectedCafe, setSelectedCafe] = useState<any>(null);
+  const [selectedCafe, setSelectedCafe] = useState<any>({});
 
   // all the timeslots for the date that the user is currently looking at in the modal-to-choose-slots
   const [selectedPossibleTimeSlots, setSelectedPossibleTimeSlots] = useState<any[] | null>(null);
 
   // the date and time slots that the user has selected and to keep track of across all modals
-  const [finalSelectedDate, setFinalSelectedDate] = useState<string | null>(null);
+  const [finalSelectedDate, setFinalSelectedDate] = useState<string>("");
   const [finalSelectedTimeSlots, setFinalSelectedTimeSlots] = useState<string[]>([]);
 
   // open the modal pop-up with the correct cafe details
@@ -176,7 +176,7 @@ const AllCafes = () => {
     setIsModalToChooseSlotsOpen(false);
     setSelectedCafe(null);
     setSelectedPossibleTimeSlots(null);
-    setFinalSelectedDate(null);
+    setFinalSelectedDate("");
     setFinalSelectedTimeSlots([]);
   };
 
@@ -317,6 +317,8 @@ const AllCafes = () => {
           </div>
         </div>
       </div>
+
+      
 
       <BottomNavbar currentPage="home" />
 

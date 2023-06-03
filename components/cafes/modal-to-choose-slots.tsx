@@ -110,7 +110,7 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
         //             dateStyleUpdatedList[index] = styles.outlinedButton;
         //         }
         //         dateStyleUpdatedList[index] = styles.filledButton;
-        //         setFinalSelectedDate(availDates[index]);
+        //         props.setFinalSelectedDate(availDates[index]);
 
         //         return dateStyleUpdatedList;
         //     });
@@ -127,6 +127,7 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
             key={index}
             className={styles.outlinedButton}
             onClick={() => {
+                props.setFinalSelectedDate(currentDate);
                 showCorrespondingTimeSlotsButtons(currentDate, cafe);
                 // handleDateClick(index);
                 }} >
@@ -235,60 +236,60 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                     marginTop: 2,
                     paddingBottom: 2
                     }}>
-                    <Container className={styles.image}>
-                        <Box
-                        component="img"
-                        sx={{
-                            height: "auto",
-                            width: 280,
+                        <Container>
+                            <Box
+                            component="img"
+                            sx={{
+                                height: "auto",
+                                width: 280,
+                                marginTop: 2,
+                                marginBottom: 2,
+                                maxHeight: { xs: 150, md: 220 },
+                                maxWidth: { xs: 280, md: 400 },
+                            }}
+                            alt="Cafe image."
+                            src={MockedImg.src} />
+                        </Container>
+                        <Grid
+                            container
+                            direction="row"
+                            justifyContent="space-between"
+                            alignItems="center"
+                            xs="auto"
+                            sx={{
+                            height: 'fit-content',
+                            marginLeft: 0,
                             marginTop: 2,
                             marginBottom: 2,
-                            maxHeight: { xs: 150, md: 220 },
-                            maxWidth: { xs: 280, md: 400 },
-                        }}
-                        alt="Cafe image."
-                        src={MockedImg.src} />
-                    </Container>
-                    <Grid
-                        container
-                        direction="row"
-                        justifyContent="space-between"
-                        alignItems="center"
-                        xs="auto"
-                        sx={{
-                        height: 'fit-content',
-                        marginLeft: 0,
-                        marginTop: 2,
-                        marginBottom: 2,
-                        }}
-                    >
-                        <Typography sx={{ width: 2 / 5 }} textAlign='left' fontWeight={700}>
-                        {props.cafe.name}
-                        </Typography>
-                        <Typography sx={{ width: 2 / 5, color: "#D89554" }} textAlign='right'>
-                        {props.cafe.credit} Credit(s) / hr
-                        </Typography>
-                    </Grid>
-                    <Grid
-                        container
-                        direction="row"
-                        justifyContent="flex-start"
-                        alignItems="center"
-                        xs="auto"
-                        sx={{
-                        height: 'fit-content'
-                        }}
-                    >
-                        <AccessTime />
-                        <Typography 
-                        sx={{ 
-                            width: 2 / 4, 
-                            marginLeft: 1, 
-                        }} 
-                        textAlign='left'>
-                        {props.cafe.open_at[getCurrentDayOfWeekIndex()]} to {props.cafe.close_at[getCurrentDayOfWeekIndex()]}
-                        </Typography>
-                    </Grid>
+                            }}
+                        >
+                            <Typography sx={{ width: 2 / 5 }} textAlign='left' fontWeight={700}>
+                            {props.cafe.name}
+                            </Typography>
+                            <Typography sx={{ width: 2 / 5, color: "#D89554" }} textAlign='right'>
+                            {props.cafe.credit} Credit(s) / hr
+                            </Typography>
+                        </Grid>
+                        <Grid
+                            container
+                            direction="row"
+                            justifyContent="flex-start"
+                            alignItems="center"
+                            xs="auto"
+                            sx={{
+                            height: 'fit-content'
+                            }}
+                        >
+                            <AccessTime />
+                            <Typography 
+                            sx={{ 
+                                width: 2 / 4, 
+                                marginLeft: 1, 
+                            }} 
+                            textAlign='left'>
+                            {props.cafe.open_at[getCurrentDayOfWeekIndex()]} to {props.cafe.close_at[getCurrentDayOfWeekIndex()]}
+                            </Typography>
+                        </Grid>
                     </Container>
 
                     
