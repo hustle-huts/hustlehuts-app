@@ -45,7 +45,6 @@
     "@types/lodash": "^4.14.194",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "husky": "^8.0.3",
     "lefthook": "^1.4.1",
     "prettier": "^2.8.8",
     "pretty-quick": "^3.1.3"

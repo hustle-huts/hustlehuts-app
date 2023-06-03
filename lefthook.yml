@@ -3,4 +3,3 @@ pre-commit:
   commands:
     prettier:
       run: npm run lint
-      files: \.(js|jsx|ts|tsx)$
