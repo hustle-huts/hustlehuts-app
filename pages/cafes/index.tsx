@@ -330,7 +330,6 @@ const AllCafes = () => {
           handleBottomSheetClose={handleBottomSheetClose}
           selectedPossibleTimeSlots={selectedPossibleTimeSlots}
           setSelectedPossibleTimeSlots={setSelectedPossibleTimeSlots}
-          finalSelectedDate={finalSelectedDate} // TO REMOVE LATER ON
           setFinalSelectedDate={setFinalSelectedDate}
           finalSelectedTimeSlots={finalSelectedTimeSlots}
           setFinalSelectedTimeSlots={setFinalSelectedTimeSlots}
