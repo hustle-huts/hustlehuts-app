@@ -6,4 +6,7 @@ module.exports = {
   tabWidth: 2,
   bracketSpacing: true,
   htmlWhitespaceSensitivity: "ignore",
+  importOrder: ["^components/(.*)$", "^[./]"],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
 };

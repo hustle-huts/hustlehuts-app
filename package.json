@@ -9,11 +9,6 @@
     "pretty-quick": "pretty-quick --ignore-path .gitignore .",
     "lint": "next lint --fix && pretty-quick"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint"
-    }
-  },
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -51,6 +46,7 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.3",
+    "lefthook": "^1.4.1",
     "prettier": "^2.8.8",
     "pretty-quick": "^3.1.3"
   }

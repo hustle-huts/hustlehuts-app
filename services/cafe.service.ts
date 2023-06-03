@@ -1,5 +1,6 @@
+import { GetCafeRequest, ICafe, PaginatedCafeResult } from "@/models/cafe";
+
 import axios_instance from "./axios";
-import { ICafe, PaginatedCafeResult, GetCafeRequest } from "@/models/cafe";
 
 const CAFE_PREFIX_URL = `/api/cafe`;
 
@@ -57,4 +58,4 @@ const getCafeByIdApi = async (cafeId: string): Promise<ICafe> => {
   return response.data as ICafe;
 };
 
-export { getCafesApi, getCafesByQueryApi, getCafeByIdApi };
+export { getCafeByIdApi, getCafesApi, getCafesByQueryApi };

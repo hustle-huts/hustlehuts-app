@@ -1,5 +1,6 @@
+import { CreateBookingRequest, GetBookingRequest, IBooking, PaginatedBookingResult } from "@/models/booking";
+
 import axios_instance from "./axios";
-import { IBooking, CreateBookingRequest, PaginatedBookingResult, GetBookingRequest } from "@/models/booking";
 
 const BOOKING_PREFIX_URL = `/api/booking`;
 
@@ -53,4 +54,4 @@ const getBookingByIdApi = async (bookingId: string): Promise<IBooking> => {
   return booking;
 };
 
-export { createBookingApi, getBookingsApi, getUserBookingsApi, getBookingByIdApi };
+export { createBookingApi, getBookingByIdApi, getBookingsApi, getUserBookingsApi };

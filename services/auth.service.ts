@@ -1,5 +1,6 @@
-import axios_instance from "./axios";
 import { ILoginRequest, ILoginResponse, IRegisterRequest, IUser } from "@/models/user";
+
+import axios_instance from "./axios";
 
 const AUTH_PREFIX_URL = `/api/auth`;
 
@@ -27,4 +28,4 @@ const logoutApi = async (): Promise<boolean> => {
   return is_logout;
 };
 
-export { authApi, loginApi, registerApi, logoutApi };
+export { authApi, loginApi, logoutApi, registerApi };
