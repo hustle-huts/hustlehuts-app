@@ -1,8 +1,10 @@
-import Head from "next/head";
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+
 import { Poppins } from "@next/font/google";
+import type { AppProps } from "next/app";
+import Head from "next/head";
 import { RecoilRoot } from "recoil";
+
 import Layout from "@/components/Layout";
 
 const font = Poppins({

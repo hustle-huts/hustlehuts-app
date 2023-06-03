@@ -1,22 +1,18 @@
-import styles from "./cafe-card.module.css";
-import Image from "next/image";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import Image from "next/image";
 
-import HeartIcon from "../../public/images/heart.svg";
-import HeartEmptyIcon from "../../public/images/heart-empty.svg";
-import RatingIcon from "../../public/images/rating.svg";
+import NoAmbienceIcon from "../../public/images/ambience-no.svg";
+import ChargingIcon from "../../public/images/charging.svg";
 import ClockIcon from "../../public/images/clock.svg";
 import DistanceIcon from "../../public/images/distance.svg";
+import HeartEmptyIcon from "../../public/images/heart-empty.svg";
+import RatingIcon from "../../public/images/rating.svg";
 import WifiIcon from "../../public/images/wifi.svg";
-import NoWifiIcon from "../../public/images/wifi-no.svg";
-import ChargingIcon from "../../public/images/charging.svg";
-import NoChargingIcon from "../../public/images/charging-no.svg";
-import AmbienceIcon from "../../public/images/ambience.svg";
-import NoAmbienceIcon from "../../public/images/ambience-no.svg";
+import styles from "./cafe-card.module.css";
 
 interface props {
   cafe_name: String;

@@ -1,16 +1,16 @@
-import styles from "../../styles/Cafes.module.css";
-import Image from "next/image";
-import BottomNavbar from "@/components/bottomNavbar/bottom-navbar";
-import TopBanner from "@/components/topBanner/top-banner";
-import CafeCard from "@/components/cafes/cafe-card";
+import Button from "@mui/material/Button";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-
-import SearchIcon from "../../public/images/search.svg";
-import FilterIcon from "../../public/images/filter.svg";
-
+import Image from "next/image";
 import { useState } from "react";
+
+import BottomNavbar from "@/components/bottomNavbar/bottom-navbar";
+import CafeCard from "@/components/cafes/cafe-card";
+import TopBanner from "@/components/topBanner/top-banner";
+
+import FilterIcon from "../../public/images/filter.svg";
+import SearchIcon from "../../public/images/search.svg";
+import styles from "../../styles/Cafes.module.css";
 
 const CafesPage = () => {
   const [selectedFilter, setSelectedFilters] = useState("filter1");

@@ -1,21 +1,19 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-import LoginHeader from "@/components/users/headers/LoginHeader";
-import { loginDetailsState, userState } from "@/recoil/auth/atom";
-import { ILoginRequest, IUser } from "@/models/user";
-import { loginApi } from "@/services/auth.service";
-import TextField from "@/components/shared/TextField";
-import Button from "@/components/shared/Button";
-
-import { loginPasswordFormSchema } from "@/components/users/utils/validation-schema";
-import { passwordFormControlName } from "@/components/users/utils/constants";
-
-import styles from "@/styles/Login.module.css";
 import { Box } from "@mui/material";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+
+import Button from "@/components/shared/Button";
+import TextField from "@/components/shared/TextField";
+import LoginHeader from "@/components/users/headers/LoginHeader";
+import { passwordFormControlName } from "@/components/users/utils/constants";
+import { loginPasswordFormSchema } from "@/components/users/utils/validation-schema";
+import { ILoginRequest, IUser } from "@/models/user";
+import { loginDetailsState, userState } from "@/recoil/auth/atom";
+import { loginApi } from "@/services/auth.service";
+import styles from "@/styles/Login.module.css";
 
 const LoginPasswordPage = () => {
   const router = useRouter();

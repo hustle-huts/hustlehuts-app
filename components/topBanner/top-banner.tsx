@@ -1,11 +1,12 @@
-import styles from "./top-banner.module.css";
 import Image from "next/image";
+import { useRouter } from "next/router";
+
 import cart from "../../public/images/cart.svg";
 import leftEclipse from "../../public/images/top-banner-left-eclipse.png";
 import middleBottomEclipse from "../../public/images/top-banner-middle-bottom-eclipse.svg";
 import middleTopEclipse from "../../public/images/top-banner-middle-top-eclipse.svg";
 import rightEclipse from "../../public/images/top-banner-right-eclipse.svg";
-import { useRouter } from "next/router";
+import styles from "./top-banner.module.css";
 
 interface props {
   currentPage?: string;

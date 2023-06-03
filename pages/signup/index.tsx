@@ -1,21 +1,19 @@
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Box } from "@mui/material";
+import classNames from "classnames";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 
 import SignUpHeader from "@/components/users/headers/SignUpHeader";
 import SignUpForm from "@/components/users/SignUpForm";
-import SignUpTelegramForm from "@/components/users/SignUpTelegramForm";
 import SignUpSuccess from "@/components/users/SignUpSuccess";
-
-import { registerApi } from "@/services/auth.service";
-import { IRegisterRequest } from "@/models/user";
-import { signUpFormSchema } from "@/components/users/utils/validation-schema";
+import SignUpTelegramForm from "@/components/users/SignUpTelegramForm";
 import { SignUpStep } from "@/components/users/utils/constants";
-
+import { signUpFormSchema } from "@/components/users/utils/validation-schema";
+import { IRegisterRequest } from "@/models/user";
+import { registerApi } from "@/services/auth.service";
 import styles from "@/styles/SignUp.module.css";
-import { useRouter } from "next/router";
-import classNames from "classnames";
-import { Box } from "@mui/material";
 
 const SignUpPage = () => {
   const router = useRouter();

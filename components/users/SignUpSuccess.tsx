@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
 import Image from "next/image";
-import Button from "@/components/shared/Button";
+import { useRouter } from "next/router";
 
+import Button from "@/components/shared/Button";
 import styles from "@/styles/SignUpSuccess.module.css";
 
 const SignUpSuccess = () => {

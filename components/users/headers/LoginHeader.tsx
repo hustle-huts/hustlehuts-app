@@ -1,11 +1,11 @@
+import Image from "next/image";
+
+import LocationPointer from "@/public/images/arrow.svg";
 import LogIn1 from "@/public/images/login1.svg";
 import LogIn2 from "@/public/images/login2.svg";
 import SignUp1 from "@/public/images/signup1.svg";
 import SignUp2 from "@/public/images/signup2.svg";
 import SignUp3 from "@/public/images/signup3.svg";
-import LocationPointer from "@/public/images/arrow.svg";
-import Image from "next/image";
-
 import styles from "@/styles/LoginHeader.module.css";
 
 export default function LoginHeader() {

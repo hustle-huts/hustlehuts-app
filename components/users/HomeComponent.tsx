@@ -1,9 +1,11 @@
-import LoginForm from "@/components/users/LoginForm";
-import Image from "next/image";
-import Logo from "./../../public/images/logo.png";
+import { Box } from "@mui/material";
 // FIXME
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { Box } from "@mui/material";
+import Image from "next/image";
+
+import LoginForm from "@/components/users/LoginForm";
+
+import Logo from "./../../public/images/logo.png";
 
 const HomeComponent: React.FC = () => {
   return (

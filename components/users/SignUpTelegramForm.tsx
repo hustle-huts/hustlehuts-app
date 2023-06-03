@@ -1,10 +1,10 @@
 import { useFormContext } from "react-hook-form";
 
-import TextField from "../shared/TextField";
-import Button from "../shared/Button";
-import { telegramHandlerFormControlName } from "./utils/constants";
-
 import styles from "@/styles/SignUpTelegramForm.module.css";
+
+import Button from "../shared/Button";
+import TextField from "../shared/TextField";
+import { telegramHandlerFormControlName } from "./utils/constants";
 
 type SignUpTelegramFormProps = {
   onContinue: () => void;

@@ -1,5 +1,6 @@
-import styles from "./bookings-bar.module.css";
 import { LinearProgress } from "@mui/material";
+
+import styles from "./bookings-bar.module.css";
 export default function BookingsBar() {
   return (
     <div className={styles.container}>

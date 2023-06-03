@@ -1,6 +1,9 @@
 import { useFormContext } from "react-hook-form";
-import TextField from "@/components/shared/TextField";
+
 import Button from "@/components/shared/Button";
+import TextField from "@/components/shared/TextField";
+import styles from "@/styles/SignUpForm.module.css";
+
 import {
   emailFormControlName,
   firstNameFormControlName,
@@ -8,8 +11,6 @@ import {
   passwordFormControlName,
   phoneNumberFormControlName,
 } from "./utils/constants";
-
-import styles from "@/styles/SignUpForm.module.css";
 
 type SignUpFormProps = {
   onContinue: () => void;

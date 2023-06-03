@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import Badge from "../../public/images/award.png";
 import styles from "./cafe-badge.module.css";
 

@@ -1,8 +1,6 @@
-import styles from "./cafe-item.module.css";
-import Button from "../ui/button";
-import Image from "next/image";
 import Booking from "../../public/images/booking-image.png";
 import CafeBadge from "./cafe-badge";
+import styles from "./cafe-item.module.css";
 interface props {
   className?: string;
   isOpen: boolean;

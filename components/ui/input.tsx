@@ -1,7 +1,8 @@
-import React, { ReactElement, ReactNode, TextareaHTMLAttributes } from "react";
-import styles from "./input.module.css";
 import classnames from "classnames";
+import React, { ReactElement, ReactNode, TextareaHTMLAttributes } from "react";
 import PhoneInput from "react-phone-input-2";
+
+import styles from "./input.module.css";
 
 interface Props extends Partial<React.InputHTMLAttributes<any>>, Partial<TextareaHTMLAttributes<any>> {
   className?: string;

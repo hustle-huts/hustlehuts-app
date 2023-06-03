@@ -1,8 +1,9 @@
 import Image from "next/image";
-import UserImage from "../../public/images/user-image.png";
-import ArrowRight from "../../public/images/arrow-right.png";
 
 import styles from "@/styles/ProfileBox.module.css";
+
+import ArrowRight from "../../public/images/arrow-right.png";
+import UserImage from "../../public/images/user-image.png";
 
 export default function ProfileBox() {
   return (

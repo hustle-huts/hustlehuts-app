@@ -1,8 +1,9 @@
-import { userState } from "@/recoil/auth/atom";
-import { authApi } from "@/services/auth.service";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
+
+import { userState } from "@/recoil/auth/atom";
+import { authApi } from "@/services/auth.service";
 
 const GUEST_PAGES = ["/", "/signup", "/login", "/login/password"];
 const LOGGED_IN_PAGES = ["/bookings", "/profile"];

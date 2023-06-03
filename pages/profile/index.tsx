@@ -1,7 +1,7 @@
-import CafeItem from "@/components/cafes/cafe-item";
-import ProfileBox from "@/components/profile/ProfileBox";
 import { LinearProgress } from "@mui/material";
 
+import CafeItem from "@/components/cafes/cafe-item";
+import ProfileBox from "@/components/profile/ProfileBox";
 import styles from "@/styles/Profile.module.css";
 
 export default function ProfilePage() {

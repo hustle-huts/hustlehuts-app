@@ -1,4 +1,3 @@
-import React from "react";
 import MUIButton, { ButtonProps as MUIButtonProps } from "@mui/material/Button";
 import classNames from "classnames";
 

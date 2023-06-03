@@ -1,11 +1,13 @@
-import styles from "../../styles/Bookings.module.css";
-import BookingItem from "@/components/bookings/booking-item";
-import BottomNavbar from "@/components/bottomNavbar/bottom-navbar";
-import TopBanner from "@/components/topBanner/top-banner";
-import BookingsBar from "@/components/bookings/bookings-bar";
-import SendIcon from "../../public/images/bookings-send.svg";
 import Image from "next/image";
 import Link from "next/link";
+
+import BookingItem from "@/components/bookings/booking-item";
+import BookingsBar from "@/components/bookings/bookings-bar";
+import BottomNavbar from "@/components/bottomNavbar/bottom-navbar";
+import TopBanner from "@/components/topBanner/top-banner";
+
+import SendIcon from "../../public/images/bookings-send.svg";
+import styles from "../../styles/Bookings.module.css";
 
 export default function BookingsPage() {
   return (

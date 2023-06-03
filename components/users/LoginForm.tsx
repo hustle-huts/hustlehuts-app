@@ -1,21 +1,21 @@
-import { useRouter } from "next/router";
-import { useGoogleLogin } from "@react-oauth/google";
-import { useRecoilState } from "recoil";
-import { loginDetailsState } from "@/recoil/auth/atom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import { Divider, InputAdornment } from "@mui/material";
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
+import { Divider, InputAdornment } from "@mui/material";
+import { useGoogleLogin } from "@react-oauth/google";
+import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
 
 import { ILoginRequest } from "@/models/user";
-import TextField from "../shared/TextField";
-import Button from "../shared/Button";
+import { loginDetailsState } from "@/recoil/auth/atom";
 import styles from "@/styles/LoginForm.module.css";
 
-import { loginEmailFormSchema } from "./utils/validation-schema";
-import { emailFormControlName } from "./utils/constants";
+import Button from "../shared/Button";
 import SocialButton from "../shared/SocialButton";
+import TextField from "../shared/TextField";
 import { SocialButtonType } from "../shared/utils/constants";
+import { emailFormControlName } from "./utils/constants";
+import { loginEmailFormSchema } from "./utils/validation-schema";
 
 const LoginForm: React.FC = () => {
   const router = useRouter();
