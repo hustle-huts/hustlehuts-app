@@ -12,11 +12,8 @@ interface props {
     cafe: any,
     isBottomSheetOpen: boolean,
     handleBottomSheetClose: functionType,
-    selectedPossibleTimeSlots: any[] | null,
-    setSelectedPossibleTimeSlots: Function,
     setFinalSelectedDate: Function,
     setFinalSelectedTimeSlots: Function,
-    finalSelectedTimeSlots: string[],
     setIsModalToLoginOpen: Function,
     setIsModalToChooseSlotsOpen: Function
 }
@@ -26,30 +23,29 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
     const [activeStep, setActiveStep] = useState(0);
 
     // to keep track of the date that the user has clicked in the modal
-    const [buttonTimeClickedList, setButtonTimeClickedList] = useState<boolean[]>([]);
-    const [buttonTimeStyleList, setButtonTimeStyleList] = useState<string[]>([]);
-    const [availCorrespondingTimeSlots, setAvailCorrespondingTimeSlots] = useState<string[]>([]);
-    const [availCorrespondingSeats, setAvailCorrespondingSeats] = useState<number[]>([]);
-
-    // to keep track of the time slots that the user has clicked in the modal
-    const [buttonDateClickedList, setButtonDateClickedList] = useState<boolean[]>([]);
+    const [availDates, setAvailDates] = useState<string[]>([]);
     const [buttonDateStyleList, setButtonDateStyleList] = useState<string[]>([]);
 
-    useEffect(() => {
-        console.log('Button clicked list useEffect:', buttonDateClickedList);
-    }, [buttonDateClickedList]);
+    // to keep track of the time slots that the user has clicked in the modal
+    const [availCorrespondingTimeSlots, setAvailCorrespondingTimeSlots] = useState<string[]>([]);
+    const [availCorrespondingSeats, setAvailCorrespondingSeats] = useState<number[]>([]);
+    const [buttonTimeStyleList, setButtonTimeStyleList] = useState<string[]>([]);
     
     useEffect(() => {
         console.log('Button style list useEffect:', buttonDateStyleList);
     }, [buttonDateStyleList]);
-    
-    useEffect(() => {
-        console.log('Button clicked list useEffect:', buttonTimeClickedList);
-    }, [buttonTimeClickedList]);
+
     
     useEffect(() => {
         console.log('Button style list useEffect:', buttonTimeStyleList);
     }, [buttonTimeStyleList]);
+
+    useEffect(() => {
+        if (props.isBottomSheetOpen) {
+          generateDateButtons();
+          setAvailCorrespondingTimeSlots([]);
+        }
+    }, [props.isBottomSheetOpen]);
     
     
     // increase the number of people
@@ -86,63 +82,23 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
     
 
     // show all the available dates as buttons
-    const generateDateButtons = (cafe: any) => {
-        if (!cafe) {
+    const generateDateButtons = () => {
+        if (!props.cafe) {
             return; // Return early if cafe is null or undefined
         }
 
-        const availSlots = cafe.availability_time_slots;
+        const availSlots = props.cafe.availability_time_slots;
         const availDates = []
         for (let i = 0; i < availSlots.length; i++) {
             availDates.push(availSlots[i].date);
         }
 
-        // // create the arrays to keep track of whether the date buttons are clicked on
-        // setButtonDateClickedList(Array.from({ length: availDates.length }, () => false));
-        // setButtonDateStyleList(
-        //     Array.from({ length: availDates.length }, () => styles.outlinedButton)
-        // );
+        // create the arrays to keep track of whether the date buttons are clicked on
+        setButtonDateStyleList(
+            Array.from({ length: availDates.length }, () => styles.outlinedButton)
+        );
 
-        // // change color of the button for the date the user clicks on
-        // const handleDateClick = (index: number) => {
-        //     setButtonDateStyleList((prevList) => {
-        //         const dateStyleUpdatedList = [...prevList];
-
-        //         // only highlight one date at a time
-        //         for (let i = 0; i < availDates.length; i++) {
-        //             dateStyleUpdatedList[index] = styles.outlinedButton;
-        //         }
-        //         dateStyleUpdatedList[index] = styles.filledButton;
-        //         props.setFinalSelectedDate(availDates[index]);
-
-        //         return dateStyleUpdatedList;
-        //     });
-
-        //     setButtonDateClickedList((prevList) => {
-        //         const dateClickedUpdatedList = [...prevList];
-        //         dateClickedUpdatedList[index] = !dateClickedUpdatedList[index];
-        //         return dateClickedUpdatedList;
-        //     });
-        // }
-
-        const buttons = availDates.map((currentDate, index) => (
-            <Button 
-            key={index}
-            className={styles.outlinedButton}
-            onClick={() => {
-                props.setFinalSelectedDate(currentDate);
-                showCorrespondingTimeSlotsButtons(currentDate, cafe);
-                // handleDateClick(index);
-                }} >
-                {currentDate}, {getDayOfWeek(currentDate)}
-            </Button>
-        ));
-        
-        return (
-            <div>
-                {buttons}
-            </div>
-        )
+        setAvailDates(availDates);
     }
 
     // to show the corresponding time slots for a date that a user clicks on
@@ -150,9 +106,6 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
 
         // get the timeslots for the cafe again
         const availSlots = cafe.availability_time_slots;
-
-        // clear the previous selection of time slots by the user
-        props.setFinalSelectedTimeSlots([]);
 
         // for the chosen date, get all the corresponding time slots and no. of seats for each time slot
         const availCorrespondingTimeSlots: string[] = [];
@@ -167,7 +120,7 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
         }
 
         // create the default lists for unclicked buttons 
-        setButtonTimeClickedList(Array.from({ length: availCorrespondingTimeSlots.length }, () => false));
+        // setButtonTimeClickedList(Array.from({ length: availCorrespondingTimeSlots.length }, () => false));
         setButtonTimeStyleList(
             Array.from({ length: availCorrespondingTimeSlots.length }, () => styles.outlinedButton)
         );
@@ -177,11 +130,29 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
         setAvailCorrespondingSeats(availCorrespondingSeats)
     }
 
+    // change color of the button for the date the user clicks on
+    const handleDateClick = (index: number) => {
+        setButtonDateStyleList((prevList) => {
+          const dateStyleUpdatedList = [...prevList];
+      
+          // Update only the clicked button's style
+          dateStyleUpdatedList.forEach((_, i) => {
+            if (i === index) {
+              dateStyleUpdatedList[i] = styles.filledButton;
+            } else {
+              dateStyleUpdatedList[i] = styles.outlinedButton;
+            }
+          });
+      
+          return dateStyleUpdatedList;
+        });
+      };
+
     // to click or unclick a button
-    const handleButtonClick = (index: number) => {
+    const handleTimeButtonClick = (index: number) => {
         // add the selected time slot to user's final time slots chosen
         // this list will be emptied when the user clicks on another date
-        props.setFinalSelectedTimeSlots((finalSelectedTimeSlots : string[]) => [...finalSelectedTimeSlots, availCorrespondingTimeSlots[index]]);
+        props.setFinalSelectedTimeSlots((prevList : string[]) => [...prevList, availCorrespondingTimeSlots[index]]);
         
         setButtonTimeStyleList((prevList) => {
             const timeStyleUpdatedList = [...prevList];
@@ -191,12 +162,6 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                 timeStyleUpdatedList[index] = styles.outlinedButton;
             } 
             return timeStyleUpdatedList;
-        });
-
-        setButtonTimeClickedList((prevList) => {
-            const timeClickedUpdatedList = [...prevList];
-            timeClickedUpdatedList[index] = !timeClickedUpdatedList[index];
-            return timeClickedUpdatedList;
         });
     };
 
@@ -364,8 +329,37 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                             Select Date
                         </Typography>
 
+
                         {/* Show the dates available for this cafe */}
-                        {generateDateButtons(props.cafe)}
+                        <Grid
+                        container
+                        display="flex"
+                        sx={{
+                            marginLeft: 0,
+                            marginTop: 2,
+                            marginBottom: 2,
+                        }}>
+                            {availDates.map((date, index) => {
+                                return (
+                                    <Button 
+                                        key={index}
+                                        className={buttonDateStyleList[index]}
+                                        sx={{
+                                            padding: '50px',
+                                            textTransform: 'none'
+                                        }}
+                                        onClick={() => {
+                                            props.setFinalSelectedDate(date);
+                                            // clear the previous selection of time slots by the user
+                                            props.setFinalSelectedTimeSlots([]);
+                                            showCorrespondingTimeSlotsButtons(date, props.cafe);
+                                            handleDateClick(index);
+                                            }} >
+                                            {date}, {getDayOfWeek(date)}
+                                    </Button>
+                                )
+                            })}
+                        </Grid>
 
                         <Typography 
                         sx={{ 
@@ -381,33 +375,47 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                         </Typography>
 
                         {/* When they choose a date, the corresponding time slots will show */}
-                        {availCorrespondingTimeSlots.map((timeSlot, index) => {
-                            
-                            const buttonStyle = buttonTimeStyleList[index];
+                        <Grid
+                        container
+                        display="flex"
+                        flexWrap="wrap"
+                        sx={{
+                            marginLeft: 0,
+                            marginTop: 2,
+                            marginBottom: 2,
+                        }}>
+                            {availCorrespondingTimeSlots.map((timeSlot, index) => {
+                                const buttonStyle = buttonTimeStyleList[index];
 
-                            return (
-                            <Button 
-                                key={index} 
-                                onClick={() => handleButtonClick(index)}
-                                // sx={buttonStyle}
-                                className={buttonStyle}
-                            >
-                                {timeSlot} ({availCorrespondingSeats[index]} seats left)
-                            </Button>
-                            );
-                        })}
+                                return (
+                                <Button 
+                                    key={index} 
+                                    onClick={() => handleTimeButtonClick(index)}
+                                    sx={{
+                                        padding: 5,
+                                        textTransform: 'none'
+                                    }}
+                                    className={buttonStyle}
+                                >
+                                    {timeSlot} ({availCorrespondingSeats[index]} seats left)
+                                </Button>
+                                );
+                            })}
+                        </Grid>
                     </Grid>
 
 
                     {/* Continue button  */}
                     <Button 
                         className={styles.filledButton}
+                        sx={{
+                            maxHeight: '60px',
+                        }}
                         onClick={() => {
                             // open the next modal and close this current modal
                             props.setIsModalToLoginOpen(true)
                             props.setIsModalToChooseSlotsOpen(false)
                         }}
-                        size="small"
                     >
                         Continue
                     </Button>

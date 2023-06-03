@@ -328,10 +328,7 @@ const AllCafes = () => {
           cafe={selectedCafe} 
           isBottomSheetOpen={isBottomSheetOpen}
           handleBottomSheetClose={handleBottomSheetClose}
-          selectedPossibleTimeSlots={selectedPossibleTimeSlots}
-          setSelectedPossibleTimeSlots={setSelectedPossibleTimeSlots}
           setFinalSelectedDate={setFinalSelectedDate}
-          finalSelectedTimeSlots={finalSelectedTimeSlots}
           setFinalSelectedTimeSlots={setFinalSelectedTimeSlots}
           setIsModalToLoginOpen={setIsModalToLoginOpen}
           setIsModalToChooseSlotsOpen={setIsModalToChooseSlotsOpen}
