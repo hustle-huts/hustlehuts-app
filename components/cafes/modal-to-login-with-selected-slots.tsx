@@ -6,8 +6,8 @@ import BottomSheet from "../../components/ui/bottomSheet";
 import { Box, Container, Grid, Typography } from '@mui/material';
 import MockedImg from '../../public/images/mocked-cafe-for-booking.png';
 
-import ModalSelectedCafeDetails from './modal-selected-cafe-details';
-import LoginForm from "@/components/users/LoginForm";
+import ModalSelectedCafeDetails from './selected-cafe-details';
+import LoginForm from "./confirmation-login-form";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import HomeComponent from "@/components/users/HomeComponent";
 
@@ -89,8 +89,8 @@ const ModalToLoginWithSelectedSlots: React.FC<props> = (props): ReactElement<any
                 <Grid
                     container
                     direction="column"
-                    justifyContent="flex-start"
-                    alignItems="flex-start"
+                    justifyContent="center"
+                    alignItems="center"
                     sx={{
                         height: 'fit-content',
                         marginTop: 2,

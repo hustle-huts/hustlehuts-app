@@ -412,9 +412,11 @@ const ModalToChooseSlots: React.FC<props> = (props): ReactElement<any, any> | nu
                             maxHeight: '60px',
                         }}
                         onClick={() => {
-                            // open the next modal and close this current modal
-                            props.setIsModalToLoginOpen(true)
-                            props.setIsModalToChooseSlotsOpen(false)
+                            if (availDates.length !== 0 && availCorrespondingTimeSlots.length !== 0) {
+                                // open the next modal and close this current modal
+                                props.setIsModalToLoginOpen(true);
+                                props.setIsModalToChooseSlotsOpen(false);
+                            } 
                         }}
                     >
                         Continue
