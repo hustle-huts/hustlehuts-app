@@ -3,3 +3,9 @@ export enum SocialButtonType {
   FACEBOOK = "facebook",
   OUTLOOK = "outlook",
 }
+
+export enum PageName {
+  HOME = "home",
+  BOOK = "book",
+  PROFILE = "profile",
+}

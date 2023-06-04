@@ -1,9 +1,12 @@
+import { IconButton, InputAdornment } from "@mui/material";
+import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 import Button from "@/components/shared/Button";
 import TextField from "@/components/shared/TextField";
 import styles from "@/styles/SignUpForm.module.css";
 
+import CloseEyeIcon from "../shared/CustomIcons";
 import {
   emailFormControlName,
   firstNameFormControlName,
@@ -19,6 +22,11 @@ type SignUpFormProps = {
 const SignUpForm = ({ onContinue }: SignUpFormProps) => {
   const { register, formState } = useFormContext();
   const { errors, isValid } = formState;
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
 
   return (
     <div className={styles.form}>
@@ -55,9 +63,25 @@ const SignUpForm = ({ onContinue }: SignUpFormProps) => {
           name={passwordFormControlName}
           errorText={errors[passwordFormControlName]?.message?.toString()}
           variant="outlined"
-          type="password"
+          type={showPassword ? "text" : "password"}
           isRequired={true}
           label="Enter Your Password"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                  sx={{
+                    color: "transparent",
+                  }}
+                >
+                  <CloseEyeIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
         <TextField
           register={register}

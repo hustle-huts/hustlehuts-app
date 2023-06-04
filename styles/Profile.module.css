@@ -1,15 +1,18 @@
 .container {
+  margin-top: 72px;
   height: 100%;
   width: 100%;
   display: flex;
-  background-color: brown;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
+  align-items: center;
+}
+
+.profileCard {
+  margin-top: 24px;
 }
 
 .profileContainer {
-  height: 85%;
+  height: 90%;
   width: 100%;
   position: absolute;
   bottom: 0px;

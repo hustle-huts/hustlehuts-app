@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import BottomNavbar from "@/components/bottomNavbar/bottom-navbar";
 import CafeCard from "@/components/cafes/cafe-card";
+import { PageName } from "@/components/shared/utils/constants";
 import TopBanner from "@/components/topBanner/top-banner";
 
 import FilterIcon from "../../public/images/filter.svg";
@@ -30,7 +31,7 @@ const CafesPage = () => {
 
   return (
     <>
-      <TopBanner currentPage="home" />
+      <TopBanner currentPage={PageName.HOME} />
       <div className={styles.container}>
         <div className={styles.cafeContainer}>
           <TextField
@@ -132,7 +133,7 @@ const CafesPage = () => {
           </div>
         </div>
       </div>
-      <BottomNavbar currentPage="home" />
+      <BottomNavbar currentPage={PageName.HOME} />
     </>
   );
 };

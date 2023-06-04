@@ -4,6 +4,7 @@ import Link from "next/link";
 import BookingItem from "@/components/bookings/booking-item";
 import BookingsBar from "@/components/bookings/bookings-bar";
 import BottomNavbar from "@/components/bottomNavbar/bottom-navbar";
+import { PageName } from "@/components/shared/utils/constants";
 import TopBanner from "@/components/topBanner/top-banner";
 
 import SendIcon from "../../public/images/bookings-send.svg";
@@ -12,7 +13,7 @@ import styles from "../../styles/Bookings.module.css";
 export default function BookingsPage() {
   return (
     <>
-      <TopBanner currentPage="book" />
+      <TopBanner currentPage={PageName.BOOK} />
       <div className={styles.container}>
         <div className={styles.bookingContainer}>
           <BookingsBar />
@@ -37,7 +38,7 @@ export default function BookingsPage() {
           </div>
         </div>
       </div>
-      <BottomNavbar currentPage="book" />
+      <BottomNavbar currentPage={PageName.BOOK} />
     </>
   );
 }
