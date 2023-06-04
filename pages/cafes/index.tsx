@@ -150,6 +150,44 @@ const AllCafes = () => {
       "created_at": "2023-05-29T11:35:22.788Z",
       "updated_at": "2023-05-29T11:35:22.788Z",
       "_id": "64C98dDcfCdA5FfB106e41AB"
+    },
+    {
+      "name": "Thirty Cafe",
+      "address": "string",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          0
+        ]
+      },
+      "open_at": ["9am", "9am", "9am", "9am", "9am", "11am", "11am"],
+      "close_at": ["9pm", "9pm", "9pm", "9pm", "9pm", "11pm", "11pm"],
+      "credit": 30,
+      "has_wifi": true,
+      "has_charging": false,
+      "has_ambience": false,
+      "image_url": "./images/mocked-cafe1.jpeg",
+      "availability_time_slots": [
+        {
+          "date": "30-05-2023",
+          "time": [
+            "11am-12pm",
+            "12pm-1pm",
+            "1pm-2pm"
+          ],
+          "seat": [
+            7,
+            8,
+            9
+          ]
+        }
+      ],
+      "manager": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "rating": 4.7,
+      "deleted_at": "2023-05-29T11:35:22.788Z",
+      "created_at": "2023-05-29T11:35:22.788Z",
+      "updated_at": "2023-05-29T11:35:22.788Z",
+      "_id": "64C98dDcfCdA5FfB106e41AB"
     }
   ];
 
@@ -224,7 +262,7 @@ const AllCafes = () => {
         />
 
         {/* Filters */}
-        <div className={styles.filterButtons}>
+        {/* <div className={styles.filterButtons}>
           <Button
             className={
               styles.filterButton +
@@ -258,10 +296,10 @@ const AllCafes = () => {
           >
             Hidden Gems
           </Button>
-        </div>
+        </div> */}
 
         {/* Most Popular Cafes */}
-        <div style={{ paddingTop: "0.8rem" }}>
+        {/* <div style={{ paddingTop: "0.8rem" }}>
           <div className={styles.titleBar}>
             <p className={styles.title}>Most Popular Cafes</p>
             <Button className={styles.seeAllButton} variant="text">
@@ -277,10 +315,10 @@ const AllCafes = () => {
             />
           ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Near You Cafes */}
-        <div>
+        {/* <div>
           <div className={styles.titleBar}>
             <p className={styles.title}>Near You</p>
             <Button className={styles.seeAllButton} variant="text">
@@ -297,10 +335,10 @@ const AllCafes = () => {
               />
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Hidden Gems Cafes */}
-        <div>
+        {/* <div>
           <div className={styles.titleBar}>
             <p className={styles.title}>Hidden Gems</p>
             <Button className={styles.seeAllButton} variant="text">
@@ -317,7 +355,28 @@ const AllCafes = () => {
               />
             ))}
           </div>
+        </div> */}
+
+        {/* All Cafes */}
+        <div>
+          <div className={styles.titleBar}>
+            <p className={styles.title}>Hidden Gems Near You</p>
+            {/* <Button className={styles.seeAllButton} variant="text">
+              See All
+            </Button> */}
+          </div>
+
+          <div style={{ width: "100%", display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+            {allCafes.map(cafe => (
+              <CafeCard
+                cafe={cafe}
+                modalHandler={() => handleBottomSheetOpen(cafe)}
+                key={`popular-cafe-${cafe.name}`}
+              />
+            ))}
+          </div>
         </div>
+  
       </div>
 
       <BottomNavbar currentPage="home" />
