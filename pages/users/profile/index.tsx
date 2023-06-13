@@ -10,7 +10,7 @@ import Image from 'next/image';
 import FeedbackIcon from '../../../public/images/feedback.png'
 import Link from 'next/link';
 import BGM from '../../../public/images/redemption.png'
-import BGM2 from '../../../public/images/booking-image.png'
+import BGM2 from '../../../public/images/mocked-cafe-for-booking.png'
 import BottomSheet from '@/components/ui/bottomSheet';
 import { useState } from 'react';
 import CafePromotion from '@/components/cafes/cafe-promotion';
@@ -113,7 +113,7 @@ export default function ProfilePage() {
     
     return (
         <div className={styles.container}>
-            <TopBanner currentPage='profile' />
+            <TopBanner />
             <div className={styles.profileContainer}>
                 <div className={styles.box}>
                     <ProfileBox />

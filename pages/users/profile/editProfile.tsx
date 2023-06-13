@@ -2,7 +2,7 @@
 import styles from '../../../styles/Profile.module.css';
 import CafeItem from '@/components/cafes/cafe-item';
 import TopBanner from '@/components/topBanner/top-banner';
-import ProfileBox from '@/components/users/profile-box';
+import ProfileBox from '@/components/profile/profile-box';
 import { Container, Grid, Avatar, Badge, LinearProgress, Typography } from '@mui/material';
 import UserReward from '@/components/users/user-reward';
 import Image from 'next/image';
@@ -42,7 +42,7 @@ export default function ProfilePage() {
 
     return (
         <div className={styles.container}>
-            <TopBanner currentPage='profile' />
+            <TopBanner />
             <div className={styles.profileContainer}>
                 <div className={styles.box} style={{ flexDirection: 'column', overflowY: 'auto' }}>
                     <div className={styles.items}
