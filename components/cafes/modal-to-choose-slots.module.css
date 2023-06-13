@@ -1,0 +1,43 @@
+.filledButton {
+    background: linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%);
+    box-shadow: 0px 4px 40px rgba(160, 116, 78, 0.18);
+    border-color: #B88151;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    text-transform: none; /* Disable text capitalization */
+    max-width: 40%;
+    color: #fff !important;
+}
+
+.outlinedButton {
+    background: rgba(216, 169, 119, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    text-transform: none; /* Disable text capitalization */
+    max-width: 40%;
+    color: #000 !important;
+}
+
+.mobileStepperButton {
+    width: 18px;
+    background: linear-gradient(176.54deg, #6D5747 -11.89%, #B88151 64.46%);
+    box-shadow: 0px 4px 40px rgba(160, 116, 78, 0.18);
+    border-radius: 10px;
+    padding: 0.5rem;
+    color: #fff !important;
+    font-size: 16px;
+}
+
+.mobileStepper {
+    font-weight: 600;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: rgba(216, 169, 119, 0.1);
+    border-radius: 14px;
+}

@@ -36,6 +36,7 @@ body {
   overflow-x: hidden;
   height: 100%;
   width: 100%;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* @media (min-width: 800px) {
